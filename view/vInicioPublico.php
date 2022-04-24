@@ -1,5 +1,5 @@
 <header>
-    <div id="cajaTitulo">Proyecto Login-Logout</div>
+    <div id="cajaTitulo">INICIO </div>
 </header>
     <form class="cajaIdioma">
         <button class="cajaIdioma" type="submit" name="idiomaSeleccionado" value="es" ><img src="images/es.png" alt="cargando.." height="20px"></button>
@@ -7,7 +7,7 @@
         <button class="cajaIdioma" type="submit" name="idiomaSeleccionado" value="pt"><img src="images/po.png" alt="cargando.." height="20px"></button>
     </form>
     <br>
-    <h2> <?php echo $aIdioma[$_COOKIE['idioma']]['elegido'] ?> <?php echo $aIdioma[$_COOKIE['idioma']]['seleccionado'] ?> </h2> 
+    
     <input type="submit" value="Iniciar" name="iniciarsesion"></a>
     <br>
     <input type="submit" value="Salir" name="salir"></a>
