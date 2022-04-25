@@ -1,5 +1,5 @@
 <header>
-    <div id="cajaTitulo">INICIO </div>
+    <div id="cajaTitulo" class="text-center p-2 h4 font-weight-bold" style="background-color:gainsboro;">INICIO PUBLICO </div>
 </header>
     <form class="cajaIdioma">
         <button class="cajaIdioma" type="submit" name="idiomaSeleccionado" value="es" ><img src="images/es.png" alt="cargando.." height="20px"></button>
@@ -8,12 +8,12 @@
     </form>
     <br>
     
-    <input type="submit" value="Iniciar" name="iniciarsesion"></a>
-    <br>
-    <input type="submit" value="Salir" name="salir"></a>
-        
-<footer>
-    2021-22 I.E.S. Los sauces. ©Todos los derechos reservados. <strong> <a href="http://daw212.sauces.local/">Johanna Herrero Pozuelo</a></strong>
-    <a target="_blank" href="https://github.com/JohannaHPSauces/212LoginLogoutTema5"><img src="../images/git.png" alt="" class="git"></a>
-</footer>
+    <form class="container-fluid h-50"> 
+    	<div class="row w-100 align-items-center">
+            <div class="col text-center" >
+                <input type="submit" class="btn btn-primary btn-lg btn-block" name="iniciar " value="INICIAR SESION"><br><br>
+                <input type="submit" class="btn btn-primary btn-lg btn-block" name="salir" value="SALIR"><br><br>
+            </div>	
+    	</div>
+   </form>
    

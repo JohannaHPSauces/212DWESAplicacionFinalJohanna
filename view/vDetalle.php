@@ -1,8 +1,61 @@
-<?php
+<header>
+    <div id="cajaTitulo" class="text-center p-2 h4 font-weight-bold" style="background-color:gainsboro;">DETALLE </div>
+    <input type="button" class="btn btn-info" style="font-weight:bold;" value="VOLVER" name="cerrar"/>
+</header>
+<br>
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
+<!----------------------- SESSION -------------------------->
+<p class="h3 text-center">VARIABLE<mark>$_SESSION</mark></p>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th class="bg-light" scope="col">Clave</th>
+            <th class="bg-light" scope="col">Valor</th>
+        </tr>
+    </thead>
+        <?php  foreach ($_SESSION as $clave => $valor) { ?>
+    <tbody>
+        <tr>
+        <?php  echo "<td>$clave</td>";
+        echo "<td>$valor</td>";?>
+        </tr>
+        <?php  } ?>
+    </tbody>
+</table>
+<!----------------------- COOKIE -------------------------->
+<p class="h3 text-center">VARIABLE <mark>$_COOKIE</mark></p>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th class="bg-light" scope="col">Clave</th>
+            <th class="bg-light" scope="col">Valor</th>
+        </tr>
+    </thead>
+        <?php  foreach ($_COOKIE as $clave => $valor) { ?>
+    <tbody>
+        <tr>
+        <?php  echo "<td>$clave</td>";
+        echo "<td>$valor</td>";?>
+        </tr>
+        <?php  } ?>
+    </tbody>
+</table>
+<!----------------------- SERVER -------------------------->
+<p class="h3 text-center">VARIABLE <mark>$_SERVER</mark></p>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th class="bg-light" scope="col">Clave</th>
+            <th class="bg-light" scope="col">Valor</th>
+        </tr>
+    </thead>
+        <?php  foreach ($_SERVER as $clave => $valor) { ?>
+    <tbody>
+        <tr>
+        <?php  echo "<td>$clave</td>";
+        echo "<td>$valor</td>";?>
+        </tr>
+        <?php  } ?>
+    </tbody>
+</table>
+      
