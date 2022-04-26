@@ -11,7 +11,7 @@
     <form class="container-fluid h-50"> 
     	<div class="row w-100 align-items-center">
             <div class="col text-center" >
-                <input type="submit" class="btn btn-primary btn-lg btn-block" name="iniciar " value="INICIAR SESION"><br><br>
+                <input type="submit" class="btn btn-primary btn-lg btn-block" name="iniciar" value="INICIAR SESION"><br><br>
                 <input type="submit" class="btn btn-primary btn-lg btn-block" name="salir" value="SALIR"><br><br>
             </div>	
     	</div>

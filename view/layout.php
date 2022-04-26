@@ -11,13 +11,15 @@
     <body>
         <header>
             <!--class="titulo"-->
-            <div id="cajaTitulo" class="text-center p-4 display-6 font-weight-bold text-white bg-secondary" style="font-weight: bold;">APLICACION FINAL</div>
+            <div id="cajaTitulo" class="text-center p-4 display-6 font-weight-bold text-white bg-secondary" style="font-weight: bold;">APLICACION FINAL JOHANNA</div>
             
-            <?php require_once $vistas[$_SESSION['paginaEnCurso']]; ?>
         </header>
+        
+        <?php require_once $vistas[$_SESSION['paginaEnCurso']]; ?>
+        
         <footer class="text-center p-2 fixed-bottom" style="background-color:grey;">
             2021-22 I.E.S. Los sauces. ©Todos los derechos reservados. <strong> <a class="text-reset fw-bold" href="http://daw212.sauces.local/">Johanna Herrero Pozuelo</a></strong>
-            <br><a target="_blank" href="https://github.com/JohannaHPSauces/212LoginLogoutTema5"><img src="../images/git.png" width="30px" alt="" class="git"></a>
+            <br><a target="_blank" href="https://github.com/JohannaHPSauces/212DWESAplicacionFinalJohanna"><img src="../images/git.png" width="30px" alt="" class="git"></a>
         </footer>
 </body>
 </html>

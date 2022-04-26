@@ -8,7 +8,7 @@
 
 class DBPDO implements DB{
     
-    public static function ejecutarConsulta($sentenciaSQL, $parametros) {
+    public static function ejecutarConsulta($sentenciaSQL, $parametros=null) {
         
         try{
             $miDB= new PDO(HOST, USER, PASSWORD); //Objeto para establecer la conexion
@@ -16,7 +16,8 @@ class DBPDO implements DB{
             
             $resultadoConsuta= $miDB->prepare($sentenciaSQL); //preparo la consulta
             $resultadoConsuta->execute($parametros); //ejecuto parametros si existen
-
+            
+            return $resultadoConsulta; 
         } catch (PDOException $excepcion) {
             $codigoError = $excepcion->getCode(); //Guardamos en una variable el codigo del error
             $mensajeError = $excepcion->getMessage(); //guardamos en una variable el mensaje del error 
