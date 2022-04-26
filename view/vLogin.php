@@ -11,7 +11,7 @@
                         <div class="bg-secondary rounded-start">
                             <span class="m-3"><i class="fas fa-user "></i></span>
                         </div>
-                        <input type="text" class="form-control" placeholder="Usuario" name="usuario" value="<?php echo(isset($_REQUEST['usuario']) ? $_REQUEST['usuario'] : null); ?>"><?php echo($aErrores['usuario']!=null ? "<span style='color:red'>".$aErrores['usuario']."</span>" : null); ?>
+                        <input type="text" class="form-control" placeholder="Usuario" name="codUsuario" value="<?php echo(isset($_REQUEST['codUsuario']) ? $_REQUEST['codUsuario'] : null); ?>"><?php echo($aErrores['usuario']!=null ? "<span style='color:red'>".$aErrores['usuario']."</span>" : null); ?>
                     </div>
                     <div class="input-group form-group mt-3">
                         <div class="bg-secondary rounded-start">
@@ -21,7 +21,7 @@
                     </div>
                     <div class="form-group mt-4">
                         <input type="submit" value="Entrar" class="btn btn-primary float-end text-white w-100" name="entrar"> <br><br>
-                         <input type="submit" value="Volver" class="btn btn-primary float-end text-white w-100" name="volver"><br><br>
+                        <input type="submit" value="Volver" class="btn btn-primary float-end text-white w-100" name="volver"><br><br>
                         <input type="submit" value="Registrarse" class="btn btn-primary float-end text-white w-100" name="registrarse"><br>
                     </div>
                 </form>

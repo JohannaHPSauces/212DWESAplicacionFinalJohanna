@@ -8,28 +8,21 @@
 
 class DBPDO implements DB{
     
-    public static function ejecutarConsulta($sentenciaSQL, $parametros=null) {
-        
-        try{
-            $miDB= new PDO(HOST, USER, PASSWORD); //Objeto para establecer la conexion
-            $miDB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);//Establezco los atributos para la conexion
-            
-            $resultadoConsuta= $miDB->prepare($sentenciaSQL); //preparo la consulta
-            $resultadoConsuta->execute($parametros); //ejecuto parametros si existen
-            
-            return $resultadoConsulta; 
-        } catch (PDOException $excepcion) {
-            $codigoError = $excepcion->getCode(); //Guardamos en una variable el codigo del error
-            $mensajeError = $excepcion->getMessage(); //guardamos en una variable el mensaje del error 
-
-            echo "<p style='background-color:red'> Codigo de error: ".$codigoError;     //Mostramos el error
-            echo "<p style='background-color: red;'> Mensaje de error:". $mensajeError; //Mostramos el mensaje de error
-
-        }finally{//Para finalizar cerramos la conexion a la base de datos
-            unset($miDB);
+     public static function ejecutarConsulta($sentenciaSQL, $parametros = null){
+        try {
+            $miDB = new PDO(HOST, USER, PASSWORD);//Hago la conexion con la base de datos
+            $miDB -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);// Establezco el atributo para la aparicion de errores con ATTR_ERRMODE y le pongo que cuando haya un error se lance una excepcion con ERRMODE_EXCEPTION
+            $resultadoConsulta = $miDB->prepare($sentenciaSQL); // Preparo la consulta antes de ejecutarla
+            $resultadoConsulta -> execute($parametros);//Ejecuto la consulta con el array de parametros
+            return $resultadoConsulta; //Devuelvo el resultado de la consulta
+        }catch(PDOException $excepcion){//Codigo que se ejecuta si hay algun error
+            $_SESSION['paginaEnCurso'] = 'iniciopublico';
+            header('Location: index.php');
+            exit;
+        } finally{
+            unset($miDB);//Cierro la conexion
         }
-
-        }
+    }
 }
 
 ?>

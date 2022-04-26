@@ -11,7 +11,7 @@ require_once 'model/DBPDO.php';
 $controladores =[
     "iniciopublico" => "controller/cInicioPublico.php",
     "login" => "controller/cLogin.php",
-    "inicioPrivado" => "controller/cInicioPrivado.php",
+    "inicioprivado" => "controller/cInicioPrivado.php",
     "detalle" => "controller/cDetalle.php",
 ];
 
@@ -19,7 +19,7 @@ $vistas =[
     "layout" => "view/layout.php",
     "iniciopublico" => "view/vInicioPublico.php",
     "login" => "view/vLogin.php",
-    "inicioPrivado" => "view/vInicioPrivado.php",
+    "inicioprivado" => "view/vInicioPrivado.php",
     "detalle" => "view/vDetalle.php",
 ];
 ?>

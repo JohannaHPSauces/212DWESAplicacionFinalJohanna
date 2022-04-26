@@ -15,82 +15,81 @@ class Usuario{
     private $imagenUsuario;
     private $perfil;
     
-    function __construct($codUsuario,$password,$descUsuario,$numConexiones,$fechaHoraUltimaConexion,$fechaHoraUltimaConexionAnterior,$imagenUsario,$perfil) {
-        $this->codUsuario= $this-> $codUsuario;
-        $this->password= $this-> $password;
-        $this->descUsuario= $this-> $descUsuario;
-        $this->numConexiones= $this-> $numConexiones;
-        $this->fechaHoraUltimaConexion= $this-> $fechaHoraUltimaConexion;
-        $this->fechaHoraUltimaConexionAnterior= $this-> $fechaHoraUltimaConexionAnterior;
-        $this->imagenUsuario= $this-> $imagenUsuario;
-        $this->perfil= $this-> $perfil;
+    
+    function __construct($codUsuario,$password,$descUsuario,$numConexiones,$fechaHoraUltimaConexion,$fechaHoraUltimaConexionAnterior,$imagenUsuario,$perfil) {
+        $this->codUsuario = $codUsuario;
+        $this->password = $password;
+        $this->descUsuario = $descUsuario;
+        $this->numConexiones = $numConexiones;
+        $this->fechaHoraUltimaConexion = $fechaHoraUltimaConexion;
+        $this->fechaHoraUltimaConexionAnterior = $fechaHoraUltimaConexionAnterior;
+        $this->imagenUsuario = $imagenUsuario;
+        $this->perfil = $perfil;
     }
-
-/////////////////////////////METODOS GET/////////////////////////////    
-    function getCodUsuario() {
+    
+    
+    function getCodUsuario(){
         return $this->codUsuario;
     }
+    
     function getPassword() {
         return $this->password;
     }
-
+    
     function getDescUsuario() {
         return $this->descUsuario;
     }
-
+    
     function getNumConexiones() {
         return $this->numConexiones;
     }
-
+    
     function getFechaHoraUltimaConexion() {
         return $this->fechaHoraUltimaConexion;
     }
-
+    
     function getFechaHoraUltimaConexionAnterior() {
         return $this->fechaHoraUltimaConexionAnterior;
     }
-
-    function getImagenUsuario() {
+    
+    function getImagenUsuario(){
         return $this->imagenUsuario;
     }
-
+    
     function getPerfil() {
         return $this->perfil;
     }
-
-/////////////////////////////METODOS SET/////////////////////////////    
-
-    function setCodUsuario($codUsuario){
+    
+    function setCodUsuario($codUsuario) {
         $this->codUsuario = $codUsuario;
     }
-
-    function setPassword($password){
+   
+    function setPassword($password) {
         $this->password = $password;
     }
-
-    function setDescUsuario($descUsuario){
+    
+    function setDescUsuario($descUsuario) {
         $this->descUsuario = $descUsuario;
     }
-
-    function setNumConexiones($numConexiones){
+    
+    function setNumConexiones($numConexiones) {
         $this->numConexiones = $numConexiones;
     }
-
-    function setFechaHoraUltimaConexion($fechaHoraUltimaConexion){
+    
+    function setFechaHoraUltimaConexion($fechaHoraUltimaConexion) {
         $this->fechaHoraUltimaConexion = $fechaHoraUltimaConexion;
     }
-
+    
     function setFechaHoraUltimaConexionAnterior($fechaHoraUltimaConexionAnterior) {
         $this->fechaHoraUltimaConexionAnterior = $fechaHoraUltimaConexionAnterior;
     }
-
-    function setImagenUsuario($imagenUsuario){
+    
+    function imagenUsuario($imagenUsuario){
         $this->imagenUsuario = $imagenUsuario;
     }
-
+    
     function setPerfil($perfil) {
         $this->perfil = $perfil;
     }
 }
-
 ?>

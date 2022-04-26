@@ -9,37 +9,38 @@
     //variable que cambiaremos en funcion de si este bien o mal
     $entradaOk= true;
     
-    //arrayy para que en caso de que haya algun error guaardarlo
+    //arrayy para que en caso de que haya algun error guardarlo
     $aErrores = ['usuario' =>null,
                  'password'=> null];
     
     //SI SE HA PULSADO EL BOTON ENTRAR
     if(isset($_REQUEST['entrar'])){ 
-        $aErrores['usuario']=validacionFormularios::comprobarAlfaNumerico($_REQUEST['usuario'], 12, 4, 1);
-        $aErrores['password']=validacionFormularios::validarPassword($_REQUEST['password'], 12, 4, 2, 1);
+        //hacemos la validacion, si hay algun error pone la entrada a falsa
+        if(validacionFormularios::comprobarAlfaNumerico($_REQUEST['codUsuario'], 12, 4, 1) || validacionFormularios::validarPassword($_REQUEST['password'], 12, 4, 2, 1)){
+            $entradaOk=false;
+        }else{
+            $usuarioIntroducido= $_REQUEST['codUsuario']; //Guardo el usuario introducido
+            $passwordIntroducida= $_REQUEST['password']; //Guardo la contraseña introducida
+
+            $oUsuarioValido = UsuarioPDO::validarUsuario($usuarioIntroducido,$passwordIntroducida);//validamos si existe el usuario
         
-        $usuarioIntroducido= $_REQUEST['usuario']; //Guardo el usuario introducido
-        $passwordIntroducida= $_REQUEST['password']; //Guardo la contraseña introducida
-                
-        $oUsuarioValido = UsuarioPDO::validarUsuario($usuarioIntroducido, $passwordIntroducida);
-        if(!isset($oUsuarioValido)){ //Si el usuario no existe la entrada es falsa
-            $entradaOK = false;
-        }            
-            
-        foreach ($aErrores as $campo => $error){//Recorre el array en busca de errores, con que haya uno entra
-            if ($error != null){                
-                $entradaOK = false;//Y nos cambia la variable entrada a false
-                $_REQUEST[$campo]="";//Limpiamos los campos del formulario
-            } 
+            if(!$oUsuarioValido){ //Si el usuario no existe ponemos la entrada falsa
+                $aErrores['usuario']= "Usuario no encontrado";
+                $entradaOk = false;
+            }
         }
+         
     }else{
         $entradaOk= false;//Si el usuario no le ha dado ha enviar los datos
     }
-    
-    ////Si el usuarioy la contraseña estan bien
+    ////SI TODO HA IDO BIEN
     if($entradaOk){
-        
-        
+        $oUsuarioValido = UsuarioPDO::registrarUltimaConexion($oUsuarioValido); //Registro la ultima conexion y actualizo el numero de conexiones con el metodo registrarUltimaConexion
+        $_SESSION['usuario212AplicacionFinal'] = $oUsuarioValido; //Guardo en la sesion el usuario valido
+        $_SESSION['paginaEnCurso'] = 'inicioprivado'; //en la pagina actual estara la venta inicio privado
+        $_SESSION['paginaAnterior'] = 'login';// en la pagina anterior estara la ventana del login
+        header('Location: index.php'); //Redirecciono a inicio privado
+        exit; 
     }
    
     require_once $vistas['layout'];
