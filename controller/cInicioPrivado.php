@@ -5,6 +5,7 @@
         header('Location: index.php');
         exit;
     }
+    
     if(isset($_REQUEST['detalle'])){ //Si el usuario pulsa el boton de detalle
         $_SESSION['paginaEnCurso']= 'detalle';
         $_SESSION['paginaAnterior']= 'inicioprivado';
@@ -20,5 +21,6 @@
     $fechaUltimaConexionAnterior= $_SESSION['usuario212AplicacionFinal']->getFechaHoraUltimaConexionAnterior();
     $date=$fechaUltimaConexionAnterior;
     $fFechaHoraUltimaConexion = date('d-m-Y H:i:s', $date);
+    
     require_once $vistas['layout'];
 ?>

@@ -1,6 +1,8 @@
 <header>
     <div id="cajaTitulo" class="text-center p-2 h4 font-weight-bold" style="background-color:gainsboro;">DETALLE </div>
-    <input type="button" class="btn btn-info" style="font-weight:bold;" value="VOLVER" name="cerrar"/>
+    <form>
+        <input type="submit" class="btn btn-info" style="font-weight:bold;" value="VOLVER" name="cerrar"/>
+    </form>
 </header>
 <br>
 
@@ -16,8 +18,8 @@
         <?php  foreach ($_SESSION as $clave => $valor) { ?>
     <tbody>
         <tr>
-        <?php  echo "<td>$clave</td>";
-        echo "<td>$valor</td>";?>
+            <td> <?php echo $clave ?> </td>
+            <td> <?php print_r($valor) ?></td>
         </tr>
         <?php  } ?>
     </tbody>

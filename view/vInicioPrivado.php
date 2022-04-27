@@ -6,17 +6,16 @@
         <p>es la <?php echo $numConexiones ?>ª vez que te conectas,  
               <?php if(!is_null($fechaUltimaConexionAnterior)){?>
                 y la ultima conexion fue <?php echo $fFechaHoraUltimaConexion; } ?></p>
-        <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-        <div class="btn-group me-2"  aria-label="First group">
-          <input type="submit" class="btn btn-primary" value="Detalle" name="detalle"/>
-        </div>
-        <div class="btn-group me-2" aria-label="Second group">
-            <input type="submit" class="btn btn-secondary" value="Editar perfil" name="editar"/>
-        </div>
-        <div class="btn-group"  aria-label="Third group">
-            <input type="submit" class="btn btn-info" value="Cerrar Sesion" name="cerrar"/>
-            
-        </div>
-        </div>
+        <form class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+            <div class="btn-group me-2"  aria-label="First group">
+                <input type="submit" class="btn btn-primary" value="Detalle" name="detalle"/>
+            </div>
+            <div class="btn-group me-2" aria-label="Second group">
+                  <input type="submit" class="btn btn-secondary" value="Editar perfil" name="editar"/>
+            </div>
+            <div class="btn-group"  aria-label="Third group">
+                  <input type="submit" class="btn btn-info" value="Cerrar Sesion" name="cerrar"/>
+            </div>
+        </form>
     </div>
 </div>
