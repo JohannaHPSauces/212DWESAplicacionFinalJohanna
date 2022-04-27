@@ -35,8 +35,6 @@
                     <div class="form-group mt-4">
                         <input type="submit" value="Cambiar contraseña" class="btn btn-primary float-end text-white w-100" name="cambiar"> <br><br>
                     </div>
-                </form>
-                <form class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
                     <div class="btn-group me-2"  aria-label="First group">
                         <input type="submit" class="btn btn-secondary btn-success" value="Aceptar cambios" name="aceptar"/>
                     </div>

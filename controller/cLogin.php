@@ -5,6 +5,12 @@
         header('Location: index.php');
         exit;
     }
+    if(isset($_REQUEST['registrarse'])){ //Si el usuario pulsa el boton de registro
+        $_SESSION['paginaEnCurso']= 'registro';
+        $_SESSION['paginaAnterior']= 'login';
+        header('Location: index.php');
+        exit;
+    }
     
     //variable que cambiaremos en funcion de si este bien o mal
     $entradaOk= true;

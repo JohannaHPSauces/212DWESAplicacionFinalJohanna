@@ -38,17 +38,16 @@ class UsuarioPDO implements UsuarioBD{
             
         DBPDO::ejecutarConsulta($consulta);
         
-        return $oUsuario; //usuario actualizado
+        return $oUsuario; //DEVUELVO usuario actualizado
     }
     
-    public static function modificarUsuario($oUsuario, $descripcionUsuario){
-       
+     public static function modificarUsuario($oUsuario, $descUsuario){
         $consulta = <<<HER
-                        UPDATE T01_Usuario SET T01_DescUsuario='{$descripcionUsuario}',
-                        WHERE T01_CodUsuario='{$oUsuario->getCodUsuario()}';
+                        UPDATE T01_Usuario SET T01_DescUsuario="{$descUsuario}" WHERE T01_CodUsuario="{$oUsuario->getCodUsuario()}";
                     HER;
-            
-        $oUsuario->setDescUsuario($descripcionUsuario);
+                        
+        //Actualizar objeto usuario 
+        $oUsuario->setDescUsuario($descUsuario);
         
         if(DBPDO::ejecutarConsulta($consulta)){
             return $oUsuario;
@@ -57,11 +56,38 @@ class UsuarioPDO implements UsuarioBD{
         }
     }
     
+    
     public static function altaUsuario(){}
     public static function validarCodNoExiste(){}
     
-    public static function modificarPassword(){}
+    public static function borrarCuenta($oUsuario){
+        $consulta = <<<HER
+                       DELETE FROM T01_Usuario WHERE T01_CodUsuario="{$oUsuario->getCodUsuario()}";
+                    HER;
+        if(DBPDO::ejecutarConsulta($consulta)){
+            session_destroy();//Destruyo la sesion
+        }else{
+            return false;
+        }
+    }
         
-    
+    public static function modificarPassword($oUsuario, $password){
+         //Consulta SQL para modificar la descripcion de un usuario
+        $consulta = <<<HER
+                        UPDATE T01_Usuario SET T01_Password=SHA2("{$oUsuario->getCodUsuario()}{$password}", 256)
+                        WHERE T01_CodUsuario="{$oUsuario->getCodUsuario()}";
+                    HER;
+                        
+        //Actualizar objeto usuario    
+        $oUsuario->setPassword($password);
+        
+        if(DBPDO::ejecutarConsulta($consulta)){
+            return $oUsuario;
+        }else{
+            return false;
+        }
+    }
+        
+        
 }
 ?>

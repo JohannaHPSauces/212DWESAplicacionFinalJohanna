@@ -11,7 +11,7 @@
                         <div class="bg-secondary rounded-start">
                             <span class="m-3"><i class="fas fa-user "></i></span>
                         </div>
-                        <input type="text" class="form-control" placeholder="Usuario" name="codUsuario" value="<?php echo(isset($_REQUEST['codUsuario']) ? $_REQUEST['codUsuario'] : null); ?>"><?php echo($aErrores['usuario']!=null ? "<span style='color:red'>".$aErrores['usuario']."</span>" : null); ?>
+                        <input type="text" class="form-control" placeholder="Usuario" name="codUsuario" value="<?php echo(isset($_REQUEST['codUsuario']) ? $_REQUEST['codUsuario'] : null); ?>"><br><?php echo($aErrores['usuario']!=null ? "<span style='color:red'>".$aErrores['usuario']."</span>" : null); ?>
                     </div>
                     <div class="input-group form-group mt-3">
                         <div class="bg-secondary rounded-start">

@@ -14,6 +14,9 @@ $controladores =[
     "inicioprivado" => "controller/cInicioPrivado.php",
     "detalle" => "controller/cDetalle.php",
     "micuenta" => "controller/cMiCuenta.php",
+    "cambiarpassword" => "controller/cCambiarPassword.php",
+    "eliminar" => "controller/cEliminarCuenta.php",
+    "registro" => "controller/cRegistro.php"
 ];
 
 $vistas =[
@@ -23,6 +26,9 @@ $vistas =[
     "inicioprivado" => "view/vInicioPrivado.php",
     "detalle" => "view/vDetalle.php",
     "micuenta" => "view/vMiCuenta.php",
+    "cambiarpassword" => "view/vCambiarPassword.php",
+    "eliminar" => "view/vEliminarCuenta.php",
+    "registro" => "view/vRegistro.php"
 ];
 ?>
 
