@@ -1,7 +1,7 @@
 <div id="cajaTitulo" class="text-center p-2 h4 font-weight-bold" style="background-color:gainsboro;">INICIO PRIVADO </div>
-
+<div id="cajaTitulo" class="text-center p-4 h4 font-weight-bold bg-transparent"></div>
 <div class="jumbotron">
-    <div class="container">
+    <div class="container w-100 h-20 bg-light">
         <h1>Bienvenid@ <?php echo $nombreUsuario ?></h1>
         <p>es la <?php echo $numConexiones ?>ª vez que te conectas,  
               <?php if(!is_null($fechaUltimaConexionAnterior)){?>

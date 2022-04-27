@@ -25,23 +25,41 @@ class UsuarioPDO implements UsuarioBD{
         } 
     }
     public static function registrarUltimaConexion($oUsuario) {
+        //Actualizar objeto usuario
+        $oUsuario->setFechaHoraUltimaConexionAnterior($oUsuario->getFechaHoraUltimaConexion());
+        $oUsuario->setFechaHoraUltimaConexion(time());
+        $oUsuario->setNumConexiones($oUsuario->getNumConexiones()+1);
+        
         $consulta = <<<HER
-                        UPDATE T01_Usuario 
-                        SET T01_NumConexiones=T01_NumConexiones+1, T01_FechaHoraUltimaConexion=unix_timestamp() 
+                        UPDATE T01_Usuario SET T01_NumConexiones={$oUsuario->getNumConexiones()},
+                        T01_FechaHoraUltimaConexion= {$oUsuario->getFechaHoraUltimaConexion()}
                         WHERE T01_CodUsuario='{$oUsuario->getCodUsuario()}';
                     HER;
             
         DBPDO::ejecutarConsulta($consulta);
-        //Actualizar objeto usuario
-        $oUsuario->setNumConexiones($oUsuario->getNumConexiones()+1);
-        $oUsuario->setFechaHoraUltimaConexionAnterior($oUsuario->getFechaHoraUltimaConexion());
         
         return $oUsuario; //usuario actualizado
     }
     
+    public static function modificarUsuario($oUsuario, $descripcionUsuario){
+       
+        $consulta = <<<HER
+                        UPDATE T01_Usuario SET T01_DescUsuario='{$descripcionUsuario}',
+                        WHERE T01_CodUsuario='{$oUsuario->getCodUsuario()}';
+                    HER;
+            
+        $oUsuario->setDescUsuario($descripcionUsuario);
+        
+        if(DBPDO::ejecutarConsulta($consulta)){
+            return $oUsuario;
+        }else{
+            return false;
+        }
+    }
+    
     public static function altaUsuario(){}
     public static function validarCodNoExiste(){}
-    public static function modificarUsuario(){}
+    
     public static function modificarPassword(){}
         
     

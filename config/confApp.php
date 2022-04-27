@@ -13,6 +13,7 @@ $controladores =[
     "login" => "controller/cLogin.php",
     "inicioprivado" => "controller/cInicioPrivado.php",
     "detalle" => "controller/cDetalle.php",
+    "micuenta" => "controller/cMiCuenta.php",
 ];
 
 $vistas =[
@@ -21,6 +22,7 @@ $vistas =[
     "login" => "view/vLogin.php",
     "inicioprivado" => "view/vInicioPrivado.php",
     "detalle" => "view/vDetalle.php",
+    "micuenta" => "view/vMiCuenta.php",
 ];
 ?>
 
