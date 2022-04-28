@@ -7,6 +7,7 @@ require_once 'model/UsuarioDB.php';
 require_once 'model/DB.php';
 require_once 'model/UsuarioPDO.php';
 require_once 'model/DBPDO.php';
+require_once 'model/AppError.php';
 
 $controladores =[
     "iniciopublico" => "controller/cInicioPublico.php",
@@ -16,7 +17,9 @@ $controladores =[
     "micuenta" => "controller/cMiCuenta.php",
     "cambiarpassword" => "controller/cCambiarPassword.php",
     "eliminar" => "controller/cEliminarCuenta.php",
-    "registro" => "controller/cRegistro.php"
+    "registro" => "controller/cRegistro.php",
+    "wip" => "controller/cWIP.php",
+    "error" => "controller/cError.php"
 ];
 
 $vistas =[
@@ -28,7 +31,9 @@ $vistas =[
     "micuenta" => "view/vMiCuenta.php",
     "cambiarpassword" => "view/vCambiarPassword.php",
     "eliminar" => "view/vEliminarCuenta.php",
-    "registro" => "view/vRegistro.php"
+    "registro" => "view/vRegistro.php",
+    "wip" => "view/vWIP.php",
+    "error" => "view/vError.php"
 ];
 ?>
 

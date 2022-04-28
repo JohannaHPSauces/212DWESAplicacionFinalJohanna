@@ -42,7 +42,7 @@
                         <input type="submit" class="btn btn-info" value="Volver" name="volver"/>
                     </div>
                     <div class="btn-group"  aria-label="Third group">
-                       <input type="submit" class="btn btn-danger" value="Eliminar cuenta" name="eliminar"/>  
+                    <input type="submit" class="btn btn-danger" value="Eliminar cuenta" name="eliminar"/>  
                     </div>
                 </form>
             </div>

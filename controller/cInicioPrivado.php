@@ -18,6 +18,14 @@
         exit;
     }
     
+    if(isset($_REQUEST['mantenimiento'])){ //Si el usuario pulsa el boton de mantenimiento
+        $_SESSION['paginaEnCurso']= 'wip';
+        $_SESSION['paginaAnterior']= 'inicioprivado';
+        header('Location: index.php');
+        exit;
+    }
+    
+    
     //SACAMOS EL NOMBRE DEL USUARIO 
     $nombreUsuario=$_SESSION['usuario212AplicacionFinal']->getDescUsuario();
     

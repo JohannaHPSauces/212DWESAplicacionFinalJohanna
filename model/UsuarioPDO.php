@@ -98,8 +98,6 @@ class UsuarioPDO implements UsuarioBD{
         }else{
             return false;
         }
-    }
-        
-        
+    } 
 }
 ?>

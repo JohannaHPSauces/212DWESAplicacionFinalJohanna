@@ -13,8 +13,14 @@
             <div class="btn-group me-2" aria-label="Second group">
                   <input type="submit" class="btn btn-secondary" value="Editar perfil" name="editar"/>
             </div>
-            <div class="btn-group"  aria-label="Third group">
+            <div class="btn-group me-2"  aria-label="Third group">
                   <input type="submit" class="btn btn-info" value="Cerrar Sesion" name="cerrar"/>
+            </div>
+            <div class="btn-group me-2"  aria-label="Fourth group">
+                  <input type="submit" class="btn btn-warning" value="Mantenimiento Departamentos" name="mantenimiento"/>
+            </div>
+            <div class="btn-group me-2"  aria-label="Fourth group">
+                  <input type="submit" class="btn btn-danger" value="Fallar" name="fallar"/>
             </div>
         </form>
     </div>
