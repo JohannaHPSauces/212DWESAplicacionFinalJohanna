@@ -1,4 +1,4 @@
- <div id="cajaTitulo" class="text-center p-2 h4 font-weight-bold bg-transparent"></div>
+ <div id="cajaTitulo" class="text-center p-5 h4 font-weight-bold bg-transparent"></div>
 <div id="template-bg-1">
     <div class="d-flex flex-column min-vh-80 justify-content-center align-items-center">
         <div class="card p-3 text-light bg-light mb-5">
