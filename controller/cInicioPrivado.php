@@ -20,9 +20,11 @@
     
     //SACAMOS EL NOMBRE DEL USUARIO 
     $nombreUsuario=$_SESSION['usuario212AplicacionFinal']->getDescUsuario();
+    
     //SACAMOS EL NUMERO DE CONEXIONES
     $numConexiones=$_SESSION['usuario212AplicacionFinal']->getNumConexiones();
-    //SACAMOS LA FECHA Y HORA DE LA ULTIMA CONEXION Y LA COMVERTIMOS A FECHA/HORA 
+    
+    //SACAMOS LA FECHA Y HORA DE LA ULTIMA CONEXION Y LA CONVERTIMOS A FECHA/HORA 
     $fechaUltimaConexionAnterior= $_SESSION['usuario212AplicacionFinal']->getFechaHoraUltimaConexionAnterior();
     $date=$fechaUltimaConexionAnterior;
     $fFechaHoraUltimaConexion = date('d-m-Y H:i:s', $date);
