@@ -56,23 +56,35 @@ class UsuarioPDO implements UsuarioBD{
         }
     }
     
-    
-    public static function altaUsuario(){}
-    public static function validarCodNoExiste(){}
+    public static function altaUsuario($codUsuario,$password, $descUsuario ){
+        $consulta= <<<HER
+                    INSERT INTO T01_Usuario(T01_CodUsuario, T01_Password, T01_DescUsuario, T01_FechaHoraUltimaConexion)
+                    VALUES ("{$codUsuario}", SHA2("{$codUsuario}{$password}", 256),"{$descUsuario}", UNIX_TIMESTAMP());
+                    HER;
+        if(DBPDO::ejecutarConsulta($consulta)){
+            return new Usuario($codUsuario, $password, $descUsuario, 1, time(), null, null,"usuario",);
+        }else{
+            return false;
+        }
+    }
+    public static function validarCodNoExiste($codUsuario){
+        $consulta= <<<HER
+                        SELECT T01_CodUsuario FROM T01_Usuario WHERE T01_CodUsuario='{$codUsuario}';
+                    HER;
+                        
+        return DBPDO::ejecutarConsulta($consulta)->fetchObject();
+        
+    }
     
     public static function borrarCuenta($oUsuario){
         $consulta = <<<HER
                        DELETE FROM T01_Usuario WHERE T01_CodUsuario="{$oUsuario->getCodUsuario()}";
                     HER;
-        if(DBPDO::ejecutarConsulta($consulta)){
-            session_destroy();//Destruyo la sesion
-        }else{
-            return false;
-        }
+        DBPDO::ejecutarConsulta($consulta);
     }
         
     public static function modificarPassword($oUsuario, $password){
-         //Consulta SQL para modificar la descripcion de un usuario
+        //Consulta SQL para modificar la descripcion de un usuario
         $consulta = <<<HER
                         UPDATE T01_Usuario SET T01_Password=SHA2("{$oUsuario->getCodUsuario()}{$password}", 256)
                         WHERE T01_CodUsuario="{$oUsuario->getCodUsuario()}";

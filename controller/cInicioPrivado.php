@@ -6,7 +6,7 @@
         exit;
     }
     if(isset($_REQUEST['editar'])){ //Si el usuario pulsa el boton de editar
-        $_SESSION['paginaEnCurso']= 'micuenta';
+        $_SESSION['paginaEnCurso']= 'micuenta';//Guardo en pagina actual la de mi 
         $_SESSION['paginaAnterior']= 'inicioprivado';
         header('Location: index.php');
         exit;

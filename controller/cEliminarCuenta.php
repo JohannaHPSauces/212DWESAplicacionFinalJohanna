@@ -10,6 +10,7 @@
     
     if(isset($_REQUEST['aceptar'])){ 
         UsuarioPDO::borrarCuenta($_SESSION['usuario212AplicacionFinal']); //Registro la ultima conexion y actualizo el numero de conexiones con el metodo registrarUltimaConexion
+        session_destroy();
         $_SESSION['paginaEnCurso'] = 'iniciopublico'; //en la pagina actual estara la venta inicio privado
         $_SESSION['paginaAnterior'] = 'cerrar';// en la pagina anterior estara la ventana del login
         header('Location: index.php'); //Redirecciono a inicio privado

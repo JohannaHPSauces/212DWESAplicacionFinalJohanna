@@ -1,21 +1,21 @@
 <?php
 
-    if(isset($_REQUEST['volver'])){ //Si el usuario pulsa el boton de salir, sale de la aplicacion
-        $_SESSION['paginaEnCurso']= 'iniciopublico';
+    if(isset($_REQUEST['volver'])){ //Si el usuario pulsa el boton de volver
+        $_SESSION['paginaEnCurso']= 'iniciopublico'; //Guardo como pagina actual la de inicio publico
         header('Location: index.php');
         exit;
     }
-    if(isset($_REQUEST['registrarse'])){ //Si el usuario pulsa el boton de registro
-        $_SESSION['paginaEnCurso']= 'registro';
-        $_SESSION['paginaAnterior']= 'login';
+    if(isset($_REQUEST['registrarse'])){ //Si el usuario pulsa el boton de registrarse
+        $_SESSION['paginaEnCurso']= 'registro';//Guardo en pagina actual la del registro
+        $_SESSION['paginaAnterior']= 'login'; //y como pagina anterior la del login
         header('Location: index.php');
         exit;
     }
     
-    //variable que cambiaremos en funcion de si este bien o mal
+    //VARIABLE QUE CAMBIAREMOS SI LA ENTRADA ESTA MAL O BIEN
     $entradaOk= true;
     
-    //arrayy para que en caso de que haya algun error guardarlo
+    //ARRAY QUE ALMACENARA SI HAY ALGUN ERROR EN LOS CAMPOS DEL FORMULARIO
     $aErrores = ['usuario' =>null,
                  'password'=> null];
     

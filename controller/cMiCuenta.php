@@ -57,7 +57,7 @@
     //SACAMOS EL NUMERO DE CONEXIONES
     $numConexiones=$_SESSION['usuario212AplicacionFinal']->getNumConexiones();
 
-    //SACAMOS LA FECHA Y HORA DE LA ULTIMA CONEXION Y LA COMVERTIMOS A FECHA/HORA 
+    //SACAMOS LA FECHA Y HORA DE LA ULTIMA CONEXION Y LA CONVERTIMOS A FECHA/HORA 
     $fechaUltimaConexion=$_SESSION['usuario212AplicacionFinal']->getFechaHoraUltimaConexion();
     $date=$fechaUltimaConexion;
     $fFechaHoraUltimaConexion1 = date('d-m-Y H:i:s', $date);
