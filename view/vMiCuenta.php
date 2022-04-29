@@ -16,7 +16,7 @@
                         <input type="text" class="form-control" id="dUsuario" name="descripcionUsuario" value="<?php echo $desUsuario?><?php echo(isset($_REQUEST['descripcionUsuario']) ? $_REQUEST['descripcionUsuario'] : null); ?>"><?php echo($aErrores['dUsuario']!=null ? "<span style='color:red'>".$aErrores['dUsuario']."</span>" : null); ?> 
                     </div>
                     <div class="form-group floating-control-group">
-                        <label for="txtFloatingUsername" style="color:black;">Numero conexiones</label>
+                        <label for="txtFloatingUsername" style="color:black;">Número conexiones</label>
                         <input type="text" class="form-control" id="txtFloatingUsername" value="<?php echo $numConexiones ?>" disabled>
                     </div>
                     <div class="form-group floating-control-group">

@@ -1,3 +1,4 @@
+
 <?php
 
     if(isset($_REQUEST['cerrar'])){ //Si el usuario pulsa el boton de cerrar
@@ -24,7 +25,11 @@
         header('Location: index.php');
         exit;
     }
-    
+    if(isset($_REQUEST['botonF'])){ //Si el usuario pulsa el boton de fallo
+        $consulta= "SELECT T01_CodUsuario FROM T02_Usuario";
+        
+        DBPDO::ejecutarConsulta($consulta);
+    }
     
     //SACAMOS EL NOMBRE DEL USUARIO 
     $nombreUsuario=$_SESSION['usuario212AplicacionFinal']->getDescUsuario();

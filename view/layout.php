@@ -15,7 +15,7 @@
     <body>
         <header>
             <!--class="titulo"-->
-            <div id="cajaTitulo" class="text-center p-4 display-6 font-weight-bold text-white bg-secondary" style="font-weight: bold;">APLICACION FINAL JOHANNA</div>
+            <div id="cajaTitulo" class="text-center p-4 display-6 font-weight-bold text-white bg-secondary" style="font-weight: bold;">APLICACIÓN FINAL JOHANNA</div>
             
         </header>
         
