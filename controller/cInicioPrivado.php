@@ -20,6 +20,12 @@
     }
     
     if(isset($_REQUEST['mantenimiento'])){ //Si el usuario pulsa el boton de mantenimiento
+        $_SESSION['paginaEnCurso']= 'mantenimiento';
+        $_SESSION['paginaAnterior']= 'inicioprivado';
+        header('Location: index.php');
+        exit;
+    }
+    if(isset($_REQUEST['mantenimientoU'])){ //Si el usuario pulsa el boton de mantenimiento
         $_SESSION['paginaEnCurso']= 'wip';
         $_SESSION['paginaAnterior']= 'inicioprivado';
         header('Location: index.php');
@@ -33,6 +39,9 @@
     
     //SACAMOS EL NOMBRE DEL USUARIO 
     $nombreUsuario=$_SESSION['usuario212AplicacionFinal']->getDescUsuario();
+    
+    //SACAMOS EL TIPO DE USUARIO
+    $tipoUsuario=$_SESSION['usuario212AplicacionFinal']->getPerfil();
     
     //SACAMOS EL NUMERO DE CONEXIONES
     $numConexiones=$_SESSION['usuario212AplicacionFinal']->getNumConexiones();
