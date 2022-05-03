@@ -41,4 +41,3 @@ $vistas =[
     "mantenimiento" => "view/vMantenimientoDepartamentos.php"
 ];
 ?>
-

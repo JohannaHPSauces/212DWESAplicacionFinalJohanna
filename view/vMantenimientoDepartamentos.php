@@ -4,7 +4,7 @@
     <form name="login" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
         <div class="form-group floating-control-group w-25">
             <label for="txtFloatingUsername" style="color:black;">Buscar Departamento:</label>
-            <input type="text" class="form-control" id="txtFloatingUsername" name="buscarDep" >
+            <input type="text" class="form-control" id="txtFloatingUsername" name="buscarDep" value="<?php echo(isset($_REQUEST['buscarDep']) ? $_REQUEST['buscarDep'] : null); ?>"><?php echo($aErrores['dDepartamento']!=null ? "<span style='color:red'>".$aErrores['dDepartamento']."</span>" : null); ?>
             <input type="submit" class="btn btn-secondary btn-info" value="Buscar" name="buscar"/>
             <input type="submit" class="btn btn-secondary btn-labeled" value="Volver" name="volver"/>
         </div><br>
@@ -20,35 +20,32 @@
                 </tr>
             </thead>
             <tbody>
+             <?php  if ($aDepartamentosVista) {
+                        foreach ($aDepartamentosVista as $aDepartamento) { ?>
                 <tr>
-                    <th scope="row">1</th>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>1</td>
+                    <td><?php echo $aDepartamento['codDepartamento']; ?></td>
+                    <td><?php echo $aDepartamento['descDepartamento']; ?></td>
+                    <td><?php echo $aDepartamento['volumenNegocio']; ?></td>
+                    <td><?php echo $aDepartamento['fechaAlta']; ?></td>
+                    <td><?php echo $aDepartamento['fechaBaja']; ?></td>
                     <td class="text-center">
-                        <button type="button" class="btn btn-labeled btn-danger">
+                        <button type="submit" class="btn btn-labeled btn-danger" name="editar">
                             <i class="fas fa-pen"></i>
                             <i class="fas fa-pencil"></i>
                             <i class="fad fa-pencil"></i>
                         </button>
-                        </button><button type="button" class="btn btn-labeled btn-danger">
+                        <button type="submit" class="btn btn-labeled btn-danger" name="baja">
                             <i class="fas fa-arrow-alt-circle-down"></i>
                             <i class="fas fa-arrow-alt-circle-up"></i>
                             <i class="far fa-arrow-alt-down"></i>
                         </button>
-                        <button type="button" class="btn btn-labeled btn-warning">
+                        <button type="submit" class="btn btn-labeled btn-warning" name="borrar">
                             <span class="btn-label"><i class="fa fa-trash"></i></span>
                         </button>
                     </td>
                 </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>1</td>
-                </tr>
-                
+                    <?php } 
+                    }?>
             </tbody>
         </table>
     </form>
