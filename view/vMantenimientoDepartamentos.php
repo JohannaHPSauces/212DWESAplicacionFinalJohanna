@@ -4,7 +4,7 @@
     <form name="login" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
         <div class="form-group floating-control-group w-25">
             <label for="txtFloatingUsername" style="color:black;">Buscar Departamento:</label>
-            <input type="text" class="form-control" id="txtFloatingUsername" name="buscarDep" value="<?php echo(isset($_REQUEST['buscarDep']) ? $_REQUEST['buscarDep'] : null); ?>"><?php echo($aErrores['dDepartamento']!=null ? "<span style='color:red'>".$aErrores['dDepartamento']."</span>" : null); ?>
+            <input type="text" class="form-control" id="txtFloatingUsername" name="buscarDep" value="<?php echo(isset($_REQUEST['buscarDep']) ? $_REQUEST['buscarDep'] : null); ?>"><?php echo($aErrores['dDepartamento']!=null ? "<span style='color:red'>".$aErrores['dDepartamento']."</span>" : null); ?><br>
             <input type="submit" class="btn btn-secondary btn-info" value="Buscar" name="buscar"/>
             <input type="submit" class="btn btn-secondary btn-labeled" value="Volver" name="volver"/>
         </div><br>
