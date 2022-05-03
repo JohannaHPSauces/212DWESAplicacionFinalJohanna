@@ -5,16 +5,18 @@
         header('Location: index.php');
         exit;
     }
-    if(isset($_REQUEST['editar'])){ //Si el usuario pulsa el boton de buscarDepartamentos
-        $_SESSION['paginaEnCurso']= 'wip';
-        $_SESSION['paginaAnterior']= 'mantenimiento';
-        header('Location: index.php');
+    if(isset($_REQUEST['editar'])){ //Si el usuario pulsa el boton de editar
+        $_SESSION['codDepartamentoEnCurso'] = $_REQUEST['editar']; //Guardo en la variable de sesion el codigo de departamento en curso 
+        $_SESSION['paginaAnterior'] = 'mantenimiento';
+        $_SESSION['paginaEnCurso'] = 'editarDep'; 
+        header('Location: index.php'); //Redireciono de nuevo a baja fisica departamento
         exit;
     }
     if(isset($_REQUEST['borrar'])){ //Si el usuario pulsa el boton de buscarDepartamentos
-        $_SESSION['paginaEnCurso']= 'wip';
-        $_SESSION['paginaAnterior']= 'mantenimiento';
-        header('Location: index.php');
+        $_SESSION['codDepartamentoEnCurso'] = $_REQUEST['borrar']; //Guardo en la variable de sesion el codigo de departamento en curso 
+        $_SESSION['paginaAnterior'] = 'mantenimiento'; 
+        $_SESSION['paginaEnCurso'] = 'borrarDep'; 
+        header('Location: index.php'); //Redireciono de nuevo a baja fisica departamento
         exit;
     }
     if(isset($_REQUEST['baja'])){ //Si el usuario pulsa el boton de buscarDepartamentos

@@ -29,17 +29,17 @@
                     <td><?php echo $aDepartamento['fechaAlta']; ?></td>
                     <td><?php echo $aDepartamento['fechaBaja']; ?></td>
                     <td class="text-center">
-                        <button type="submit" class="btn btn-labeled btn-danger" name="editar">
+                        <button type="submit" class="btn btn-labeled btn-danger" name="editar" value="<?php echo $aDepartamento['codDepartamento']; ?>">
                             <i class="fas fa-pen"></i>
                             <i class="fas fa-pencil"></i>
                             <i class="fad fa-pencil"></i>
                         </button>
-                        <button type="submit" class="btn btn-labeled btn-danger" name="baja">
+                        <button type="submit" class="btn btn-labeled btn-danger" name="baja" value="<?php echo $aDepartamento['codDepartamento']; ?>">
                             <i class="fas fa-arrow-alt-circle-down"></i>
                             <i class="fas fa-arrow-alt-circle-up"></i>
                             <i class="far fa-arrow-alt-down"></i>
                         </button>
-                        <button type="submit" class="btn btn-labeled btn-warning" name="borrar">
+                        <button type="submit" class="btn btn-labeled btn-warning" name="borrar" value="<?php echo $aDepartamento['codDepartamento']; ?>">
                             <span class="btn-label"><i class="fa fa-trash"></i></span>
                         </button>
                     </td>

@@ -23,7 +23,10 @@ $controladores =[
     "registro" => "controller/cRegistro.php",
     "wip" => "controller/cWIP.php",
     "error" => "controller/cError.php",
-    "mantenimiento" => "controller/cMantenimientoDepartamentos.php"
+    "mantenimiento" => "controller/cMantenimientoDepartamentos.php",
+    "borrarDep" => "controller/cEliminarDepartamento.php",
+    "editarDep" => "controller/cEditarDepartamento.php"
+    
 ];
 
 $vistas =[
@@ -38,6 +41,8 @@ $vistas =[
     "registro" => "view/vRegistro.php",
     "wip" => "view/vWIP.php",
     "error" => "view/vError.php",
-    "mantenimiento" => "view/vMantenimientoDepartamentos.php"
+    "mantenimiento" => "view/vMantenimientoDepartamentos.php",
+    "borrarDep" => "view/vEliminarDepartamento.php",
+    "editarDep" => "view/vEditarDepartamento.php"
 ];
 ?>
