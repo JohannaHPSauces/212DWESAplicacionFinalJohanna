@@ -6,7 +6,7 @@
             <label for="txtFloatingUsername" style="color:black;">Buscar Departamento:</label>
             <input type="text" class="form-control" id="txtFloatingUsername" name="buscarDep" >
             <input type="submit" class="btn btn-secondary btn-info" value="Buscar" name="buscar"/>
-            
+            <input type="submit" class="btn btn-secondary btn-labeled" value="Volver" name="volver"/>
         </div><br>
         <table class="table table-bordered w-100 align-items-center">
             <thead>
@@ -22,10 +22,10 @@
             <tbody>
                 <tr>
                     <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>@mdo</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
                     <td class="text-center">
                         <button type="button" class="btn btn-labeled btn-danger">
                             <i class="fas fa-pen"></i>
@@ -44,15 +44,11 @@
                 </tr>
                 <tr>
                     <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
                 </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td colspan="2">Larry the Bird</td>
-                    <td>@twitter</td>
-                </tr>
+                
             </tbody>
         </table>
     </form>

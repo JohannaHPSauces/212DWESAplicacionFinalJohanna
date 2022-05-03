@@ -8,6 +8,9 @@ require_once 'model/DB.php';
 require_once 'model/UsuarioPDO.php';
 require_once 'model/DBPDO.php';
 require_once 'model/AppError.php';
+require_once 'model/Departamento.php';
+require_once 'model/DepartamentoPDO.php';
+
 
 $controladores =[
     "iniciopublico" => "controller/cInicioPublico.php",
