@@ -31,6 +31,31 @@ class DepartamentoPDO{
             return false;
         }
     }
+    public static function buscarDepartamento(){
+        $consulta = <<<HER
+                       SELECT * FROM T02_Departamento;
+                    HER;
+        
+        $resultado= DBPDO::ejecutarConsulta($consulta); //Ejecuto la consulta
+        $aDepartamentos= $resultado->fetchAll();
+        
+        $aRespuesta = [];
+        if($aDepartamentos){
+            foreach ($aDepartamentos as $oDepartamento) {
+                $aRespuesta[$oDepartamento['T02_CodDepartamento']] = new Departamento(
+                    $oDepartamento['T02_CodDepartamento'],
+                    $oDepartamento['T02_DescDepartamento'],
+                    $oDepartamento['T02_VolumenNegocio'],
+                    $oDepartamento['T02_FechaCreacionDepartamento'],
+                    $oDepartamento['T02_FechaBajaDepartamento']
+                );
+            }
+            return $aRespuesta;
+        }else{
+            return false;
+        }
+    }
+    
     public static function buscarDepartamentoPorCodigo($codDepartamento){
         $consulta = <<<HER
                         SELECT * FROM T02_Departamento
@@ -64,6 +89,18 @@ class DepartamentoPDO{
                         
         return DBPDO::ejecutarConsulta($consulta);
            
+    }
+    
+    public static function altaDepartamento($codDepartamento,$desDepartamento, $volumenNegocio ){
+        $consulta= <<<HER
+                    INSERT INTO T02_Departamento(T02_CodDepartamento, T02_DescDepartamento, T02_VolumenNegocio, T02_FechaCreacionDepartamento)
+                    VALUES ("{$codDepartamento}", "{$desDepartamento}","{$volumenNegocio}", UNIX_TIMESTAMP());
+                    HER;
+        if(DBPDO::ejecutarConsulta($consulta)){
+            return new Departamento($codDepartamento, $password, $desDepartamento, $volumenNegocio, time(), null);
+        }else{
+            return false;
+        }
     }
     
 }

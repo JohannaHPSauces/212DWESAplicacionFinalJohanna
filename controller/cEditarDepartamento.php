@@ -37,7 +37,6 @@
     }else{
         $entradaOk=false;//si no se ha rellenado nada entrada false
     }
-    var_dump($entradaOk);
     
     //SI TODO HA IDO BIEN
     if($entradaOk){
@@ -47,6 +46,16 @@
         header('Location: index.php'); //Redirecciono a inicio privado
         exit; 
     }
+    
+    
+    //Guardamos en una variable el codigo del departamento para mostrarlo
+    $codDepartamento=$aDepartamento['codDepartamento'];
+    
+    
+   //Convertimos a fecha y hora
+   $fechaCreacionDepartamento=  $aDepartamento['fechaCreacionDepartamento'];
+   $date=$fechaCreacionDepartamento;
+   $fFechaCreacionDepartamento = date('d-m-Y H:i:s', $date);
     
  require_once $vistas['layout'];
  

@@ -25,7 +25,8 @@ $controladores =[
     "error" => "controller/cError.php",
     "mantenimiento" => "controller/cMantenimientoDepartamentos.php",
     "borrarDep" => "controller/cEliminarDepartamento.php",
-    "editarDep" => "controller/cEditarDepartamento.php"
+    "editarDep" => "controller/cEditarDepartamento.php",
+    "añadirDep" => "controller/cAñadirDepartamento.php"
     
 ];
 
@@ -43,6 +44,7 @@ $vistas =[
     "error" => "view/vError.php",
     "mantenimiento" => "view/vMantenimientoDepartamentos.php",
     "borrarDep" => "view/vEliminarDepartamento.php",
-    "editarDep" => "view/vEditarDepartamento.php"
+    "editarDep" => "view/vEditarDepartamento.php",
+    "añadirDep" => "view/vAñadirDepartamento.php"
 ];
 ?>

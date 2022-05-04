@@ -12,8 +12,8 @@
     $aDepartamento = [ //Guardo los datos del departamento en un array para mostrarlos
         'codDepartamento' => $oDepartamento->getCodDepartamento(),
         'descDepartamento' => $oDepartamento->getDescDepartamento(),
-        'fechaCreacionDepartamento' => $oDepartamento->getFechaCreacionDepartamento(),
-        'volumenNegocioDepartamento' => $oDepartamento->getVolumenNegocio()
+        'fechaCreacion' => $oDepartamento->getFechaCreacionDepartamento(),
+        'volumenNegocio' => $oDepartamento->getVolumenNegocio()
     ];
     
     if(isset($_REQUEST['aceptar'])){ 
@@ -24,6 +24,20 @@
         header('Location: index.php'); //Redirecciono a inicio privado
         exit; 
     }
+    
+    //Guardamos en una variable el codigo del departamento para mostrarlo
+    $codDepartamento=$aDepartamento['codDepartamento'];
+    
+    //Guardamos la descripcion del departamento para mostrarlo
+    $desDepartamento= $aDepartamento['descDepartamento'];
+    
+    //Guardamos el volumen de negocio para mostraralo
+    $volumenNegocio= $aDepartamento['volumenNegocio'];
+    
+   //Convertimos a fecha y hora
+   $fechaCreacionDepartamento=  $aDepartamento['fechaCreacion'];
+   $date=$fechaCreacionDepartamento;
+   $fFechaCreacionDepartamento = date('d-m-Y H:i:s', $date);
    
     require_once $vistas['layout'];
 ?>

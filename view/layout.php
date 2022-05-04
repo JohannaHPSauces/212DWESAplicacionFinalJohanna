@@ -14,6 +14,8 @@
         <script defer src="https://use.fontawesome.com/releases/v5.0.4/js/all.js"></script>
         <script defer src="https://use.fontawesome.com/releases/v5.0.4/js/v4-shims.js"></script> 
         <script defer src="https://use.fontawesome.com/releases/v5.0.4/js/fontawesome.js"> </script>
+        <link href="css/bootstrap.min.css" rel="stylesheet"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
     </head>
     <body>

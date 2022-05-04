@@ -19,6 +19,13 @@
         header('Location: index.php'); //Redireciono de nuevo a baja fisica departamento
         exit;
     }
+    if(isset($_REQUEST['añadir'])){ //Si el usuario ha pulsado el boton de añadir
+        $_SESSION['paginaEnCurso']= 'añadirDep';
+        $_SESSION['paginaAnterior']= 'mantenimiento';
+        header('Location: index.php');
+        exit;
+    }
+    
     if(isset($_REQUEST['baja'])){ //Si el usuario pulsa el boton de buscarDepartamentos
         $_SESSION['paginaEnCurso']= 'wip';
         $_SESSION['paginaAnterior']= 'mantenimiento';
@@ -42,8 +49,15 @@
                     }
                 }   
     }else{
-        $entradaOk=false;
+        $desDepartamento=null;
     }
+    //Dependiendo de si hemos buscado un departamento hacemos una consulta u otra
+    if(!is_null($desDepartamento)){
+        $oResultadoBuscar = DepartamentoPDO::buscarDepartamentoPorDescripcion($desDepartamento);
+    }else{
+        $oResultadoBuscar=DepartamentoPDO::buscarDepartamento();
+    }
+    
     
     if($entradaOk){
     }
@@ -51,7 +65,7 @@
     //Si se ha enviado o no el formulario muestra los departamentos
     
     $aDepartamentosVista = [];//Array para guardar la informacion del departamento
-    $oResultadoBuscar = DepartamentoPDO::buscarDepartamentoPorDescripcion($desDepartamento);
+   
         
     if ($oResultadoBuscar){ //Si el resultado es correcto
         foreach($oResultadoBuscar as $aDepartamento){//Recorro el objeto del resultado que contiene un array
