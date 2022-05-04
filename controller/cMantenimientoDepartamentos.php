@@ -1,6 +1,8 @@
 <?php
     if(isset($_REQUEST['volver'])){ //Si el usuario pulsa el boton de buscarDepartamentos
         $_SESSION['paginaEnCurso']= 'inicioprivado';
+        unset($_SESSION['criterioBusquedaDepartamentos']);
+        unset($_SESSION['codDepartamentoEnCurso']);
         $_SESSION['paginaAnterior']= 'mantenimiento';
         header('Location: index.php');
         exit;
@@ -27,8 +29,12 @@
     }
     
     if(isset($_REQUEST['baja'])){ //Si el usuario pulsa el boton de buscarDepartamentos
-        $_SESSION['paginaEnCurso']= 'wip';
-        $_SESSION['paginaAnterior']= 'mantenimiento';
+        DepartamentoPDO::bajaLogicaDepartamento($_REQUEST['baja']);
+        header('Location: index.php');
+        exit;
+    }
+    if(isset($_REQUEST['rehabilitar'])){ //Si el usuario pulsa el boton de buscarDepartamentos
+        DepartamentoPDO::rehabilitarDepartamento($_REQUEST['rehabilitar']);
         header('Location: index.php');
         exit;
     }
@@ -49,24 +55,19 @@
                     }
                 }   
     }else{
+        $entradaOk=false;
         $desDepartamento=null;
     }
-    //Dependiendo de si hemos buscado un departamento hacemos una consulta u otra
-    if(!is_null($desDepartamento)){
-        $oResultadoBuscar = DepartamentoPDO::buscarDepartamentoPorDescripcion($desDepartamento);
-    }else{
-        $oResultadoBuscar=DepartamentoPDO::buscarDepartamento();
-    }
-    
     
     if($entradaOk){
+        $_SESSION['criterioBusquedaDepartamentos']['descripcionBusqueda'] = $_REQUEST['buscarDep'];
+        $_SESSION['criterioBusquedaDepartamentos']['estado'] = $_REQUEST['estado'];
     }
-    
     //Si se ha enviado o no el formulario muestra los departamentos
     
     $aDepartamentosVista = [];//Array para guardar la informacion del departamento
    
-        
+    $oResultadoBuscar = DepartamentoPDO::buscarDepartamentoPorEstado($_SESSION['criterioBusquedaDepartamentos']['descripcionBusqueda'] ?? '', $_SESSION['criterioBusquedaDepartamentos']['estado'] ?? 0); //Obtengo los datos del departamento con el metodo buscaDepartamentosPorDesc    
     if ($oResultadoBuscar){ //Si el resultado es correcto
         foreach($oResultadoBuscar as $aDepartamento){//Recorro el objeto del resultado que contiene un array
             array_push($aDepartamentosVista, [//Hago uso del metodo array push para meter los valores en el array $aDepartamentosVista

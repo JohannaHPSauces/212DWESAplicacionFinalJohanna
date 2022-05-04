@@ -6,6 +6,9 @@
     */
 
 class DepartamentoPDO{
+    public const DEPARTAMENTOS_BAJA = 2;
+    public const DEPARTAMENTOS_ALTA = 0;
+    public const DEPARTAMENTOS_TODOS = 1;
     
     public static function buscarDepartamentoPorDescripcion($desDepartamento= ''){
         $consulta = <<<HER
@@ -37,7 +40,7 @@ class DepartamentoPDO{
                     HER;
         
         $resultado= DBPDO::ejecutarConsulta($consulta); //Ejecuto la consulta
-        $aDepartamentos= $resultado->fetchAll();
+        $aDepartamentos= $resultado->fetchAll();//Devuelve un array que contiene todas las filas del conjunto de resultados
         
         $aRespuesta = [];
         if($aDepartamentos){
@@ -72,6 +75,62 @@ class DepartamentoPDO{
             }
         } 
     }
+    
+    public static function buscarDepartamentoPorEstado($desDepartamento='', $estado= 0){
+        switch ($estado){
+            case 0:
+                $estados = '';
+                break;
+            case 1:
+                $estados = 'AND T02_FechaBajaDepartamento IS NULL';
+                break;
+            case 2:
+                $estados = 'AND T02_FechaBajaDepartamento IS NOT NULL';
+                break;
+        }
+        $consulta = <<<HER
+                      SELECT * FROM T02_Departamento 
+                      WHERE T02_DescDepartamento  LIKE '%{$desDepartamento}%' {$estados};
+                    HER;
+        
+        $resultado= DBPDO::ejecutarConsulta($consulta); //Ejecuto la consulta
+        $aDepartamentos= $resultado->fetchAll(); //Devuelve un array que contiene todas las filas del conjunto de resultados
+        
+        $aRespuesta = [];
+        if($aDepartamentos){
+            foreach ($aDepartamentos as $oDepartamento) {
+                $aRespuesta[$oDepartamento['T02_CodDepartamento']] = new Departamento(
+                    $oDepartamento['T02_CodDepartamento'],
+                    $oDepartamento['T02_DescDepartamento'],
+                    $oDepartamento['T02_VolumenNegocio'],
+                    $oDepartamento['T02_FechaCreacionDepartamento'],
+                    $oDepartamento['T02_FechaBajaDepartamento']
+                );
+            }
+            return $aRespuesta;
+        }else{
+            return false;
+        }
+    }
+    
+    public static function bajaLogicaDepartamento($codDepartamento){
+        $consulta= <<<HER
+                     UPDATE T02_Departamento SET T02_FechaBajaDepartamento =UNIX_TIMESTAMP()
+                     WHERE T02_CodDepartamento = '{$codDepartamento}';
+                    HER;
+                     
+        return DBPDO::ejecutarConsulta($consulta);
+    }
+    
+    public static function rehabilitarDepartamento($codDepartamento){
+        $consulta= <<<HER
+                     UPDATE T02_Departamento SET T02_FechaBajaDepartamento = null 
+                     WHERE T02_CodDepartamento = '{$codDepartamento}';
+                    HER;
+                     
+        return DBPDO::ejecutarConsulta($consulta);
+    }
+    
     
     public static function borrarDepartamento($codDepartamento){
         $consulta = <<<HER

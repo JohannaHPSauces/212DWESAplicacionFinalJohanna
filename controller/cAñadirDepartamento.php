@@ -41,7 +41,7 @@
     
     //SI TODO HA IDO BIEN CREAMOS EL NUEVO USUARIO
     if($entradaOk){
-        $oDepartamentoValido= DepartamentoPDO::altaDepartamento($_REQUEST['codigoDepartamento'], $_REQUEST['descripcionDepartamento'], $_REQUEST['volumenNegocio']);
+        $oDepartamentoValido= DepartamentoPDO::altaDepartamento(strtoupper($_REQUEST['codigoDepartamento']), $_REQUEST['descripcionDepartamento'], $_REQUEST['volumenNegocio']);
         $_SESSION['paginaEnCurso'] = 'mantenimiento'; //en la pagina actual estara la venta inicio privado
         $_SESSION['paginaAnterior'] = 'añadirDep';// en la pagina anterior estara la ventana del registro
         header('Location: index.php'); //Redirecciono a inicio privado

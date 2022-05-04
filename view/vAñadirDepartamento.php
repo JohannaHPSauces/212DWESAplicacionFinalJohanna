@@ -16,7 +16,7 @@
                         <input type="text" class="form-control" id="dUsuario" name="descripcionDepartamento" value="<?php echo(isset($_REQUEST['descripcionDepartamento']) ? $_REQUEST['descripcionDepartamento'] : null); ?>"> <?php echo($aErrores['desDep']!=null ? "<span style='color:red'>".$aErrores['desDep']."</span>" : null); ?>
                     <div class="form-group floating-control-group">
                         <label for="txtFloatingUsername" style="color:black;">Volumen negocio</label>
-                        <input type="password" class="form-control" id="txtFloatingUsername" name="volumenNegocio" value="<?php echo(isset($_REQUEST['volumenNegocio']) ? $_REQUEST['volumenNegocio'] : null); ?>"> <?php echo($aErrores['volNegocio']!=null ? "<span style='color:red'>".$aErrores['volNegocio']."</span>" : null); ?>
+                        <input type="text" class="form-control" id="txtFloatingUsername" name="volumenNegocio" value="<?php echo(isset($_REQUEST['volumenNegocio']) ? $_REQUEST['volumenNegocio'] : null); ?>"> <?php echo($aErrores['volNegocio']!=null ? "<span style='color:red'>".$aErrores['volNegocio']."</span>" : null); ?>
                     </div>
                     <br>
                     <div class="btn-group me-2"  aria-label="First group">
