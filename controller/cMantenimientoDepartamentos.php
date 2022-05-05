@@ -55,18 +55,33 @@
                     }
                 }   
     }else{
-        $entradaOk=false;
-        $desDepartamento=null;
+        $entradaOk=false;//si algo sale mal, ponemos la entrada a false
     }
     
     if($entradaOk){
         $_SESSION['criterioBusquedaDepartamentos']['descripcionBusqueda'] = $_REQUEST['buscarDep'];
-        $_SESSION['criterioBusquedaDepartamentos']['estado'] = $_REQUEST['estado'];
+        switch ($_REQUEST['estado']) {
+        case 0:
+            $iEstado = DepartamentoPDO::DEPARTAMENTOS_TODOS;
+            break;
+        case 1:
+            $iEstado = DepartamentoPDO::DEPARTAMENTOS_ALTA;
+            break;
+        case 2:
+            $iEstado = DepartamentoPDO::DEPARTAMENTOS_BAJA;
+            break;
+        
+        
+    }
+        
+        
+        $_SESSION['criterioBusquedaDepartamentos']['estado'] = $iEstado;
     }
     //Si se ha enviado o no el formulario muestra los departamentos
     
     $aDepartamentosVista = [];//Array para guardar la informacion del departamento
    
+    
     $oResultadoBuscar = DepartamentoPDO::buscarDepartamentoPorEstado($_SESSION['criterioBusquedaDepartamentos']['descripcionBusqueda'] ?? '', $_SESSION['criterioBusquedaDepartamentos']['estado'] ?? 0); //Obtengo los datos del departamento con el metodo buscaDepartamentosPorDesc    
     if ($oResultadoBuscar){ //Si el resultado es correcto
         foreach($oResultadoBuscar as $aDepartamento){//Recorro el objeto del resultado que contiene un array
@@ -78,9 +93,9 @@
                 'fechaBaja' => !empty($aDepartamento->getFechaBajaDepartamento()) ? date('d/m/Y H:i:s', $aDepartamento->getFechaBajaDepartamento()) : '' //OBTENEMOS LA FECHA DE BAJA DE DEPARTAMENTO PARA LUEGO MOSTRARLO EN LA VISTA SI NO HAY NO MOSTRAMOS NADA
                 ]);
         }
-    }else{
-            $aErrores['descBuscarDepartamento'] = "No se encuentra el departamento";
     }
+    
+    
 
     
     require_once $vistas['layout'];

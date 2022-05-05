@@ -5,21 +5,21 @@
         <div class="form-group floating-control-group w-100 bg-light">
             <label for="txtFloatingUsername">Buscar Departamento:</label><br>
             <div class="input-group w-50">
-                <input type="text" class="form-control" id="txtFloatingUsername" name="buscarDep" value="<?php echo $_SESSION['criterioBusquedaDepartamentos']['descripcionBusqueda'] ?? ''; ?> "/> 
+                <input type="text" class="form-control" id="txtFloatingUsername" name="buscarDep" value="<?php echo $_SESSION['criterioBusquedaDepartamentos']['descripcionBusqueda'] ?? '' ?> "> 
                 <span class="input-group-btn">
                    <input type="submit" class="btn btn-secondary btn-info" value="Buscar" name="buscar"/>
                 </span>
             </div>
             <div class="form-check form-check-inline">
-               <input class="form-check-input" type="radio" name="estado" value="0" id="inlineRadio3" value="option3"  <?php echo (!isset($_SESSION['criterioBusquedaDepartamentos']['estado'])||$_SESSION['criterioBusquedaDepartamentos']['estado']==0)?"checked":""?>/>
+               <input class="form-check-input" type="radio" name="estado" value="0" id="inlineRadio3"  <?php echo (isset($_SESSION['criterioBusquedaDepartamentos']['estado'])||$_SESSION['criterioBusquedaDepartamentos']['estado']==0)?"checked":""?>/>
                 <label class="form-check-label" for="inlineRadio3" name="estado">Todos</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="estado" value="1" id="inlineRadio1" value="option1" <?php echo (isset($_SESSION['criterioBusquedaDepartamentos']['estado'])&&$_SESSION['criterioBusquedaDepartamentos']['estado']==1)?"checked":""?>/>
+                <input class="form-check-input" type="radio" name="estado" value="1" id="inlineRadio1"  <?php echo (isset($_SESSION['criterioBusquedaDepartamentos']['estado'])&&$_SESSION['criterioBusquedaDepartamentos']['estado']==1)?"checked":""?>/>
                 <label class="form-check-label" for="inlineRadio1" name="estado" >Altas</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="estado" value="2" id="inlineRadio2" value="option2" <?php echo (isset($_SESSION['criterioBusquedaDepartamentos']['estado'])&&$_SESSION['criterioBusquedaDepartamentos']['estado']==2)?"checked":""?>/>
+                <input class="form-check-input" type="radio" name="estado" value="2" id="inlineRadio2"  <?php echo (isset($_SESSION['criterioBusquedaDepartamentos']['estado'])&&$_SESSION['criterioBusquedaDepartamentos']['estado']==2)?"checked":""?>/>
                 <label class="form-check-label" for="inlineRadio2" name="estado">Bajas</label>
             </div><br><br>
             <!--<input type="submit" class="btn btn-secondary btn-info" value="Buscar" name="buscar"/>-->
@@ -29,8 +29,8 @@
         <table class="table table-bordered w-100 align-items-center font-weight-bold">
             <thead>
                 <tr>
-                    <th class="bg-light text-center  " scope="col">Codigo</th>
-                    <th class="bg-light text-center w-25" scope="col">Descripcion</th>
+                    <th class="bg-light text-center  " scope="col">Código</th>
+                    <th class="bg-light text-center w-25" scope="col">Descripción</th>
                     <th class="bg-light text-center" scope="col">Volumen negocio</th>
                     <th class="bg-light text-center" scope="col">Fecha de alta</th>
                     <th class="bg-light text-center" scope="col">Fecha de baja</th>
@@ -42,11 +42,11 @@
                         foreach ($aDepartamentosVista as $aDepartamento) { ?>
                 <?php if (empty($aDepartamento['fechaBaja'])) { ?> 
                 <tr>
-                    <td class="bg-success" style="font-weight:bold;"><?php echo $aDepartamento['codDepartamento']; ?></td>
-                    <td class="bg-success" style="font-weight:bold;"><?php echo $aDepartamento['descDepartamento']; ?></td>
-                    <td class="bg-success" style="font-weight:bold;"><?php echo $aDepartamento['volumenNegocio']; ?></td>
-                    <td class="bg-success" style="font-weight:bold;"><?php echo $aDepartamento['fechaAlta']; ?></td>
-                    <td class="bg-success" style="font-weight:bold;"><?php echo $aDepartamento['fechaBaja']; ?></td>
+                    <td class="bg-success text-center " style="font-weight:bold;"><?php echo $aDepartamento['codDepartamento']; ?></td>
+                    <td class="bg-success text-center " style="font-weight:bold;"><?php echo $aDepartamento['descDepartamento']; ?></td>
+                    <td class="bg-success text-center " style="font-weight:bold;"><?php echo $aDepartamento['volumenNegocio']; ?></td>
+                    <td class="bg-success text-center " style="font-weight:bold;"><?php echo $aDepartamento['fechaAlta']; ?></td>
+                    <td class="bg-success text-center " style="font-weight:bold;"><?php echo $aDepartamento['fechaBaja']; ?></td>
                     <td class="text-center bg-light">
                         <button type="submit" class="btn btn-labeled btn-primary" name="editar" value="<?php echo $aDepartamento['codDepartamento']; ?>">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
@@ -69,11 +69,11 @@
                 </tr>
                  <?php }else{ ?>
                 <tr>
-                    <td class="bg-danger" style="font-weight:bold;"><?php echo $aDepartamento['codDepartamento']; ?></td>
-                    <td class="bg-danger" style="font-weight:bold;"><?php echo $aDepartamento['descDepartamento']; ?></td>
-                    <td class="bg-danger" style="font-weight:bold;"><?php echo $aDepartamento['volumenNegocio']; ?></td>
-                    <td class="bg-danger" style="font-weight:bold;"><?php echo $aDepartamento['fechaAlta']; ?></td>
-                    <td class="bg-danger" style="font-weight:bold;"><?php echo $aDepartamento['fechaBaja']; ?></td>
+                    <td class="bg-danger text-center " style="font-weight:bold;"><?php echo $aDepartamento['codDepartamento']; ?></td>
+                    <td class="bg-danger text-center " style="font-weight:bold;"><?php echo $aDepartamento['descDepartamento']; ?></td>
+                    <td class="bg-danger text-center " style="font-weight:bold;"><?php echo $aDepartamento['volumenNegocio']; ?></td>
+                    <td class="bg-danger text-center " style="font-weight:bold;"><?php echo $aDepartamento['fechaAlta']; ?></td>
+                    <td class="bg-danger text-center " style="font-weight:bold;"><?php echo $aDepartamento['fechaBaja']; ?></td>
                     <td class="text-center bg-light">
                         <button type="submit" class="btn btn-labeled btn-primary" name="editar" value="<?php echo $aDepartamento['codDepartamento']; ?>">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">

@@ -6,9 +6,9 @@
     */
 
 class DepartamentoPDO{
-    public const DEPARTAMENTOS_BAJA = 2;
-    public const DEPARTAMENTOS_ALTA = 0;
-    public const DEPARTAMENTOS_TODOS = 1;
+    public const DEPARTAMENTOS_BAJA = 1;
+    public const DEPARTAMENTOS_ALTA = 2;
+    public const DEPARTAMENTOS_TODOS = 0;
     
     public static function buscarDepartamentoPorDescripcion($desDepartamento= ''){
         $consulta = <<<HER
