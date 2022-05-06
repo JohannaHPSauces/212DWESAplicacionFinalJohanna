@@ -19,7 +19,6 @@
             <!--<input type="submit" class="btn btn-secondary btn-info" value="Buscar" name="buscar"/>-->
             <input type="submit" class="btn btn-secondary btn-labeled" value="Volver" name="volver"/>
             <input type="submit" class="btn btn-secondary btn-success" value="Añadir" name="añadir"/>
-    </form>
         </div><br>
         <table class="table table-bordered w-100 align-items-center font-weight-bold">
             <thead>
@@ -115,7 +114,7 @@
                 </ul>
               </nav>
             </div>
-   <!-- </form>-->
+   </form>
 </div> 
 
 
