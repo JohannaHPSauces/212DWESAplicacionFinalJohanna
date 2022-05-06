@@ -76,39 +76,43 @@ class DepartamentoPDO{
         } 
     }
     
-    public static function buscarDepartamentoPorEstado($desDepartamento='', $estado= 0){
-        switch ($estado){
-            case 0:
-                $estados = '';
+    public static function buscarDepartamentoPorDesYEstado($sBusqueda = '', $iEstado = self::DEPARTAMENTOS_TODOS) {
+       switch ($iEstado) {
+            case self::DEPARTAMENTOS_BAJA:
+                $estado = 'AND T02_FechaBajaDepartamento IS NOT NULL';
                 break;
-            case 1:
-                $estados = 'AND T02_FechaBajaDepartamento IS NULL';
+            case self::DEPARTAMENTOS_ALTA:
+                $estado = 'AND T02_FechaBajaDepartamento IS NULL';
                 break;
-            case 2:
-                $estados = 'AND T02_FechaBajaDepartamento IS NOT NULL';
+            case self::DEPARTAMENTOS_TODOS:
+                $estado = '';
                 break;
         }
-        $consulta = <<<HER
-                      SELECT * FROM T02_Departamento 
-                      WHERE T02_DescDepartamento  LIKE '%{$desDepartamento}%' {$estados};
-                    HER;
-        
-        $resultado= DBPDO::ejecutarConsulta($consulta); //Ejecuto la consulta
-        $aDepartamentos= $resultado->fetchAll(); //Devuelve un array que contiene todas las filas del conjunto de resultados
-        
-        $aRespuesta = [];
-        if($aDepartamentos){
+
+        $sSelect = <<<QUERY
+            SELECT * FROM T02_Departamento
+            WHERE T02_DescDepartamento LIKE '%{$sBusqueda}%'
+            {$estado};
+QUERY;
+        $oResultado = DBPDO::ejecutarConsulta($sSelect);
+        $aDepartamentos = $oResultado->fetchAll();
+        if ($aDepartamentos) {
+            $aDevolucion = [];
+            /*
+             * Creación de cada departamento en objeto y añadido al array de
+             * devolución de departamentos con el código de departamento como
+             * key en el array.
+             */
             foreach ($aDepartamentos as $oDepartamento) {
-                $aRespuesta[$oDepartamento['T02_CodDepartamento']] = new Departamento(
-                    $oDepartamento['T02_CodDepartamento'],
-                    $oDepartamento['T02_DescDepartamento'],
-                    $oDepartamento['T02_VolumenNegocio'],
-                    $oDepartamento['T02_FechaCreacionDepartamento'],
-                    $oDepartamento['T02_FechaBajaDepartamento']
-                );
+                $aDevolucion[$oDepartamento['T02_CodDepartamento']] = new Departamento(
+                        $oDepartamento['T02_CodDepartamento'],
+                        $oDepartamento['T02_DescDepartamento'],
+                        $oDepartamento['T02_FechaCreacionDepartamento'],
+                        $oDepartamento['T02_VolumenNegocio'],
+                        $oDepartamento['T02_FechaBajaDepartamento']);
             }
-            return $aRespuesta;
-        }else{
+            return $aDevolucion;
+        } else {
             return false;
         }
     }
