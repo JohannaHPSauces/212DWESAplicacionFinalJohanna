@@ -1,5 +1,5 @@
 <header>
-    <div id="cajaTitulo" class="text-center p-2 h4 font-weight-bold" style="background-color:gainsboro;">INICIO PUBLICO </div>
+    <div id="cajaTitulo" class="text-center p-2 h4 font-weight-bold" style="background-color:gainsboro;">INICIO PÚBLICO </div>
 </header>
     <form class="cajaIdioma">
         <button class="cajaIdioma" type="submit" name="idiomaSeleccionado" value="es" ><img src="images/es.png" alt="cargando.." height="20px"></button>
@@ -15,4 +15,3 @@
             </div>	
     	</div>
    </form>
-   

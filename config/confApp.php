@@ -8,6 +8,9 @@ require_once 'model/DB.php';
 require_once 'model/UsuarioPDO.php';
 require_once 'model/DBPDO.php';
 require_once 'model/AppError.php';
+require_once 'model/Departamento.php';
+require_once 'model/DepartamentoPDO.php';
+
 
 $controladores =[
     "iniciopublico" => "controller/cInicioPublico.php",
@@ -19,7 +22,12 @@ $controladores =[
     "eliminar" => "controller/cEliminarCuenta.php",
     "registro" => "controller/cRegistro.php",
     "wip" => "controller/cWIP.php",
-    "error" => "controller/cError.php"
+    "error" => "controller/cError.php",
+    "mantenimiento" => "controller/cMantenimientoDepartamentos.php",
+    "borrarDep" => "controller/cEliminarDepartamento.php",
+    "editarDep" => "controller/cEditarDepartamento.php",
+    "añadirDep" => "controller/cAñadirDepartamento.php"
+    
 ];
 
 $vistas =[
@@ -33,7 +41,10 @@ $vistas =[
     "eliminar" => "view/vEliminarCuenta.php",
     "registro" => "view/vRegistro.php",
     "wip" => "view/vWIP.php",
-    "error" => "view/vError.php"
+    "error" => "view/vError.php",
+    "mantenimiento" => "view/vMantenimientoDepartamentos.php",
+    "borrarDep" => "view/vEliminarDepartamento.php",
+    "editarDep" => "view/vEditarDepartamento.php",
+    "añadirDep" => "view/vAñadirDepartamento.php"
 ];
 ?>
-
