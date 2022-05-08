@@ -2,7 +2,7 @@
 <div id="cajaTitulo" class="text-center p-4 h4 font-weight-bold bg-transparent"></div>
 <div class="jumbotron">
     <div class="container w-100 h-20 bg-light">
-        <h1>Bienvenid@ <?php echo $nombreUsuario ?></h1>
+        <h1><?php echo $aIdioma[$_COOKIE['idioma']]['bienvenido'] . " " . $nombreUsuario ?></h1>
         <p>es la <?php echo $numConexiones ?>ª vez que te conectas,  
               <?php if(!is_null($fechaUltimaConexionAnterior)){?>
                 y la ultima conexion fue <?php echo $fFechaHoraUltimaConexion; } ?></p>

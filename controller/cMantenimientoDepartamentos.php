@@ -47,21 +47,20 @@
                ];
     
     if(isset($_REQUEST['buscar'])){ //Si el usuario pulsa el boton de BUSCAR
-            $aErrores['dDepartamento']=validacionFormularios::comprobarAlfabetico($_REQUEST['buscarDep'], 100, 1, 1); //Hago la validacion 
-            $aErrores['estado'] = validacionFormularios::validarElementoEnLista($_REQUEST['estado'], ['todos', 'alta', 'baja']);
-           
-                foreach($aErrores as $campo =>$error){//Recorro el array de errores buscando si hay
-                    if($error !=null){// Si hay algun error 
-                        $entradaOk=false; //Ponemos la entrada a false
-                        $_REQUEST[$campo]="";//Vacia los campos
-                    }
-                }   
+        $entradaOk=true;    
+        $aErrores['dDepartamento']=validacionFormularios::comprobarAlfabetico($_REQUEST['desDepartamento'], 100, 1,0); //Hago la validacion 
+            foreach($aErrores as $campo =>$error){//Recorro el array de errores buscando si hay
+                if($error !=null){// Si hay algun error 
+                    $entradaOk=false; //Ponemos la entrada a false
+                    $_REQUEST[$campo]="";//Vacia los campos
+                }
+            }   
     }else{
         $entradaOk=false;//si algo sale mal, ponemos la entrada a false
     }
     
     if($entradaOk){
-        $_SESSION['criterioBusquedaDepartamentos']['descripcionBusqueda'] = $_REQUEST['buscarDep'];
+        $_SESSION['criterioBusquedaDepartamentos']['descripcionBusqueda'] = $_REQUEST['desDepartamento'];
         switch ($_REQUEST['estado']) {
         case 'baja':
             $iEstado = DepartamentoPDO::DEPARTAMENTOS_BAJA;
@@ -75,16 +74,11 @@
     }
     $_SESSION['criterioBusquedaDepartamentos']['estado'] = $iEstado;
     }
-    //Si se ha enviado o no el formulario muestra los departamentos
-    var_dump($_REQUEST['estado']);
     
     $aDepartamentosVista = [];//Array para guardar la informacion del departamento
-   
-    //cambiar el nombre de la funcion buscarDepartamentoPorDesYEstado
-    $aResultadoBuscar = DepartamentoPDO::buscarDepartamentoPorDesYEstado(
-        $_SESSION['criterioBusquedaDepartamentos']['descripcionBusqueda'] ?? '',
-        $_SESSION['criterioBusquedaDepartamentos']['estado'] ?? DepartamentoPDO::DEPARTAMENTOS_TODOS); //Obtengo los datos del departamento con el metodo buscaDepartamentosPorDesc    
-    
+  
+    $aResultadoBuscar = DepartamentoPDO::buscarDepartamentoPorDesYEstado($_SESSION['criterioBusquedaDepartamentos']['descripcionBuscada'] ?? '', $_SESSION['criterioBusquedaDepartamentos']['estado'] ?? 0); //Obtengo los datos del departamento con el metodo buscaDepartamentosPorDesc
+
     if ($aResultadoBuscar){ //Si el resultado es correcto
         foreach($aResultadoBuscar as $oDepartamento){//Recorro el objeto del resultado que contiene un array
             array_push($aDepartamentosVista, [//Hago uso del metodo array push para meter los valores en el array $aDepartamentosVista
@@ -96,9 +90,5 @@
                 ]);
         }
     }
-    
-    
-
-    
     require_once $vistas['layout'];
 ?>

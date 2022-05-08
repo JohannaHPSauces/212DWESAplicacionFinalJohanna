@@ -51,6 +51,7 @@
     $date=$fechaUltimaConexionAnterior;
     $fFechaHoraUltimaConexion = date('d-m-Y H:i:s', $date);
     
-    
+    //fichero que contie el array de lo que cambia con la cookie
+    include_once 'config/confCookie.php';
     require_once $vistas['layout'];
 ?>

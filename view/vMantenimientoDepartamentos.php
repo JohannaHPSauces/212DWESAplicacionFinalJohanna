@@ -5,7 +5,7 @@
         <div class="form-group floating-control-group w-100 bg-light">
             <label for="txtFloatingUsername">Buscar Departamento:</label><br>
             <div class="input-group w-50">
-                <input type="text" class="form-control" id="txtFloatingUsername" name="buscarDep" value="<?php echo $_SESSION['criterioBusquedaDepartamentos']['descripcionBusqueda'] ?? '' ;?> "/> 
+                <input type="text" class="form-control" id="txtFloatingUsername" name="desDepartamento" value="<?php echo $_SESSION['criterioBusquedaDepartamentos']['descripcionBuscada'] ?? '' ;?> "/> 
                 <span class="input-group-btn">
                    <input type="submit" class="btn btn-secondary btn-info" value="Buscar" name="buscar"/>
                 </span>
@@ -19,6 +19,7 @@
             <!--<input type="submit" class="btn btn-secondary btn-info" value="Buscar" name="buscar"/>-->
             <input type="submit" class="btn btn-secondary btn-labeled" value="Volver" name="volver"/>
             <input type="submit" class="btn btn-secondary btn-success" value="Añadir" name="añadir"/>
+    
         </div><br>
         <table class="table table-bordered w-100 align-items-center font-weight-bold">
             <thead>
@@ -114,7 +115,5 @@
                 </ul>
               </nav>
             </div>
-   </form>
+    </form>
 </div> 
-
-

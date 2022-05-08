@@ -7,11 +7,82 @@
         <button class="cajaIdioma" type="submit" name="idiomaSeleccionado" value="pt"><img src="images/po.png" alt="cargando.." height="20px"></button>
     </form>
     <br>
-    
-    <form class="container-fluid h-50"> 
+     
+    <form class="container-fluid h-25"> 
     	<div class="row w-100 align-items-center">
             <div class="col text-center" >
+                <div style="border:3px solid red; width: 40%; margin:auto;padding: 2px;"><h2> <?php echo $aIdioma[$_COOKIE['idioma']]['elegido'] ?> <?php echo $aIdioma[$_COOKIE['idioma']]['seleccionado'] ?> </h2></div> <br>
                 <input type="submit" class="btn btn-primary btn-lg btn-block" name="iniciar" value="INICIAR SESION"><br><br>
             </div>	
     	</div>
-   </form>
+    </form>
+    <div class="container">
+        <div class="card-group">
+            <div class="card text-center h-50" style="border:2px solid grey;">
+                <img class="card-img-top" src="../../images/cat.PNG" alt="Card image cap">
+                <div class="card-body"><br><br>
+                  <h5 class="card-title">Catálogo de Requisitos</h5>
+                  <a href="../../doc/220119CatalogoDeRequisitos.pdf" target="_blank" class="btn btn-primary">Ver</a>
+                </div>
+            </div>
+            <div class="card text-center" style="border:2px solid grey;">
+                <img class="card-img-top" src="../../images/ses.PNG" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">Uso de $_SESSION</h5>
+                  <a href="../../doc/220111UsoDeLaSessionParaLaAplicación.pdf" target="_blank" class="btn btn-primary">Ver</a>
+                </div>
+            </div>
+            <div class="card text-center" style="border:2px solid grey;">
+                <img class="card-img-top" src="../../images/mod.PNG" target="_blank" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">Modelo Físico de Datos</h5>
+                  <a href="../../doc/201127ModeloFisicoDeDatos20-21.pdf" target="_blank"  class="btn btn-primary">Ver</a>
+                </div>
+            </div>
+        </div>
+    </div><br><br>
+    <div class="container">
+        <div class="card-group">
+            <div class="card text-center" style="border:2px solid grey;">
+                <img class="card-img-top" src="../../images/dia.PNG" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">Diagrama Casos de Uso</h5>
+                  <a href="../../doc/220119DiagramaDeCasosDeUso.pdf" target="_blank" class="btn btn-primary">Ver</a>
+                </div>
+            </div>
+            <div class="card text-center" style="border:2px solid grey;">
+                <img class="card-img-top" src="../../images/diacla.PNG" target="_blank" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">Diagrama de Clases</h5>
+                  <a href="../../doc/220119DiagramaDeClases.pdf" target="_blank" class="btn btn-primary">Ver</a>
+                </div>
+            </div>
+            <div class="card text-center" style="border:2px solid grey;">
+                <img class="card-img-top" src="../../images/arb.PNG" target="_blank" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">Árbol de Navegación</h5>
+                  <a href="../../doc/220119ArbolDeNavegación.pdf" target="_blank" class="btn btn-primary">Ver</a>
+                </div>
+            </div>
+        </div>
+    </div><br><br>
+    <div class="container ">
+        <div class="card-group">
+            <div class="card text-center" style="border:2px solid grey;">
+                <img class="card-img-top" src="../../images/fic.PNG" alt="Card image cap">
+                <div class="card-body"><br>
+                  <h5 class="card-title">Relación de Ficheros</h5>
+                  <a href="../../doc/220119RelacionDeFicheros.pdf" target="_blank" class="btn btn-primary">Ver</a>
+                </div>
+            </div>
+            <div class="card text-center" style="border:2px solid grey;">
+                <img class="card-img-top" src="../../images/est.PNG" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">Estructura de Almacenamiento</h5>
+                  <a href="../../doc/211129EstandarDesarrolloDAWyEstructuraAlmacenamientoDWES.pdf" target="_blank" class="btn btn-primary">Ver</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br><br><br><br>
+ 
