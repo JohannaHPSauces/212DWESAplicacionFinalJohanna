@@ -59,8 +59,12 @@
         $entradaOk=false;//si algo sale mal, ponemos la entrada a false
     }
     
+   
+    $_SESSION['criterioBusquedaDepartamentos']['descripcionBuscada']= '';
+    $_SESSION['criterioBusquedaDepartamentos']['estado']= 0;
     if($entradaOk){
-       /* $_SESSION['criterioBusquedaDepartamentos']['descripcionBusqueda'] = $_REQUEST['desDepartamento'];
+       $_SESSION['criterioBusquedaDepartamentos']['descripcionBuscada'] = $_REQUEST['desDepartamento'];//Guardo en la sesion
+       //Dependiendo de la opcion que se elija
         switch ($_REQUEST['estado']) {
         case 'baja':
             $iEstado = DepartamentoPDO::DEPARTAMENTOS_BAJA;
@@ -72,13 +76,13 @@
             $iEstado = DepartamentoPDO::DEPARTAMENTOS_TODOS;
             break;
     }
-    $_SESSION['criterioBusquedaDepartamentos']['estado'] = $iEstado;*/
+    $_SESSION['criterioBusquedaDepartamentos']['estado'] = $iEstado;// Guardo en la sesion el case que ha elegido el usuario, para luego buscar los departamentos
     }
     
     $aDepartamentosVista = [];//Array para guardar la informacion del departamento
   
-    /*$aResultadoBuscar = DepartamentoPDO::buscarDepartamentoPorDesYEstado($_SESSION['criterioBusquedaDepartamentos']['descripcionBuscada'] ?? '', $_SESSION['criterioBusquedaDepartamentos']['estado'] ?? 0);*/ //Obtengo los datos del departamento con el metodo buscaDepartamentosPorDesc
-    $aResultadoBuscar= DepartamentoPDO::buscarDepartamentoPorDescripcion($_REQUEST['desDepartamento']);
+   $aResultadoBuscar = DepartamentoPDO::buscarDepartamentoPorDesYEstado($_SESSION['criterioBusquedaDepartamentos']['descripcionBuscada'] ?? '', $_SESSION['criterioBusquedaDepartamentos']['estado'] ?? 0);
+   /*$aResultadoBuscar= DepartamentoPDO::buscarDepartamentoPorDescripcion($_REQUEST['desDepartamento']);*/
     if ($aResultadoBuscar){ //Si el resultado es correcto
         foreach($aResultadoBuscar as $oDepartamento){//Recorro el objeto del resultado que contiene un array
             array_push($aDepartamentosVista, [//Hago uso del metodo array push para meter los valores en el array $aDepartamentosVista

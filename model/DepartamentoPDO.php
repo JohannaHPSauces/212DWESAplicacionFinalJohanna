@@ -100,7 +100,7 @@ class DepartamentoPDO{
             $aRespuesta = [];
            
             foreach ($aDepartamentos as $oDepartamento) {
-                $aDevolucion[$oDepartamento['T02_CodDepartamento']] = new Departamento(
+                $aRespuesta[$oDepartamento['T02_CodDepartamento']] = new Departamento(
                         $oDepartamento['T02_CodDepartamento'],
                         $oDepartamento['T02_DescDepartamento'],
                         $oDepartamento['T02_VolumenNegocio'],

@@ -11,7 +11,7 @@
     <form class="container-fluid h-25"> 
     	<div class="row w-100 align-items-center">
             <div class="col text-center" >
-                <div style="border:3px solid red; width: 40%; margin:auto;padding: 2px;"><h2> <?php echo $aIdioma[$_COOKIE['idioma']]['elegido'] ?> <?php echo $aIdioma[$_COOKIE['idioma']]['seleccionado'] ?> </h2></div> <br>
+                <div style="background: ghostwhite; width: 40%; margin:auto;padding: 2px;"><h2> <?php echo $aIdioma[$_COOKIE['idioma']]['elegido'] ?> <?php echo $aIdioma[$_COOKIE['idioma']]['seleccionado'] ?> </h2></div> <br>
                 <input type="submit" class="btn btn-primary btn-lg btn-block" name="iniciar" value="INICIAR SESION"><br><br>
             </div>	
     	</div>
@@ -29,7 +29,7 @@
                 <img class="card-img-top" src="../../images/ses.PNG" alt="Card image cap">
                 <div class="card-body">
                   <h5 class="card-title">Uso de $_SESSION</h5>
-                  <a href="../../images/220111UsoDeLaSessionParaLaAplicación.pdf" target="_blank" class="btn btn-primary">Ver</a>
+                  <a href="../doc/220111UsoDeLaSessionParaLaAplicación.pdf" target="_blank" class="btn btn-primary">Ver</a>
                 </div>
             </div>
             <div class="card text-center" style="border:2px solid grey;">

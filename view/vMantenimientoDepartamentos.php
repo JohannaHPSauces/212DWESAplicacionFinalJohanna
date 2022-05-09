@@ -5,7 +5,7 @@
         <div class="form-group floating-control-group w-100 bg-light">
             <label for="txtFloatingUsername">Buscar Departamento:</label><br>
             <div class="input-group w-50">
-                <input type="text" class="form-control" id="txtFloatingUsername" name="desDepartamento" value="<?php echo $_SESSION['criterioBusquedaDepartamentos']['descripcionBuscada'] ?? '' ;?> "/> 
+                <input type="text" class="form-control" id="txtFloatingUsername" name="desDepartamento" value="<?php echo isset($_SESSION['criterioBusquedaDepartamentos']['descripcionBuscada']) ? $_SESSION['criterioBusquedaDepartamentos']['descripcionBuscada'] : ''; ?> "/> 
                 <span class="input-group-btn">
                    <input type="submit" class="btn btn-secondary btn-info" value="Buscar" name="buscar"/>
                 </span>
