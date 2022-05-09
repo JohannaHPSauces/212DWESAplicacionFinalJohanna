@@ -29,7 +29,7 @@
                   <input type="submit" class="btn btn-danger" value="Botón fallo" name="botonF"/>
             </div>
             <div class="btn-group me-2"  aria-label="Fourth group">
-                  <input type="submit" class="btn btn-danger" value="REST" name="rest"/>
+                  <input type="submit" class="btn btn-dark" value="REST" name="rest"/>
             </div>
         </form>
     </div>

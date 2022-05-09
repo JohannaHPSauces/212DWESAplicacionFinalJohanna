@@ -36,6 +36,13 @@
         
         DBPDO::ejecutarConsulta($consulta);
     }
+    if(isset($_REQUEST['rest'])){ //Si el usuario pulsa el boton de rest
+        $_SESSION['paginaEnCurso']= 'wip';
+        $_SESSION['paginaAnterior']= 'inicioprivado';
+        header('Location: index.php');
+        exit;
+    }
+    
     
     //SACAMOS EL NOMBRE DEL USUARIO 
     $nombreUsuario=$_SESSION['usuario212AplicacionFinal']->getDescUsuario();
