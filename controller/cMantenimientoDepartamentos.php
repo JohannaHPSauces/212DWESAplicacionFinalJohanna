@@ -60,8 +60,8 @@
     }
     
    
-    $_SESSION['criterioBusquedaDepartamentos']['descripcionBuscada']= '';
-    $_SESSION['criterioBusquedaDepartamentos']['estado']= 0;
+    $_SESSION['criterioBusquedaDepartamentos']['descripcionBuscada']='';
+    $_SESSION['criterioBusquedaDepartamentos']['estado']=0;
     if($entradaOk){
        $_SESSION['criterioBusquedaDepartamentos']['descripcionBuscada'] = $_REQUEST['desDepartamento'];//Guardo en la sesion
        //Dependiendo de la opcion que se elija
