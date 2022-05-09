@@ -16,8 +16,8 @@ class DBPDO implements DB{
             $resultadoConsulta -> execute($parametros);//Ejecuto la consulta con el array de parametros
             return $resultadoConsulta; //Devuelvo el resultado de la consulta
         }catch(PDOException $excepcion){//Codigo que se ejecuta si hay algun error
-            $_SESSION['paginaEnCurso'] = 'error'; //Guardo en la ventana en curso la pagina de error
             $_SESSION['error']= new AppError($excepcion->getCode(), $excepcion->getMessage(), $excepcion->getFile(), $excepcion->getLine(), $_SESSION['paginaAnterior']);//Creo un nuevo objeto error
+            $_SESSION['paginaEnCurso'] = 'error'; //Guardo en la ventana en curso la pagina de error
             header('Location: index.php');
             exit;
         } finally{
