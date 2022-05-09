@@ -60,8 +60,6 @@
     }
     
    
-    $_SESSION['criterioBusquedaDepartamentos']['descripcionBuscada']='';//Inicializo la sesion que guarda la descripcion del departamento
-    $_SESSION['criterioBusquedaDepartamentos']['estado']=0;// Inicializo la sesion que guarda el estado
     if($entradaOk){
        $_SESSION['criterioBusquedaDepartamentos']['descripcionBuscada'] = $_REQUEST['desDepartamento'];//Guardo en la sesion
        //Dependiendo de la opcion que se elija

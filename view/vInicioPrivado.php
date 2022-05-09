@@ -11,25 +11,25 @@
                 <input type="submit" class="btn btn-primary" value="Detalle" name="detalle"/>
             </div>
             <div class="btn-group me-2" aria-label="Second group">
-                  <input type="submit" class="btn btn-secondary" value="Editar perfil" name="editar"/>
+                <input type="submit" class="btn btn-secondary" value="Editar perfil" name="editar"/>
             </div>
             <div class="btn-group me-2"  aria-label="Third group">
-                  <input type="submit" class="btn btn-info" value="Cerrar Sesión" name="cerrar"/>
+                <input type="submit" class="btn btn-info" value="Cerrar Sesión" name="cerrar"/>
             </div>
             <?php if($tipoUsuario == 'usuario'){ ?>
                 <div class="btn-group me-2"  aria-label="Fourth group">
-                      <input type="submit" class="btn btn-warning" value="Mantenimiento Departamentos" name="mantenimiento"/>
+                    <input type="submit" class="btn btn-warning" value="Mantenimiento Departamentos" name="mantenimiento"/>
                 </div>
             <?php }else{ ?>
                 <div class="btn-group me-2"  aria-label="Fourth group">
-                      <input type="submit" class="btn btn-warning" value="Mantenimiento Usuarios" name="mantenimientoU"/>
+                    <input type="submit" class="btn btn-warning" value="Mantenimiento Usuarios" name="mantenimientoU"/>
                 </div>
             <?php }  ?>
             <div class="btn-group me-2"  aria-label="Fourth group">
-                  <input type="submit" class="btn btn-danger" value="Botón fallo" name="botonF"/>
+                <input type="submit" class="btn btn-danger" value="Botón fallo" name="botonF"/>
             </div>
             <div class="btn-group me-2"  aria-label="Fourth group">
-                  <input type="submit" class="btn btn-dark" value="REST" name="rest"/>
+                <input type="submit" class="btn btn-dark" value="REST" name="rest"/>
             </div>
         </form>
     </div>
