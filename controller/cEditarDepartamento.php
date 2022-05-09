@@ -52,10 +52,10 @@
     $codDepartamento=$aDepartamento['codDepartamento'];
     
     
-   //Convertimos a fecha y hora
-   $fechaCreacionDepartamento=  $aDepartamento['fechaCreacionDepartamento'];
-   $date=$fechaCreacionDepartamento;
-   $fFechaCreacionDepartamento = date('d-m-Y H:i:s', $date);
+    //Convertimos a fecha y hora
+    $fechaCreacionDepartamento=  $aDepartamento['fechaCreacionDepartamento'];
+    $date=$fechaCreacionDepartamento;
+    $fFechaCreacionDepartamento = date('d-m-Y H:i:s', $date);
     
  require_once $vistas['layout'];
  

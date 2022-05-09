@@ -1,5 +1,5 @@
 <?php
-    if(isset($_REQUEST['volver'])){ //Si el usuario pulsa el boton de buscarDepartamentos
+    if(isset($_REQUEST['volver'])){ //Si el usuario pulsa el boton de volver
         $_SESSION['paginaEnCurso']= 'inicioprivado';
         unset($_SESSION['criterioBusquedaDepartamentos']);
         unset($_SESSION['codDepartamentoEnCurso']);
@@ -28,12 +28,12 @@
         exit;
     }
     
-    if(isset($_REQUEST['baja'])){ //Si el usuario pulsa el boton de buscarDepartamentos
+    if(isset($_REQUEST['baja'])){ //Si el usuario pulsa el boton de bajalogica
         DepartamentoPDO::bajaLogicaDepartamento($_REQUEST['baja']);
         header('Location: index.php');
         exit;
     }
-    if(isset($_REQUEST['rehabilitar'])){ //Si el usuario pulsa el boton de buscarDepartamentos
+    if(isset($_REQUEST['rehabilitar'])){ //Si el usuario pulsa el boton de rehabilitar deparatmento
         DepartamentoPDO::rehabilitarDepartamento($_REQUEST['rehabilitar']);
         header('Location: index.php');
         exit;
@@ -42,9 +42,7 @@
     $entradaOk=true;//Defino la entrada como true
     
     //ARRAY QUE TIENE LOS ERRORES DE LOS CAMPOS DEL FORMULARIO
-    $aErrores= ['dDepartamento'=>null,
-                'estado' => ''
-               ];
+    $aErrores= ['dDepartamento'=>null];
     
     if(isset($_REQUEST['buscar'])){ //Si el usuario pulsa el boton de BUSCAR
         $entradaOk=true;    
@@ -61,7 +59,7 @@
     
    
     if($entradaOk){
-       $_SESSION['criterioBusquedaDepartamentos']['descripcionBuscada'] = $_REQUEST['desDepartamento'];//Guardo en la sesion
+       $_SESSION['criterioBusquedaDepartamentos']['descripcionBuscada'] = $_REQUEST['desDepartamento'];//Guardo en la sesion la descripcion a buscar
        //Dependiendo de la opcion que se elija
         switch ($_REQUEST['estado']) {
         case 'baja':
@@ -79,7 +77,7 @@
     
     $aDepartamentosVista = [];//Array para guardar la informacion del departamento
   
-    $aResultadoBuscar = DepartamentoPDO::buscarDepartamentoPorDesYEstado($_SESSION['criterioBusquedaDepartamentos']['descripcionBuscada'] ?? '', $_SESSION['criterioBusquedaDepartamentos']['estado'] ?? 0);
+    $aResultadoBuscar = DepartamentoPDO::buscarDepartamentoPorDesYEstado($_SESSION['criterioBusquedaDepartamentos']['descripcionBuscada'] ?? '', $_SESSION['criterioBusquedaDepartamentos']['estado'] ?? 0); //Hacemos la consulta de buscar departamento por descripcion y estado
    
     if ($aResultadoBuscar){ //Si el resultado es correcto
         foreach($aResultadoBuscar as $oDepartamento){//Recorro el objeto del resultado que contiene un array

@@ -37,7 +37,7 @@
                         foreach ($aDepartamentosVista as $oDepartamento) { ?>
                 <?php if (empty($oDepartamento['fechaBaja'])) { ?> 
                 <tr>
-                    <td class="bg-success text-center " style="font-weight:bold;"><?php echo $oDepartamento['codDepartamento']; ?></td>
+                    <td class="bg-success text-center  " style="font-weight:bold;"><?php echo $oDepartamento['codDepartamento']; ?></td>
                     <td class="bg-success text-center " style="font-weight:bold;"><?php echo $oDepartamento['descDepartamento']; ?></td>
                     <td class="bg-success text-center " style="font-weight:bold;"><?php echo $oDepartamento['volumenNegocio']; ?></td>
                     <td class="bg-success text-center " style="font-weight:bold;"><?php echo $oDepartamento['fechaAlta']; ?></td>
