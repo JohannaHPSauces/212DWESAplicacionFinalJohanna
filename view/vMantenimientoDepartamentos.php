@@ -7,7 +7,7 @@
             <div class="input-group w-50">
                 <input type="text" class="form-control" id="txtFloatingUsername" name="desDepartamento" value="<?php echo isset($_SESSION['criterioBusquedaDepartamentos']['descripcionBuscada']) ? $_SESSION['criterioBusquedaDepartamentos']['descripcionBuscada'] : ''; ?>"/> 
                 <span class="input-group-btn">
-                   <input type="submit" class="btn btn-secondary btn-info" value="Buscar" name="buscar"/>
+                   <input type="submit" class="btn btn-secondary btn-labeled" value="Buscar" name="buscar"/>
                 </span>
             </div>
              <input type="radio" name="estado" value="todos" id="departamentoTodos" <?php echo isset($_SESSION['criterioBusquedaDepartamentos']['estado'])?($_SESSION['criterioBusquedaDepartamentos']['estado']==0?'checked':''):'checked'; ?>/>
@@ -17,7 +17,7 @@
                 <input type="radio" name="estado" value="baja" id="departamentoBaja" <?php echo isset($_SESSION['criterioBusquedaDepartamentos']['estado'])?($_SESSION['criterioBusquedaDepartamentos']['estado']==2?'checked':''):'';  ?> />
                 <label for="departamentoBaja">Baja</label><br><br>
             <!--<input type="submit" class="btn btn-secondary btn-info" value="Buscar" name="buscar"/>-->
-            <input type="submit" class="btn btn-secondary btn-labeled" value="Volver" name="volver"/>
+            <input type="submit" class="btn btn-secondary btn-info" value="Volver" name="volver"/>
             <input type="submit" class="btn btn-secondary btn-success" value="Añadir" name="añadir"/>
     
         </div><br>
