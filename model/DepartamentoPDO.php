@@ -6,11 +6,12 @@
     */
 
 class DepartamentoPDO{
-    public const DEPARTAMENTOS_BAJA = 1;
-    public const DEPARTAMENTOS_ALTA = 2;
+    public const DEPARTAMENTOS_BAJA = 2;
+    public const DEPARTAMENTOS_ALTA = 1;
     public const DEPARTAMENTOS_TODOS = 0;
     
     public static function buscarDepartamentoPorDescripcion($desDepartamento= ''){
+        $aRespuesta = [];
         $consulta = <<<HER
                        SELECT * FROM T02_Departamento WHERE T02_DescDepartamento  LIKE '%{$desDepartamento}%';
                     HER;
@@ -18,7 +19,7 @@ class DepartamentoPDO{
         $resultado= DBPDO::ejecutarConsulta($consulta); //Ejecuto la consulta
         $aDepartamentos= $resultado->fetchAll();
         
-        $aRespuesta = [];
+        
         if($aDepartamentos){
             foreach ($aDepartamentos as $oDepartamento) {
                 $aRespuesta[$oDepartamento['T02_CodDepartamento']] = new Departamento(
@@ -76,42 +77,37 @@ class DepartamentoPDO{
         } 
     }
     
-    public static function buscarDepartamentoPorDesYEstado($sBusqueda = '', $iEstado = self::DEPARTAMENTOS_TODOS) {
-       switch ($iEstado) {
-            case self::DEPARTAMENTOS_BAJA:
-                $estado = 'AND T02_FechaBajaDepartamento IS NOT NULL';
+    public static function buscarDepartamentoPorDesYEstado($sBusqueda='', $iEstado =0 ) {
+       switch ($iEstado){ 
+            case 0:
+                $estado = '';
                 break;
-            case self::DEPARTAMENTOS_ALTA:
+            case 1:
                 $estado = 'AND T02_FechaBajaDepartamento IS NULL';
                 break;
-            case self::DEPARTAMENTOS_TODOS:
-                $estado = '';
+            case 2:
+                $estado = 'AND T02_FechaBajaDepartamento IS NOT NULL';
                 break;
         }
 
-        $sSelect = <<<QUERY
-            SELECT * FROM T02_Departamento
-            WHERE T02_DescDepartamento LIKE '%{$sBusqueda}%'
-            {$estado};
-QUERY;
-        $oResultado = DBPDO::ejecutarConsulta($sSelect);
+        $consulta = <<<HER
+                        SELECT * FROM T02_Departamento
+                        WHERE T02_DescDepartamento LIKE '%{$sBusqueda}%'{$estado};
+                    HER;
+        $oResultado= DBPDO::ejecutarConsulta($consulta);
         $aDepartamentos = $oResultado->fetchAll();
         if ($aDepartamentos) {
-            $aDevolucion = [];
-            /*
-             * Creación de cada departamento en objeto y añadido al array de
-             * devolución de departamentos con el código de departamento como
-             * key en el array.
-             */
+            $aRespuesta = [];
+           
             foreach ($aDepartamentos as $oDepartamento) {
-                $aDevolucion[$oDepartamento['T02_CodDepartamento']] = new Departamento(
+                $aRespuesta[$oDepartamento['T02_CodDepartamento']] = new Departamento(
                         $oDepartamento['T02_CodDepartamento'],
                         $oDepartamento['T02_DescDepartamento'],
-                        $oDepartamento['T02_FechaCreacionDepartamento'],
                         $oDepartamento['T02_VolumenNegocio'],
+                        $oDepartamento['T02_FechaCreacionDepartamento'],
                         $oDepartamento['T02_FechaBajaDepartamento']);
             }
-            return $aDevolucion;
+            return $aRespuesta;
         } else {
             return false;
         }

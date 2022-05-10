@@ -25,7 +25,7 @@
         header('Location: index.php');
         exit;
     }
-    if(isset($_REQUEST['mantenimientoU'])){ //Si el usuario pulsa el boton de mantenimiento
+    if(isset($_REQUEST['mantenimientoU'])){ //Si el admin pulsa el boton de mantenimientoUsuarios
         $_SESSION['paginaEnCurso']= 'wip';
         $_SESSION['paginaAnterior']= 'inicioprivado';
         header('Location: index.php');
@@ -36,6 +36,13 @@
         
         DBPDO::ejecutarConsulta($consulta);
     }
+    if(isset($_REQUEST['rest'])){ //Si el usuario pulsa el boton de rest
+        $_SESSION['paginaEnCurso']= 'wip';
+        $_SESSION['paginaAnterior']= 'inicioprivado';
+        header('Location: index.php');
+        exit;
+    }
+    
     
     //SACAMOS EL NOMBRE DEL USUARIO 
     $nombreUsuario=$_SESSION['usuario212AplicacionFinal']->getDescUsuario();
@@ -51,6 +58,7 @@
     $date=$fechaUltimaConexionAnterior;
     $fFechaHoraUltimaConexion = date('d-m-Y H:i:s', $date);
     
-    
+    //fichero que contie el array de lo que cambia con la cookie
+    include_once 'config/confCookie.php';
     require_once $vistas['layout'];
 ?>

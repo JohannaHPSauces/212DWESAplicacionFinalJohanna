@@ -14,4 +14,3 @@
     
     require_once $vistas['layout'];
 ?>
-

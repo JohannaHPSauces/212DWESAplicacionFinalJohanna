@@ -27,8 +27,6 @@
         if($oDepartamentoValido){
            $aErrores['codDep']="El departamento ya existe";
         }
-        
-        
             foreach($aErrores as $campo =>$error){//Recorro el array de errores buscando si hay
                     if($error !=null){// Si hay algun error 
                         $entradaOk=false; //Ponemos la entrada a false

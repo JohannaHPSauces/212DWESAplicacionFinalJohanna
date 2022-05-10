@@ -5,9 +5,9 @@
         <div class="form-group floating-control-group w-100 bg-light">
             <label for="txtFloatingUsername">Buscar Departamento:</label><br>
             <div class="input-group w-50">
-                <input type="text" class="form-control" id="txtFloatingUsername" name="buscarDep" value="<?php echo $_SESSION['criterioBusquedaDepartamentos']['descripcionBusqueda'] ?? '' ;?> "/> 
+                <input type="text" class="form-control" id="txtFloatingUsername" name="desDepartamento" value="<?php echo isset($_SESSION['criterioBusquedaDepartamentos']['descripcionBuscada']) ? $_SESSION['criterioBusquedaDepartamentos']['descripcionBuscada'] : ''; ?>"/> 
                 <span class="input-group-btn">
-                   <input type="submit" class="btn btn-secondary btn-info" value="Buscar" name="buscar"/>
+                   <input type="submit" class="btn btn-secondary btn-labeled" value="Buscar" name="buscar"/>
                 </span>
             </div>
              <input type="radio" name="estado" value="todos" id="departamentoTodos" <?php echo isset($_SESSION['criterioBusquedaDepartamentos']['estado'])?($_SESSION['criterioBusquedaDepartamentos']['estado']==0?'checked':''):'checked'; ?>/>
@@ -17,9 +17,9 @@
                 <input type="radio" name="estado" value="baja" id="departamentoBaja" <?php echo isset($_SESSION['criterioBusquedaDepartamentos']['estado'])?($_SESSION['criterioBusquedaDepartamentos']['estado']==2?'checked':''):'';  ?> />
                 <label for="departamentoBaja">Baja</label><br><br>
             <!--<input type="submit" class="btn btn-secondary btn-info" value="Buscar" name="buscar"/>-->
-            <input type="submit" class="btn btn-secondary btn-labeled" value="Volver" name="volver"/>
+            <input type="submit" class="btn btn-secondary btn-info" value="Volver" name="volver"/>
             <input type="submit" class="btn btn-secondary btn-success" value="Añadir" name="añadir"/>
-    </form>
+    
         </div><br>
         <table class="table table-bordered w-100 align-items-center font-weight-bold">
             <thead>
@@ -37,7 +37,7 @@
                         foreach ($aDepartamentosVista as $oDepartamento) { ?>
                 <?php if (empty($oDepartamento['fechaBaja'])) { ?> 
                 <tr>
-                    <td class="bg-success text-center " style="font-weight:bold;"><?php echo $oDepartamento['codDepartamento']; ?></td>
+                    <td class="bg-success text-center  " style="font-weight:bold;"><?php echo $oDepartamento['codDepartamento']; ?></td>
                     <td class="bg-success text-center " style="font-weight:bold;"><?php echo $oDepartamento['descDepartamento']; ?></td>
                     <td class="bg-success text-center " style="font-weight:bold;"><?php echo $oDepartamento['volumenNegocio']; ?></td>
                     <td class="bg-success text-center " style="font-weight:bold;"><?php echo $oDepartamento['fechaAlta']; ?></td>
@@ -115,7 +115,5 @@
                 </ul>
               </nav>
             </div>
-   <!-- </form>-->
+    </form>
 </div> 
-
-

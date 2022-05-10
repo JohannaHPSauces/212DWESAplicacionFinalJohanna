@@ -1,6 +1,6 @@
 <?php
 
-    if(isset($_REQUEST['cancelar'])){ //Si el usuario pulsa el boton de salir, sale de la aplicacion
+    if(isset($_REQUEST['cancelar'])){ //Si el usuario pulsa el boton de cancelar, sale de la aplicacion
         $_SESSION['paginaEnCurso']= 'micuenta';
         $_SESSION['paginaAnterior']= 'borrar';
         header('Location: index.php');

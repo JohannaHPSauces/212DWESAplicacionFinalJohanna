@@ -1,17 +1,17 @@
 <?php
     $aIdioma = array(
         'es' => array(
-            'elegido'=> 'Has elegido:',
+            'elegido'=> 'Idioma seleccionado:',
             'seleccionado'=> 'ESPAÑOL',
             'bienvenido' => 'Bienvenid@'
             ),
         'en' => array(
-            'elegido'=> 'You have chosen:',
+            'elegido'=> 'Selected language:',
             'seleccionado'=> 'ENGLISH',
             'bienvenido' => 'Welcome'
             ),
         'pt' => array(
-            'elegido'=> 'você escolheu:',
+            'elegido'=> 'Idioma selecionado:',
             'seleccionado'=> 'PORTUGUÊS',
             'bienvenido' => 'Receber',
             )

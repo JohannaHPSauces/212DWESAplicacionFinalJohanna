@@ -14,11 +14,11 @@
                  'repetirPassword' =>null];
     
     if(isset($_REQUEST['aceptar'])){    
-        $aErrores['viejaPassword']= validacionFormularios::validarPassword($_REQUEST['viejaPassword'], 8, 4, 2, 1);
-        $aErrores['nuevaPassword']= validacionFormularios::validarPassword($_REQUEST['nuevaPassword'], 8, 4, 2, 1);
-        $aErrores['repetirPassword']= validacionFormularios::validarPassword($_REQUEST['repetirPassword'], 8, 4, 2, 1);
+        $aErrores['viejaPassword']= validacionFormularios::validarPassword($_REQUEST['viejaPassword'], 8, 4, 2, 1);//Hacemos la validacion de la contraseña actual
+        $aErrores['nuevaPassword']= validacionFormularios::validarPassword($_REQUEST['nuevaPassword'], 8, 4, 2, 1);//Hacemos la validacion de la nueva contraseña
+        $aErrores['repetirPassword']= validacionFormularios::validarPassword($_REQUEST['repetirPassword'], 8, 4, 2, 1); //Hacemos la validacio de la repeticion de la nueva contraseña
             
-            if(!UsuarioPDO::validarUsuario($_SESSION['usuario212AplicacionFinal']->getCodUsuario(), $_REQUEST['viejaPassword'])){
+            if(!UsuarioPDO::validarUsuario($_SESSION['usuario212AplicacionFinal']->getCodUsuario(), $_REQUEST['viejaPassword'])){ //Si la contraseña anterior no coincide
                 $aErrores['viejaPassword'] = 'Contraseña incorrecta.';
                 $entradaOk = false;
             }else{
