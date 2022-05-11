@@ -2,9 +2,9 @@
     <div id="cajaTitulo" class="text-center p-2 h4 font-weight-bold" style="background-color:gainsboro;">INICIO PÚBLICO </div>
 </header>
     <form class="cajaIdioma">
-        <button class="cajaIdioma" type="submit" name="idiomaSeleccionado" value="es" ><img src="images/es.png" alt="cargando.." height="20px"></button>
-        <button class="cajaIdioma" type="submit" name="idiomaSeleccionado" value="en" ><img src="images/in.png" alt="cargando.." height="20px"></button>
-        <button class="cajaIdioma" type="submit" name="idiomaSeleccionado" value="pt"><img src="images/po.png" alt="cargando.." height="20px"></button>
+        <button class="cajaIdioma" type="submit" name="idiomaSeleccionado" value="es" ><img src="webroot/images/es.png" alt="cargando.." height="20px"></button>
+        <button class="cajaIdioma" type="submit" name="idiomaSeleccionado" value="en" ><img src="webroot/images/in.png" alt="cargando.." height="20px"></button>
+        <button class="cajaIdioma" type="submit" name="idiomaSeleccionado" value="pt"><img src="webroot/images/po.png" alt="cargando.." height="20px"></button>
     </form>
     <br>
     <form class="container-fluid h-25"> 

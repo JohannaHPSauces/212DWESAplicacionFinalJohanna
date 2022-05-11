@@ -1,6 +1,4 @@
-
 <?php
-
     if(isset($_REQUEST['cerrar'])){ //Si el usuario pulsa el boton de cerrar
         session_destroy();//destruyo la sesion
         header('Location: index.php');
@@ -37,12 +35,11 @@
         DBPDO::ejecutarConsulta($consulta);
     }
     if(isset($_REQUEST['rest'])){ //Si el usuario pulsa el boton de rest
-        $_SESSION['paginaEnCurso']= 'wip';
+        $_SESSION['paginaEnCurso']= 'rest';
         $_SESSION['paginaAnterior']= 'inicioprivado';
         header('Location: index.php');
         exit;
     }
-    
     
     //SACAMOS EL NOMBRE DEL USUARIO 
     $nombreUsuario=$_SESSION['usuario212AplicacionFinal']->getDescUsuario();
