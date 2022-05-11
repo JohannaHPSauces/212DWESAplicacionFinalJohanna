@@ -28,7 +28,6 @@
     }
     
     if($entradaOk){
-        
         $_SESSION['nombreProvincia']=$_REQUEST['buscarInput'];
          //hacemos la consulta
         $oResultadoBuscarProvincia= REST::tiempoProvincia($_REQUEST['buscarInput']);
@@ -43,6 +42,43 @@
         $tiempoProvincia = $oResultadoBuscarProvincia->getTiempo();
         $tempMaximaProvincia= $oResultadoBuscarProvincia-> getTemperaturaMaxima();
         $tempMinimaProvincia= $oResultadoBuscarProvincia-> getTemperaturaMinima();
+    }
+    
+    //Defiino la variable que cambiare en caso de que la entrada no sea correcta
+    $entradaUsuarioOk=true;
+    
+    //Defino el array que contendra los errores del formulario
+    $aErroresU=['eBuscarInputU'=> null,
+                'eResultadoU'=>null
+              ];
+    
+    if(isset($_REQUEST['buscarU'])){
+        $aErroresU['eBuscarInputU']= validacionFormularios::comprobarEntero($_REQUEST['buscarInputU'], 5, 1, 1);//Hacemos la validacion de lo que se ha buscado
+        
+        if($aErroresU['eBuscarInputU'] != null){// Si hay algun error 
+            $entradaUsuarioOk=false; //Ponemos la entrada a false
+            $_REQUEST['eBuscarInputU']="";//Vacia los campos
+        }
+        
+    }else{
+        $entradaUsuarioOk=false;
+    }
+    
+    if($entradaUsuarioOk){
+         //hacemos la consulta
+        $oResultadoBuscarUsuario= REST::usuario($_REQUEST['buscarInputU']);
+        
+        if($oResultadoBuscarUsuario== null){
+            $aErroresU['eResultadoU']="Error";
+        }
+        
+        $foto= $oResultadoBuscarUsuario->getFoto();
+        $nombreU= $oResultadoBuscarUsuario->getNombre();
+        $apellidoU= $oResultadoBuscarUsuario->getApellido();
+        $calleU = $oResultadoBuscarUsuario->getCalle();
+        $paisU= $oResultadoBuscarUsuario-> getPais();
+        $emailU= $oResultadoBuscarUsuario-> getEmail();
+        $edadU= $oResultadoBuscarUsuario-> getEdad();
     }
 
 

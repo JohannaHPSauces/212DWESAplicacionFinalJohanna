@@ -34,6 +34,36 @@ class REST {
         }
         return $oProvincia;
     }
+    
+     public static function usuario($numUsuarios){
+        $oUsuario= null; //Inicializamos el objeto Provincia a null
+        $sResultadoRawData= false; //Variable de tipo string que contendra el json
+        //get_headers-> devuelve un Array con las cabeceras enviadas por el servidor en respuesta a una peticion HTTP.
+        $aHeaders= get_headers("https://randomuser.me/api/?results={$numUsuarios}");
+        //substr -> Devuelve una parta del string que esta entre los parametros start y lenght
+        $numHeaders= substr($aHeaders[0],9,3);
+        if($numHeaders== "200"){
+             $sResultadoRawData = @file_get_contents("https://randomuser.me/api/?results={$numUsuarios}");
+        }
+        //https://randomuser.me/api/?format=json
+        if($sResultadoRawData){
+            //json_decode -> decodifica un JSON
+            $aJson= json_decode($sResultadoRawData, true);//Guardamos el resultado decodificado en un array
+            
+            for($i=0;$i<=$numUsuarios;$i++){
+                $oUsuario= new UsuarioRandom(
+                    $aJson['results'],
+                    $aJson['results']['0']['name']['first'],
+                    $aJson['results']['0']['name']['last'],
+                    $aJson['results']['0']['location']['street']['name'],
+                    $aJson['results']['0']['location']['country'],
+                    $aJson['results']['0']['email'],
+                    $aJson['results']['0']['dob']['age']
+                );
+            }
+        }
+        return $oUsuario;
+    }
 }
 
 ?>

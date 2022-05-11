@@ -92,3 +92,29 @@
         </p>
     <?php } ?>
 </div>
+<div class="container w-50 h-20 bg-light">
+<form name="formulario" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" class="form">
+    <p class="text-center h2" style="text-weight:bold; background:lightgrey; padding: 5px;">Usuario Random<p>
+        <p>Permite obtener usuarios de forma aleatoria. El formato del campo es un input donde poner un numero de 1-5.</p>
+                <div class="container auto">
+                    <label for="buscarInputU"><p>Número de usuarios (1-5)</p></label>
+                    <input type="text" class="form-control w-25" placeholder="Introduce del 1 al 5)" name="buscarInputU" value="<?php echo(isset($_REQUEST['buscarInputU']) ? $_REQUEST['buscarInputU'] : null); ?>"><br>
+                    
+                    <p><?php echo($aErroresU['eBuscarInputU']!=null ? "<span style='color:red'>".$aErroresU['eBuscarInputU']."</span>" : null); ?></p>
+                    <p><?php echo($aErroresU['eResultadoU']!=null ? "<span style='color:red'>".$aErroresU['eResultadoU']."</span>" : null); ?></p>
+                </div>
+            <input type="submit" class="btn btn-secondary btn-labeled" value="Buscar" name="buscarU" />
+</form>
+</div>
+<div class="container w-50">
+   <?php if ($aErroresU["eBuscarInputU"] == null && isset($_REQUEST["buscarU"]) && $oResultadoBuscarUsuario != null) { ?>
+    <p class="h4 text-center text-info"><?php  ;?></p>
+        <p><span class="" style="font-weight:bold;">Nombre:</span> <?php echo $nombreU;?></p>
+        <p><span class="" style="font-weight:bold;">Apellido:</span> <?php echo $apellidoU;?></p>
+        <p><span class="" style="font-weight:bold;">Calle:</span> <?php echo $calleU;?></p>
+        <p><span class="" style="font-weight:bold;">Pais:</span> <?php echo $paisU;?></p>
+        <p><span class="" style="font-weight:bold;">Email:</span> <?php echo $emailU;?></p>
+        <p><span class="" style="font-weight:bold;">Edad:</span> <?php echo $edadU;?></p>
+    <?php } ?>
+</div>
+<br><br><br><br><br><br><br><br>
