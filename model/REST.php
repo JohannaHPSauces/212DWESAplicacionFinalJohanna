@@ -61,6 +61,29 @@ class REST {
         }
         return $aRespuesta; 
     }
+    public static function coctel($nombrecoctel){
+        $oUsuario= null; //Inicializamos el objeto Provincia a null
+        $sResultadoRawData= false; //Variable de tipo string que contendra el json
+        //get_headers-> devuelve un Array con las cabeceras enviadas por el servidor en respuesta a una peticion HTTP.
+        $aHeaders= get_headers("www.thecocktaildb.com/api/json/v1/1/search.php?s={$nombrecoctel}");
+        //substr -> Devuelve una parta del string que esta entre los parametros start y lenght
+        $numHeaders= substr($aHeaders[0],9,3);
+        if($numHeaders== "200"){
+             $sResultadoRawData = @file_get_contents("www.thecocktaildb.com/api/json/v1/1/search.php?s={$nombrecoctel}");
+        }
+        if($sResultadoRawData){
+            //json_decode -> decodifica un JSON
+            $aJson= json_decode($sResultadoRawData, true);//Guardamos el resultado decodificado en un array
+            
+            $oCoctel= new Coctel(
+                    $aJson['drinks']['0']['idDrink'],
+                    $aJson['drinks']['0']['strDrink'],
+                    $aJson['drinks']['0']['strDrinkThumb']
+                );
+            
+        }
+        return $oCoctel; 
+    }
         
               /*$oUsuario= new UsuarioRandom(
                     $aJson['results']['0']['picture']['large'],
@@ -71,7 +94,14 @@ class REST {
                     $aJson['results']['0']['email'],
                     $aJson['results']['0']['dob']['age']
                 );*/
-            
+       
+    //ec831fb2
+    
+   // publica
+   // 30cd803cc99e256e7d917026ae17f29f
+    
+   // privada
+   // d6c98e2c837ee1b435e446cb43c844a0f40556db
 }
 
 ?>
