@@ -67,11 +67,12 @@
     if($entradaUsuarioOk){
          //hacemos la consulta
         $oResultadoBuscarUsuario= REST::usuario($_REQUEST['buscarInputU']);
+        //var_dump($oResultadoBuscarUsuario);
         
         if($oResultadoBuscarUsuario== null){
             $aErroresU['eResultadoU']="Error";
         }
-        
+
         $foto= $oResultadoBuscarUsuario->getFoto();
         $nombreU= $oResultadoBuscarUsuario->getNombre();
         $apellidoU= $oResultadoBuscarUsuario->getApellido();
@@ -79,8 +80,8 @@
         $paisU= $oResultadoBuscarUsuario-> getPais();
         $emailU= $oResultadoBuscarUsuario-> getEmail();
         $edadU= $oResultadoBuscarUsuario-> getEdad();
+        
     }
-
 
 
  require_once $vistas['layout'];

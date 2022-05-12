@@ -108,13 +108,13 @@
 </div>
 <div class="container w-50">
    <?php if ($aErroresU["eBuscarInputU"] == null && isset($_REQUEST["buscarU"]) && $oResultadoBuscarUsuario != null) { ?>
-    <p class="h4 text-center text-info"><?php  ;?></p>
-        <p><span class="" style="font-weight:bold;">Nombre:</span> <?php echo $nombreU;?></p>
-        <p><span class="" style="font-weight:bold;">Apellido:</span> <?php echo $apellidoU;?></p>
-        <p><span class="" style="font-weight:bold;">Calle:</span> <?php echo $calleU;?></p>
-        <p><span class="" style="font-weight:bold;">Pais:</span> <?php echo $paisU;?></p>
-        <p><span class="" style="font-weight:bold;">Email:</span> <?php echo $emailU;?></p>
-        <p><span class="" style="font-weight:bold;">Edad:</span> <?php echo $edadU;?></p>
+    <p class="h4 text-center text-info"><?php echo "<img src=$foto width='100' height='100'>"  ;?></p>
+        <p><span class="text-center" style="font-weight:bold;">Nombre:</span> <?php echo $nombreU;?></p>
+        <p><span class="text-center" style="font-weight:bold;">Apellido:</span> <?php echo $apellidoU;?></p>
+        <p><span class="text-center" style="font-weight:bold;">Calle:</span> <?php echo $calleU;?></p>
+        <p><span class="text-center" style="font-weight:bold;">Pais:</span> <?php echo $paisU;?></p>
+        <p><span class="text-center" style="font-weight:bold;">Email:</span> <?php echo $emailU;?></p>
+        <p><span class="text-center" style="font-weight:bold;">Edad:</span> <?php echo $edadU;?></p>
     <?php } ?>
 </div>
 <br><br><br><br><br><br><br><br>

@@ -50,9 +50,9 @@ class REST {
             //json_decode -> decodifica un JSON
             $aJson= json_decode($sResultadoRawData, true);//Guardamos el resultado decodificado en un array
             
-            for($i=0;$i<=$numUsuarios;$i++){
+            
                 $oUsuario= new UsuarioRandom(
-                    $aJson['results'],
+                    $aJson['results']['0']['picture']['large'],
                     $aJson['results']['0']['name']['first'],
                     $aJson['results']['0']['name']['last'],
                     $aJson['results']['0']['location']['street']['name'],
@@ -60,7 +60,7 @@ class REST {
                     $aJson['results']['0']['email'],
                     $aJson['results']['0']['dob']['age']
                 );
-            }
+            
         }
         return $oUsuario;
     }
