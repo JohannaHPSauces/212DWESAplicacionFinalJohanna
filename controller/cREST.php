@@ -44,6 +44,9 @@
         $tempMinimaProvincia= $oResultadoBuscarProvincia-> getTemperaturaMinima();
     }
     
+    
+///////////////////////////////////////////API USUARIO RANDOM/////////////////////////////////////////////////////////
+    
     //Defiino la variable que cambiare en caso de que la entrada no sea correcta
     $entradaUsuarioOk=true;
     
@@ -67,22 +70,22 @@
     if($entradaUsuarioOk){
          //hacemos la consulta
         $oResultadoBuscarUsuario= REST::usuario($_REQUEST['buscarInputU']);
-        //var_dump($oResultadoBuscarUsuario);
+        
         
         if($oResultadoBuscarUsuario== null){
             $aErroresU['eResultadoU']="Error";
         }
+        var_dump($oResultadoBuscarUsuario);
 
-        $foto= $oResultadoBuscarUsuario->getFoto();
-        $nombreU= $oResultadoBuscarUsuario->getNombre();
-        $apellidoU= $oResultadoBuscarUsuario->getApellido();
-        $calleU = $oResultadoBuscarUsuario->getCalle();
-        $paisU= $oResultadoBuscarUsuario-> getPais();
-        $emailU= $oResultadoBuscarUsuario-> getEmail();
-        $edadU= $oResultadoBuscarUsuario-> getEdad();
+        $foto= $oResultadoBuscarUsuario[0]->getFoto();
+        $nombreU= $oResultadoBuscarUsuario[0]->getNombre();
+        $apellidoU= $oResultadoBuscarUsuario[0]->getApellido();
+        $calleU = $oResultadoBuscarUsuario[0]->getCalle();
+        $paisU= $oResultadoBuscarUsuario[0]-> getPais();
+        $emailU= $oResultadoBuscarUsuario[0]-> getEmail();
+        $edadU= $oResultadoBuscarUsuario[0]-> getEdad();
         
     }
-
 
  require_once $vistas['layout'];
 ?>

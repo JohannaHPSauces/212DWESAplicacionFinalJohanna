@@ -63,7 +63,7 @@
                     ];
                                 
                     ?>
-                    <label for="buscarInput"><p>Código Provincia*<a href="https://www.el-tiempo.net/api" target="_blank"></a></p></label>
+                    <label for="buscarInput"><p>Código Provincia*<a href="https://www.el-tiempo.net/api" target="_blank">info</a></p></label>
                     <select required name="buscarInput" id="CodProvincia">
                         <option value="">Seleccione...</option>
                         <?php foreach($opciones as $key => $opcion){ ?>
@@ -91,14 +91,14 @@
            <span class="" style="font-weight:bold;">Temperatura minima:</span> <?php echo $tempMinimaProvincia;?> °C
         </p>
     <?php } ?>
-</div>
+</div><br>
 <div class="container w-50 h-20 bg-light">
 <form name="formulario" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" class="form">
     <p class="text-center h2" style="text-weight:bold; background:lightgrey; padding: 5px;">Usuario Random<p>
-        <p>Permite obtener usuarios de forma aleatoria. El formato del campo es un input donde poner un numero de 1-5.</p>
+        <p>Permite obtener usuarios de forma aleatoria. El formato del campo es un input donde poner un número del 1-5.</p>
                 <div class="container auto">
-                    <label for="buscarInputU"><p>Número de usuarios (1-5)</p></label>
-                    <input type="text" class="form-control w-25" placeholder="Introduce del 1 al 5)" name="buscarInputU" value="<?php echo(isset($_REQUEST['buscarInputU']) ? $_REQUEST['buscarInputU'] : null); ?>"><br>
+                    <label for="buscarInputU"><p>Número de usuarios:</p></label>
+                    <input type="text" class="form-control w-25" placeholder="Introduce del 1 al 5" name="buscarInputU" value="<?php echo(isset($_REQUEST['buscarInputU']) ? $_REQUEST['buscarInputU'] : null); ?>"><br>
                     
                     <p><?php echo($aErroresU['eBuscarInputU']!=null ? "<span style='color:red'>".$aErroresU['eBuscarInputU']."</span>" : null); ?></p>
                     <p><?php echo($aErroresU['eResultadoU']!=null ? "<span style='color:red'>".$aErroresU['eResultadoU']."</span>" : null); ?></p>
@@ -106,7 +106,7 @@
             <input type="submit" class="btn btn-secondary btn-labeled" value="Buscar" name="buscarU" />
 </form>
 </div>
-<div class="container w-50">
+<div class="container w-50 text-center">
    <?php if ($aErroresU["eBuscarInputU"] == null && isset($_REQUEST["buscarU"]) && $oResultadoBuscarUsuario != null) { ?>
     <p class="h4 text-center text-info"><?php echo "<img src=$foto width='100' height='100'>"  ;?></p>
         <p><span class="text-center" style="font-weight:bold;">Nombre:</span> <?php echo $nombreU;?></p>
