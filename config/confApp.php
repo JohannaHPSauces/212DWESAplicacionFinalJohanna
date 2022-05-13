@@ -13,6 +13,7 @@ require_once 'model/DepartamentoPDO.php';
 require_once 'model/REST.php';
 require_once 'model/Provincia.php';
 require_once 'model/UsuarioRandom.php';
+require_once 'model/Coctel.php';
 
 
 $controladores =[

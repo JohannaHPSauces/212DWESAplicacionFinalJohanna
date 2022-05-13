@@ -108,7 +108,7 @@
 </div>
 <div class="container w-50 text-center">
    <?php if ($aErroresU["eBuscarInputU"] == null && isset($_REQUEST["buscarU"]) && $oResultadoBuscarUsuario != null) { ?>
-    <p class="h4 text-center text-info"><?php echo "<img src=$foto width='100' height='100'>"  ;?></p>
+    <p class="h4 text-center text-info"><?php echo "<img src=$foto width='200' height='200'>"  ;?></p>
         <p><span class="text-center" style="font-weight:bold;">Nombre:</span> <?php echo $nombreU;?></p>
         <p><span class="text-center" style="font-weight:bold;">Apellido:</span> <?php echo $apellidoU;?></p>
         <p><span class="text-center" style="font-weight:bold;">Calle:</span> <?php echo $calleU;?></p>
@@ -116,5 +116,70 @@
         <p><span class="text-center" style="font-weight:bold;">Email:</span> <?php echo $emailU;?></p>
         <p><span class="text-center" style="font-weight:bold;">Edad:</span> <?php echo $edadU;?></p>
     <?php } ?>
+</div><br>
+<div class="container w-50 h-20 bg-light">
+<form name="formulario" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" class="form">
+    <p class="text-center h2" style="text-weight:bold; background:lightgrey; padding: 5px;">Informacion bebida<p>
+        <p>Permite obtener la información de una bebida. El formato del campo es una lista.</p>
+                 <div class="container auto">
+                    <?php 
+                    $opciones = [
+                        ['value' => "Margarita", "nombre" => "MARGARITA"],
+                        ['value' => "Negroni", "nombre" => "NEGRONI"],
+                        ['value' => "Mojito", "nombre" => "MOJITO"],
+                        ['value' => "Whiskey Sour", "nombre" => "WHISKEY SOUR"],
+                        ['value' => "Daiquiri", "nombre" => "ASTURIAS"],
+                        ['value' => "Apricot punch", "nombre" => "APRICOT PUNCH"],
+                        ['value' => "Planter’s Punch", "nombre" => "PLANTER'S PUNCH"],
+                        ['value' => "Manhattan", "nombre" => "MANHATTAN"],
+                        ['value' => "Vampiro", "nombre" => "VAMPIRO"],
+                        ['value' => "Pink Lady", "nombre" => "PINK LADY"],
+                        ['value' => "Belgian Blue", "nombre" => "BELGIAN BLUE"],
+                        ['value' => "Diesel", "nombre" => "DIESEL"],
+                        ['value' => "Yoghurt Cooler", "nombre" => "OGHURT COOLER"],
+                        ['value' => "Sangria", "nombre" => "SANGRIA"],
+                        ['value' => "Strawberry Lemonade", "nombre" => "STRAWBERRY LEMONADE"],
+                        ['value' => "Snakebite and Black", "nombre" => "SNAKEBITE"],
+                        ['value' => "Bob Marley", "nombre" => "BOB MARLEY"],
+                        ['value' => "Casa Blanca", "nombre" => "CASA BLANCA"],
+                        ['value' => "Espresso Martini", "nombre" => "EXPRESSP MARTINI"],
+                        ['value' => "Flaming Lamborghini", "nombre" => "FLAMING LAMBORGHINI"],
+                        ['value' => "Figgy Thyme", "nombre" => "FIGGY THYME"],
+                        ['value' => "Iced Coffee", "nombre" => "ICE-COFFEE"],
+                        ['value' => "Kamikaze", "nombre" => "KAMIKAZE"],
+                        ['value' => "Kiwi Papaya Smoothie", "nombre" => "KIWI PAPAYA"],
+                        ['value' => "Long vodka", "nombre" => "LONG VODKA"],
+                        ['value' => "Mimosa", "nombre" => "MIMOSA"]
+                    ];
+                                
+                    ?>
+                    <label for="buscarInputC"><p>Elige un Cóctel</label>
+                    <select required name="buscarInputC" id="CodProvincia">
+                        <option value="">Seleccione...</option>
+                        <?php foreach($opciones as $key => $opcion){ ?>
+                            <?php if($opcion['value'] == $_SESSION['nombreCoctel']=$_REQUEST['buscarInputC']){ ?>
+                                <option selected value="<?= $opcion['value'] ?>"><?= $opcion['nombre'] ?></option>
+                            <?php }else{ ?>
+                                <option value="<?= $opcion['value'] ?>"><?= $opcion['nombre'] ?></option>
+                            <?php } ?>
+                        <?php } ?>
+                    </select>
+                    <p><?php echo($aErroresC['eBuscarInputC']!=null ? "<span style='color:red'>".$aErroresC['eBuscarInputC']."</span>" : null); ?></p>
+                    <p><?php echo($aErroresC['eResultadoC']!=null ? "<span style='color:red'>".$aErroresC['eResultadoC']."</span>" : null); ?></p>
+                </div>
+            <input type="submit" class="btn btn-secondary btn-labeled" value="Buscar" name="buscarC" />
+</form>
+</div>
+<div class="container w-50 text-center">
+   <?php if ($aErroresC["eBuscarInputC"] == null && isset($_REQUEST["buscarC"]) && $oResultadoBuscarCoctel != null) { ?>
+        <p class="h4 text-center text-info"><?php echo "<img src=$foto width='200' height='200'>"  ;?></p>
+        <p><span class="text-center" style="font-weight:bold;">Nombre:</span> <?php echo $nombreC;?></p>
+        <p><span class="text-center" style="font-weight:bold;">Categoria:</span> <?php echo $categoriaC;?></p>
+        <p><span class="text-center text-danger"" style="font-weight:bold;">Ingredientes:</span><br> <?php echo $ingrediente1C.',';?>
+        <span class="text-center" style="font-weight:bold;"></span> <?php if(!is_null($ingrediente2C)){ echo $ingrediente2C.','; }else{ echo ''; };?>
+        <span class="text-center" style="font-weight:bold;"></span> <?php if(!is_null($ingrediente3C)){ echo $ingrediente3C.','; }else{ echo ''; };?>
+        <span class="text-center"  style="font-weight:bold;"></span> <?php if(!is_null($ingrediente4C)){ echo $ingrediente4C; }else{ echo ''; };?></p>
+    <?php } ?>
 </div>
 <br><br><br><br><br><br><br><br>
+

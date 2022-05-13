@@ -75,18 +75,57 @@
         if($oResultadoBuscarUsuario== null){
             $aErroresU['eResultadoU']="Error";
         }
-        var_dump($oResultadoBuscarUsuario);
 
-        $foto= $oResultadoBuscarUsuario[0]->getFoto();
-        $nombreU= $oResultadoBuscarUsuario[0]->getNombre();
-        $apellidoU= $oResultadoBuscarUsuario[0]->getApellido();
-        $calleU = $oResultadoBuscarUsuario[0]->getCalle();
-        $paisU= $oResultadoBuscarUsuario[0]-> getPais();
-        $emailU= $oResultadoBuscarUsuario[0]-> getEmail();
-        $edadU= $oResultadoBuscarUsuario[0]-> getEdad();
+        $foto= $oResultadoBuscarUsuario->getFoto();
+        $nombreU= $oResultadoBuscarUsuario->getNombre();
+        $apellidoU= $oResultadoBuscarUsuario->getApellido();
+        $calleU = $oResultadoBuscarUsuario->getCalle();
+        $paisU= $oResultadoBuscarUsuario-> getPais();
+        $emailU= $oResultadoBuscarUsuario-> getEmail();
+        $edadU= $oResultadoBuscarUsuario-> getEdad();
         
     }
-
+    
+ //////////////////////////////////////////////////////////////////////////////////////////////////////
+    //Defiino la variable que cambiare en caso de que la entrada no sea correcta
+    $entradaCOk=true;
+    
+    //Defino el array que contendra los errores del formulario
+    $aErroresC=['eBuscarInputC'=> null,
+                'eResultadoC'=>null
+              ];
+    
+    if(isset($_REQUEST['buscarC'])){
+        $aErroresC['eBuscarInputC']= validacionFormularios::comprobarAlfabetico($_REQUEST['buscarInputC'], 30, 1, 1);//Hacemos la validacion de lo que se ha buscado
+        
+        if($aErroresC['eBuscarInputC'] != null){// Si hay algun error 
+            $entradaCOk=false; //Ponemos la entrada a false
+            $_REQUEST['eBuscarInputC']="";//Vacia los campos
+        }
+        
+    }else{
+        $entradaCOk=false;
+    }
+    
+    if($entradaCOk){
+        $_SESSION['nombreCoctel']=$_REQUEST['buscarInputC'];
+         //hacemos la consulta
+        $oResultadoBuscarCoctel= REST::coctel($_REQUEST['buscarInputC']);
+        
+        if($oResultadoBuscarCoctel== null){
+            $aErroresC['eResultadoC']="Ese coctel no existe";
+        }
+        
+        $foto= $oResultadoBuscarCoctel->getFoto();
+        $idC= $oResultadoBuscarCoctel->getId();
+        $nombreC= $oResultadoBuscarCoctel->getNombre();
+        $categoriaC = $oResultadoBuscarCoctel->getCategoria();
+        $ingrediente1C= $oResultadoBuscarCoctel-> getIngrediente1();
+        $ingrediente2C= $oResultadoBuscarCoctel-> getIngrediente2();
+        $ingrediente3C= $oResultadoBuscarCoctel-> getIngrediente3();
+        $ingrediente4C= $oResultadoBuscarCoctel-> getIngrediente4();
+    }
+    
  require_once $vistas['layout'];
 ?>
 
