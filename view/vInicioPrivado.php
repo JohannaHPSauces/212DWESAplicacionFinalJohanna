@@ -1,12 +1,20 @@
 <div id="cajaTitulo" class="text-center p-2 h4 font-weight-bold" style="background-color:gainsboro;">INICIO PRIVADO </div>
 <div id="cajaTitulo" class="text-center p-4 h4 font-weight-bold bg-transparent"></div>
 <div class="jumbotron">
-    <div class="container w-100 h-20 bg-light">
+    <div class="container text-center w-100 h-20 bg-light">
+        <div class="container text-center">
+            <img src="webroot/images/usuario.png" claswidth='150' height='150'/>
+        </div>
         <h1><?php echo $aIdioma[$_COOKIE['idioma']]['bienvenido'] . " " . $nombreUsuario ?></h1>
         <p>es la <?php echo $numConexiones ?>ª vez que te conectas,  
               <?php if(!is_null($fechaUltimaConexionAnterior)){?>
                 y la ultima conexion fue <?php echo $fFechaHoraUltimaConexion; } ?></p>
-        <form class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+        <form class="btn-toolbar " role="toolbar" aria-label="Toolbar with button groups">
+            <div class="btn-group me-5"></div>
+            <div class="btn-group me-5"></div>
+            <div class="btn-group me-5"></div>
+            <div class="btn-group me-5"></div>
+            <div class="btn-group me-5"></div>
             <div class="btn-group me-2"  aria-label="First group">
                 <input type="submit" class="btn btn-primary" value="Detalle" name="detalle"/>
             </div>

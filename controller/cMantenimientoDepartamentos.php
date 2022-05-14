@@ -27,6 +27,11 @@
         header('Location: index.php');
         exit;
     }
+    if(isset($_REQUEST['exportar'])){ //Si el usuario ha pulsado el boton de añadir
+        $_SESSION['paginaEnCurso']= 'wip';
+        header('Location: index.php');
+        exit;
+    }
     
     if(isset($_REQUEST['baja'])){ //Si el usuario pulsa el boton de bajalogica
         DepartamentoPDO::bajaLogicaDepartamento($_REQUEST['baja']);
@@ -35,6 +40,29 @@
     }
     if(isset($_REQUEST['rehabilitar'])){ //Si el usuario pulsa el boton de rehabilitar deparatmento
         DepartamentoPDO::rehabilitarDepartamento($_REQUEST['rehabilitar']);
+        header('Location: index.php');
+        exit;
+    }
+    
+    
+    if (isset($_REQUEST['paginaPrimera'])) {
+        $_SESSION['numPagina'] = 1;
+        header('Location: index.php');
+        exit;
+    }
+    if (isset($_REQUEST['paginaAnterior']) && $_SESSION['numPagina']>=2) {
+        $_SESSION['numPagina']--;
+        header('Location: index.php');
+        exit;
+    }
+   
+    if(isset($_REQUEST['paginaSiguiente']) && $_SESSION['numPagina'] < $_SESSION['paginacionDepartamentos']['PaginasTotales']){ //Si el usuario pulsa el boton de paginaSiguiente
+        $_SESSION['numPagina']++; //Le situo una pagina mas adelante
+        header('Location: index.php');
+        exit;
+    }
+    if(isset($_REQUEST['paginaUltima'])){ //Si el usuario pulsa el boton de paginaUltima
+        $_SESSION['numPagina'] = $_SESSION['paginacionDepartamentos']['PaginasTotales'];
         header('Location: index.php');
         exit;
     }
@@ -73,11 +101,20 @@
             break;
     }
     $_SESSION['criterioBusquedaDepartamentos']['estado'] = $iEstado;// Guardo en la sesion el case que ha elegido el usuario, para luego filtrar por ese boton
+    $_SESSION['numPagina'] = 1;//Inicializo la variable a 1
     }
-    
+    if (!isset($_SESSION['numPagina'])) {
+        $_SESSION['numPagina'] = 1;
+    }
+
+    $_SESSION['paginacionDepartamentos']['PaginasTotales']= DepartamentoPDO::contarDepartamentosTotales(
+        $_SESSION['criterioBusquedaDepartamentos']['descripcionBuscada'] ?? '',
+        $_SESSION['criterioBusquedaDepartamentos']['estado'] ?? 0);
+
     $aDepartamentosVista = [];//Array para guardar la informacion del departamento
   
-    $aResultadoBuscar = DepartamentoPDO::buscarDepartamentoPorDesYEstado($_SESSION['criterioBusquedaDepartamentos']['descripcionBuscada'] ?? '', $_SESSION['criterioBusquedaDepartamentos']['estado'] ?? 0); //Hacemos la consulta de buscar departamento por descripcion y estado
+    $aResultadoBuscar= DepartamentoPDO::buscarDepartamentoPorDesYEstado($_SESSION['criterioBusquedaDepartamentos']['descripcionBuscada'] ?? '', $_SESSION['criterioBusquedaDepartamentos']['estado'] ?? 0,
+        $_SESSION['numPagina']); //Hacemos la consulta de buscar departamento por descripcion y estado
    
     if ($aResultadoBuscar){ //Si el resultado es correcto
         foreach($aResultadoBuscar as $oDepartamento){//Recorro el objeto del resultado que contiene un array
