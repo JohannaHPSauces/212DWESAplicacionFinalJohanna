@@ -97,7 +97,7 @@ class DepartamentoPDO{
         } 
     }
     
-    public static function buscarDepartamentoPorDesYEstado($sBusqueda='', $iEstado =0, $numPagBuscada=1 ) {
+    public static function buscarDepartamentoPorDesYEstadoPaginado($sBusqueda='', $iEstado =0, $numPagBuscada=1 ) {
         //$iPagina = $iPagina*3;
         $numPagBuscada = ($numPagBuscada-1)*3;
         switch ($iEstado){ 
