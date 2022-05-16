@@ -117,7 +117,7 @@
 
     $aDepartamentosVista = [];//Array para guardar la informacion del departamento
   
-    $aResultadoBuscar= DepartamentoPDO::buscarDepartamentoPorDesYEstadoPaginado($_SESSION['criterioBusquedaDepartamentos']['descripcionBuscada'] ?? '', $_SESSION['criterioBusquedaDepartamentos']['estado'] ?? 0,
+    $aResultadoBuscar= DepartamentoPDO::buscarDepartamentoPorDesYEstadoPaginado($_SESSION['criterioBusquedaDepartamentos']['descripcionBuscada'] ?? '', $_SESSION['criterioBusquedaDepartamentos']['estado'] ?? 1,
         $_SESSION['numPagina']); //Hacemos la consulta de buscar departamento por descripcion y estado
    
     if ($aResultadoBuscar){ //Si el resultado es correcto

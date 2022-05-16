@@ -1,6 +1,6 @@
 <div id="cajaTitulo" class="text-center p-2 h4 font-weight-bold" style="background-color:gainsboro;">MANTENIMIENTO DEPARTAMENTOS </div>
 <div id="cajaTitulo" class="text-center p-4 h4 font-weight-bold bg-transparent"> </div>
-<div class="container h-100"> 
+<div class="container-fluid h-100 "> 
     <form name="login" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
         <div class="form-group floating-control-group w-100 bg-light">
             <label for="txtFloatingUsername">Buscar departamento por descripción</label><br>
@@ -10,12 +10,12 @@
                    <input type="submit" class="btn btn-secondary btn-labeled" value="Buscar" name="buscar"/>
                 </span>
             </div>
-             <input type="radio" name="estado" value="todos" id="departamentoTodos" <?php echo isset($_SESSION['criterioBusquedaDepartamentos']['estado'])?($_SESSION['criterioBusquedaDepartamentos']['estado']==0?'checked':''):'checked'; ?>/>
-                <label for="departamentoTodos">Todos</label>
-                <input type="radio" name="estado" value="alta" id="departamentoAlta" <?php echo isset($_SESSION['criterioBusquedaDepartamentos']['estado'])?($_SESSION['criterioBusquedaDepartamentos']['estado']==1?'checked':''):''; ?>/>
+                <input type="radio" name="estado" value="alta" id="departamentoAlta" <?php echo isset($_SESSION['criterioBusquedaDepartamentos']['estado'])?($_SESSION['criterioBusquedaDepartamentos']['estado']==1?'checked':''):'checked'; ?>/>
                 <label for="departamentoAlta">Alta</label>
                 <input type="radio" name="estado" value="baja" id="departamentoBaja" <?php echo isset($_SESSION['criterioBusquedaDepartamentos']['estado'])?($_SESSION['criterioBusquedaDepartamentos']['estado']==2?'checked':''):'';  ?> />
-                <label for="departamentoBaja">Baja</label><br><br>
+                <label for="departamentoBaja">Baja</label>
+                <input type="radio" name="estado" value="todos" id="departamentoTodos" <?php echo isset($_SESSION['criterioBusquedaDepartamentos']['estado'])?($_SESSION['criterioBusquedaDepartamentos']['estado']==0?'checked':''):''; ?>/>
+                <label for="departamentoTodos">Todos</label><br><br>
             <!--<input type="submit" class="btn btn-secondary btn-info" value="Buscar" name="buscar"/>-->
             <input type="submit" class="btn btn-secondary btn-info" value="Volver" name="volver"/>
             <input type="submit" class="btn btn-secondary btn-success" value="Añadir" name="añadir"/>

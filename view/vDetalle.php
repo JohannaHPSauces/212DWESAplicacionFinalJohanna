@@ -1,7 +1,7 @@
 <header>
     <div id="cajaTitulo" class="text-center p-2 h4 font-weight-bold" style="background-color:gainsboro;">DETALLE </div>
     <form>
-        <input type="submit" class="btn btn-info" style="font-weight:bold;" value="VOLVER" name="cerrar"/>
+        <input type="submit" class="btn btn-info"  value="Volver" name="cerrar"/>
     </form>
 </header>
 <br>

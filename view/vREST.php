@@ -1,6 +1,6 @@
 <div id="cajaTitulo" class="text-center p-2 h4 font-weight-bold" style="background-color:gainsboro;">REST </div>
 <form>
-    <input type="submit" class="btn btn-secondary btn-info " value="VOLVER" name="volver" style="font-weight:bold;">
+    <input type="submit" class="btn btn-secondary btn-info " value="Volver" name="volver" >
 </form>
 <div class="container w-50 h-20 bg-light">
 <form name="formulario" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" class="form">

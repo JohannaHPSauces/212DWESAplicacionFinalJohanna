@@ -31,8 +31,8 @@ $controladores =[
     "borrarDep" => "controller/cEliminarDepartamento.php",
     "editarDep" => "controller/cEditarDepartamento.php",
     "añadirDep" => "controller/cAñadirDepartamento.php",
-    "rest" => "controller/cREST.php"
-    
+    "rest" => "controller/cREST.php",
+    "mantenimientoUsuario" => "controller/cMantenimientoUsuarios.php"
 ];
 
 $vistas =[
@@ -51,6 +51,8 @@ $vistas =[
     "borrarDep" => "view/vEliminarDepartamento.php",
     "editarDep" => "view/vEditarDepartamento.php",
     "añadirDep" => "view/vAñadirDepartamento.php",
-    "rest" => "view/vREST.php"
+    "rest" => "view/vREST.php",
+    "mantenimientoUsuario" => "view/vMantenimientoUsuarios.php"
 ]
+        
 ?>

@@ -24,7 +24,7 @@
         exit;
     }
     if(isset($_REQUEST['mantenimientoU'])){ //Si el admin pulsa el boton de mantenimientoUsuarios
-        $_SESSION['paginaEnCurso']= 'wip';
+        $_SESSION['paginaEnCurso']= 'mantenimientoUsuario';
         $_SESSION['paginaAnterior']= 'inicioprivado';
         header('Location: index.php');
         exit;

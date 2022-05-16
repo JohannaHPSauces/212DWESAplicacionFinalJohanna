@@ -29,7 +29,7 @@
                     </div>
                     <div class="form-group floating-control-group">
                         <label for="txtFloatingUsername" style="color:black;">Contraseña</label>
-                        <input type="password" class="form-control" id="txtFloatingUsername" value="<?php echo $passwordUsuario ?>" disabled>
+                        <input type="password" class="form-control" id="txtFloatingUsername" value="<?php echo '********'/*$passwordUsuario*/ ?>" disabled>
                     </div>
                     
                     <div class="form-group mt-4">
