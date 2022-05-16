@@ -97,9 +97,9 @@ class DepartamentoPDO{
         } 
     }
     
-    public static function buscarDepartamentoPorDesYEstado($sBusqueda='', $iEstado =0, $iPagina=0 ) {
+    public static function buscarDepartamentoPorDesYEstado($sBusqueda='', $iEstado =0, $numPagBuscada=1 ) {
         //$iPagina = $iPagina*3;
-        $iPagina = ($iPagina-1)*3;
+        $numPagBuscada = ($numPagBuscada-1)*3;
         switch ($iEstado){ 
             case 0:
                 $estado = '';
@@ -114,7 +114,7 @@ class DepartamentoPDO{
 
         $consulta = <<<HER
                         SELECT * FROM T02_Departamento
-                        WHERE T02_DescDepartamento LIKE '%{$sBusqueda}%'{$estado}  LIMIT 3 OFFSET {$iPagina};
+                        WHERE T02_DescDepartamento LIKE '%{$sBusqueda}%'{$estado}  LIMIT 3 OFFSET {$numPagBuscada};
                     HER;
         $oResultado= DBPDO::ejecutarConsulta($consulta);
         $aDepartamentos = $oResultado->fetchAll();

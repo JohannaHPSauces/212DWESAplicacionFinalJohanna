@@ -10,9 +10,9 @@
               <?php if(!is_null($fechaUltimaConexionAnterior)){?>
                 y la ultima conexion fue <?php echo $fFechaHoraUltimaConexion; } ?></p>
         <form class="btn-toolbar " role="toolbar" aria-label="Toolbar with button groups">
+            <!--<div class="btn-group me-5"></div>
             <div class="btn-group me-5"></div>
-            <div class="btn-group me-5"></div>
-            <div class="btn-group me-5"></div>
+            <div class="btn-group me-5"></div>-->
             <div class="btn-group me-5"></div>
             <div class="btn-group me-5"></div>
             <div class="btn-group me-2"  aria-label="First group">

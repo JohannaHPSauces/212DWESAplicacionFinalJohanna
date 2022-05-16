@@ -29,6 +29,7 @@
     }
     if(isset($_REQUEST['exportar'])){ //Si el usuario ha pulsado el boton de añadir
         $_SESSION['paginaEnCurso']= 'wip';
+        $_SESSION['paginaAnterior']= 'mantenimiento';
         header('Location: index.php');
         exit;
     }
@@ -45,24 +46,24 @@
     }
     
     
-    if (isset($_REQUEST['paginaPrimera'])) {
+    if (isset($_REQUEST['paginaPrimera'])) { //definimos la primera actual a 1
         $_SESSION['numPagina'] = 1;
         header('Location: index.php');
         exit;
     }
-    if (isset($_REQUEST['paginaAnterior']) && $_SESSION['numPagina']>=2) {
-        $_SESSION['numPagina']--;
+    if (isset($_REQUEST['paginaAnterior']) && $_SESSION['numPagina']>=2) { //si el usuario pulsa el boton de pagina anterior
+        $_SESSION['numPagina']--; //le restamos 1 a la pagina en la que estamos
         header('Location: index.php');
         exit;
     }
    
-    if(isset($_REQUEST['paginaSiguiente']) && $_SESSION['numPagina'] < $_SESSION['paginacionDepartamentos']['PaginasTotales']){ //Si el usuario pulsa el boton de paginaSiguiente
-        $_SESSION['numPagina']++; //Le situo una pagina mas adelante
+    if(isset($_REQUEST['paginaSiguiente']) && $_SESSION['numPagina'] < $_SESSION['paginacionDepartamentos']['paginasTotales']){ //Si el usuario pulsa el boton de paginaSiguiente
+        $_SESSION['numPagina']++; //Le sumo 1 a la pagina en la que estamos
         header('Location: index.php');
         exit;
     }
-    if(isset($_REQUEST['paginaUltima'])){ //Si el usuario pulsa el boton de paginaUltima
-        $_SESSION['numPagina'] = $_SESSION['paginacionDepartamentos']['PaginasTotales'];
+    if(isset($_REQUEST['paginaUltima'])){ //Si el usuario pulsa el boton de ultima pagina
+        $_SESSION['numPagina'] = $_SESSION['paginacionDepartamentos']['paginasTotales'];//igualamos el numero de paginas a el total
         header('Location: index.php');
         exit;
     }
@@ -103,11 +104,14 @@
     $_SESSION['criterioBusquedaDepartamentos']['estado'] = $iEstado;// Guardo en la sesion el case que ha elegido el usuario, para luego filtrar por ese boton
     $_SESSION['numPagina'] = 1;//Inicializo la variable a 1
     }
+    
+    
     if (!isset($_SESSION['numPagina'])) {
         $_SESSION['numPagina'] = 1;
     }
 
-    $_SESSION['paginacionDepartamentos']['PaginasTotales']= DepartamentoPDO::contarDepartamentosTotales(
+    //Guardamos en la sesion el numero de paginas totales que luego vamos a usar en la paginacion
+    $_SESSION['paginacionDepartamentos']['paginasTotales']= DepartamentoPDO::contarDepartamentosTotales(
         $_SESSION['criterioBusquedaDepartamentos']['descripcionBuscada'] ?? '',
         $_SESSION['criterioBusquedaDepartamentos']['estado'] ?? 0);
 

@@ -106,7 +106,7 @@
                   <button type="submit" class="btn btn-labeled btn-danger page-link" name="paginaAnterior" aria-label="Previous">
                       <span aria-hidden="true"><</span>
                   </button>
-                  <li class="page-item"><a class="page-link" disabled ><?php echo $_SESSION['numPagina']."/".$_SESSION['paginacionDepartamentos']['PaginasTotales']; ?></a></li>
+                  <li class="page-item"><a class="page-link" disabled ><?php echo $_SESSION['numPagina']."/".$_SESSION['paginacionDepartamentos']['paginasTotales']; ?></a></li>
                   <button type="submit" class="btn btn-labeled btn-danger page-link" name="paginaSiguiente" aria-label="Previous">
                       <span aria-hidden="true">></span>
                   </button>

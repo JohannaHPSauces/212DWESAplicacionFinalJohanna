@@ -1,7 +1,8 @@
 <?php
 
     if(isset($_REQUEST['volver'])){ //Si el usuario pulsa el boton de volver
-        $_SESSION['paginaEnCurso']= 'inicioprivado'; //Guardo como pagina actual la de inicio publico
+        $_SESSION['paginaEnCurso']= $_SESSION['paginaAnterior']; //Guardo como pagina actual la de inicio publico
+        $_SESSION['paginaAnterior']='';
         header('Location: index.php');
         exit;
     }
