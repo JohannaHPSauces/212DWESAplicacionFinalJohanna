@@ -105,17 +105,29 @@ class REST {
         $oDepartamento= null; //Inicializamos el objeto null
         $sResultadoRawData= false; //Variable de tipo string que contendra el json
         //get_headers-> devuelve un Array con las cabeceras enviadas por el servidor en respuesta a una peticion HTTP
-        $aHeaders= get_headers("http://www.daw212.sauces.local/212DWESAplicacionFinalJohanna/API/buscarDepartamentoPorCodigo.php?codDepartamento={$codDepartamento}");      
+        //http://www.daw212.sauces.local/212DWESAplicacionFinalJohanna/API/buscarDepartamentoPorCodigo.php?codDepartamento={$codDepartamento}"
+        //http://192.168.1.112/212DWESAplicacionFinalJohanna/API/buscarDepartamentoPorCodigo.php?codDepartamento={$codDepartamento}"
+        $aHeaders= get_headers("http://192.168.1.112/212DWESAplicacionFinalJohanna/API/buscarDepartamentoPorCodigo.php?codDepartamento={$codDepartamento}");      
         $numHeaders=substr($aHeaders[0],9,3);
         if($numHeaders==200){
-            $sResultadoRawData= @file_get_contents("http://www.daw212.sauces.local/212DWESAplicacionFinalJohanna/API/buscarDepartamentoPorCodigo.php?codDepartamento={$codDepartamento}");
+            $sResultadoRawData= @file_get_contents("http://192.168.1.112/212DWESAplicacionFinalJohanna/API/buscarDepartamentoPorCodigo.php?codDepartamento={$codDepartamento}");
         }
         if($sResultadoRawData){
             $aJson= json_decode($sResultadoRawData, true);//Guardamos en un Array el resultado decofificado
             
-           
-            
+            if($aJson['respuesta'] == 'true'){
+                $oDepartamento= new Departamento(
+                    $aJson['codDepartamento'],
+                    $aJson['descDepartamento'],
+                    $aJson['volumenNegocio'],
+                    $aJson['fechaCreacionDepartamento'],
+                    $aJson['fechaBajaDepartamento']
+                );
+            }else{
+                return $aJson['mensajeError'];
+            }
         }
+         return $oDepartamento; 
     }
 }
 

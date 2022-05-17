@@ -130,7 +130,6 @@
                         ['value' => "Whiskey Sour", "nombre" => "WHISKEY SOUR"],
                         ['value' => "Daiquiri", "nombre" => "ASTURIAS"],
                         ['value' => "Apricot punch", "nombre" => "APRICOT PUNCH"],
-                        ['value' => "Planter’s Punch", "nombre" => "PLANTER'S PUNCH"],
                         ['value' => "Manhattan", "nombre" => "MANHATTAN"],
                         ['value' => "Vampiro", "nombre" => "VAMPIRO"],
                         ['value' => "Pink Lady", "nombre" => "PINK LADY"],
@@ -188,18 +187,27 @@
         <p>Permite obtener la información de un departamento. El formato del campo es un input donde poner el codigo del departamento (3 letras).</p>
                  <div class="container auto">
                     <label for="buscarInputD"><p>Código departamento:</p></label>
-                    <input type="text" class="form-control w-25" placeholder="Codigo Departamento" name="buscarInputD" value="<?php echo(isset($_REQUEST['buscarInputD']) ? $_REQUEST['buscarInputD'] : null); ?>"><br>
-                    
-                    <p><?php /*echo($aErroresU['eBuscarInputD']!=null ? "<span style='color:red'>".$aErroresD['eBuscarInputD']."</span>" : null);*/ ?></p>
-                    <p><?php /*echo($aErroresU['eResultadoD']!=null ? "<span style='color:red'>".$aErroresD['eResultadoD']."</span>" : null); */?></p>
+                    <input type="text" class="form-control w-25" placeholder="Codigo Departamento" name="buscarInputD" value="<?php echo(isset($_REQUEST['buscarInputD']) ? $_REQUEST['buscarInputD'] : null); ?>">
+                    <p><?php echo($aErroresD['eBuscarInputD']!=null ? "<span style='color:red'>".$aErroresD['eBuscarInputD']."</span>" : null); ?></p>
+                    <p><?php echo($aErroresD['eResultadoD']!=null ? "<span style='color:red'>".$aErroresD['eResultadoD']."</span>" : null); ?></p>
                 </div>
             <input type="submit" class="btn btn-secondary btn-labeled" value="Buscar" name="buscarD" />
 </form>
 </div>
 <div class="container w-50 text-center">
-    <?php /*if ($aErroresD["eBuscarInputD"] == null && isset($_REQUEST["buscarD"]) && $oResultadoBuscarDepartamento != null) { */?>
-   
-    <?php /*}*/ ?>
+    <?php if ($aErroresD["eBuscarInputD"] == null && $aErroresD["eResultadoD"]== null && isset($_REQUEST["buscarD"]) && $oResultadoBuscarDepartamento != null) {?>
+        <p><span class="text-center" style="font-weight:bold;">Código:</span> <?php echo $aResultadoBuscarDepartamento['codDepartamento'];?></p>
+        <p><span class="text-center" style="font-weight:bold;">Descripcion:</span> <?php echo $aResultadoBuscarDepartamento['descDepartamento'];?></p>
+        <p><span class="text-center" style="font-weight:bold;">Volumen Negocio:</span> <?php echo $aResultadoBuscarDepartamento['volumenNegocio'];?></p>
+        <p><span class="text-center" style="font-weight:bold;">Fecha Creación:</span> <?php echo $aResultadoBuscarDepartamento['fechaCreacionDepartamento'];?></p>
+        <p><?php  if(!is_null($aResultadoBuscarDepartamento['fechaBajaDepartamento'])){?>
+                    <span class="text-center" style="font-weight:bold;">Fecha Baja: </span> <?php echo $aResultadoBuscarDepartamento['fechaBajaDepartamento']; 
+                  }else{
+                    echo '';
+                  }?>
+        </p>
+    
+            <?php  } ?>
 </div>
 <br><br><br><br><br><br><br><br>
 

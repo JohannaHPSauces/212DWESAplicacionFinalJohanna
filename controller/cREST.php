@@ -125,7 +125,46 @@
         $ingrediente3C= $oResultadoBuscarCoctel-> getIngrediente3();
         $ingrediente4C= $oResultadoBuscarCoctel-> getIngrediente4();
     }
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Defiino la variable que cambiare en caso de que la entrada no sea correcta
+    $entradaDepartamentoOk=true;
     
+    //Defino el array que contendra los errores del formulario
+    $aErroresD=['eBuscarInputD'=> null,
+                'eResultadoD'=>null
+               ];
+    
+    if(isset($_REQUEST['buscarD'])){
+        $aErroresU['eBuscarInputD']= validacionFormularios::comprobarAlfabetico($_REQUEST['buscarInputD'], 3, 3, 1);//Hacemos la validacion de lo que se ha buscado
+        
+        foreach ($aErroresD as $campo => $error) {//recorremos el array de errores
+        if ($error != null) {//
+            $entradaDepartamentoOk = false;//Si hay algun error entrada cambiada a false
+            $_REQUEST[$campo] = '';
+        }
+    }
+        
+    }else{
+        $entradaDepartamentoOk=false;//si no ha escrito nada entrada false
+    }
+    
+    if($entradaDepartamentoOk){//Si todo ha ido bien
+         //hacemos la consulta
+        $oResultadoBuscarDepartamento= REST::buscarDepartamentoPorCodigo($_REQUEST['buscarInputD']);//buscamos el codigo del departamento
+        
+        if(is_object($oResultadoBuscarDepartamento)){
+            $aResultadoBuscarDepartamento = [
+                'codDepartamento' => $oResultadoBuscarDepartamento->getCodDepartamento(),
+                'descDepartamento' => $oResultadoBuscarDepartamento->getDescDepartamento(),
+                'volumenNegocio' => $oResultadoBuscarDepartamento->getVolumenNegocio(),
+                'fechaCreacionDepartamento' => date('d/m/Y H:i:s' , $oResultadoBuscarDepartamento->getFechaCreacionDepartamento()),
+                'fechaBajaDepartamento' => $oResultadoBuscarDepartamento->getFechaBajaDepartamento()
+            ];
+        }else{
+            $aErroresD['eResultadoD'] = $oResultadoBuscarDepartamento;
+        }
+       
+    }
+        
  require_once $vistas['layout'];
 ?>
-
