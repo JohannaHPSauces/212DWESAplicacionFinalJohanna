@@ -33,6 +33,7 @@ $controladores =[
     "añadirDep" => "controller/cAñadirDepartamento.php",
     "rest" => "controller/cREST.php",
     "mantenimientoUsuario" => "controller/cMantenimientoUsuarios.php"
+    
 ];
 
 $vistas =[

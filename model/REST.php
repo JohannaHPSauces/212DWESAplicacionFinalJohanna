@@ -101,15 +101,24 @@ class REST {
         return $oCoctel; 
     }
         
-              
-       
-    //ec831fb2
-    
-   // publica
-   // 30cd803cc99e256e7d917026ae17f29f
-    
-   // privada
-   // d6c98e2c837ee1b435e446cb43c844a0f40556db
+    public static function buscarDepartamentoPorCodigo($codDepartamento) {
+        $oDepartamento= null; //Inicializamos el objeto null
+        $sResultadoRawData= false; //Variable de tipo string que contendra el json
+        //get_headers-> devuelve un Array con las cabeceras enviadas por el servidor en respuesta a una peticion HTTP
+        $aHeaders= get_headers("http://www.daw212.sauces.local/212DWESAplicacionFinalJohanna/API/buscarDepartamentoPorCodigo.php?codDepartamento={$codDepartamento}");      
+        $numHeaders=substr($aHeaders[0],9,3);
+        if($numHeaders==200){
+            $sResultadoRawData= @file_get_contents("http://www.daw212.sauces.local/212DWESAplicacionFinalJohanna/API/buscarDepartamentoPorCodigo.php?codDepartamento={$codDepartamento}");
+        }
+        if($sResultadoRawData){
+            $aJson= json_decode($sResultadoRawData, true);//Guardamos en un Array el resultado decofificado
+            
+            $oDepartamento= new Departamento{
+                $aJson[]
+        }
+            
+        }
+    }
 }
 
 ?>

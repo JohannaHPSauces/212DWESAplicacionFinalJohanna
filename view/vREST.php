@@ -181,5 +181,27 @@
         <span class="text-center"  style="font-weight:bold;"></span> <?php if(!is_null($ingrediente4C)){ echo $ingrediente4C; }else{ echo ''; };?></p>
     <?php } ?>
 </div>
+<br>
+<div class="container w-50 h-20 bg-light">
+<form name="formulario" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" class="form">
+    <p class="text-center h2" style="text-weight:bold; background:lightgrey; padding: 5px;">Buscar departamento por código<p>
+        <p>Permite obtener la información de un departamento. El formato del campo es un input donde poner el codigo del departamento (3 letras).</p>
+                 <div class="container auto">
+                    <label for="buscarInputD"><p>Código departamento:</p></label>
+                    <input type="text" class="form-control w-25" placeholder="Codigo Departamento" name="buscarInputD" value="<?php echo(isset($_REQUEST['buscarInputD']) ? $_REQUEST['buscarInputD'] : null); ?>"><br>
+                    
+                    <p><?php /*echo($aErroresU['eBuscarInputD']!=null ? "<span style='color:red'>".$aErroresD['eBuscarInputD']."</span>" : null);*/ ?></p>
+                    <p><?php /*echo($aErroresU['eResultadoD']!=null ? "<span style='color:red'>".$aErroresD['eResultadoD']."</span>" : null); */?></p>
+                </div>
+            <input type="submit" class="btn btn-secondary btn-labeled" value="Buscar" name="buscarD" />
+</form>
+</div>
+<div class="container w-50 text-center">
+    <?php /*if ($aErroresD["eBuscarInputD"] == null && isset($_REQUEST["buscarD"]) && $oResultadoBuscarDepartamento != null) { */?>
+   
+    <?php /*}*/ ?>
+</div>
 <br><br><br><br><br><br><br><br>
+
+
 
