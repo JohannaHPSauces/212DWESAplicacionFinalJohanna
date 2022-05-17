@@ -57,13 +57,13 @@
         exit;
     }
    
-    if(isset($_REQUEST['paginaSiguiente']) && $_SESSION['numPagina'] < $_SESSION['paginacionDepartamentos']['paginasTotales']){ //Si el usuario pulsa el boton de paginaSiguiente
+    if(isset($_REQUEST['paginaSiguiente']) && $_SESSION['numPagina'] < $_SESSION['paginasTotales']){ //Si el usuario pulsa el boton de paginaSiguiente
         $_SESSION['numPagina']++; //Le sumo 1 a la pagina en la que estamos
         header('Location: index.php');
         exit;
     }
     if(isset($_REQUEST['paginaUltima'])){ //Si el usuario pulsa el boton de ultima pagina
-        $_SESSION['numPagina'] = $_SESSION['paginacionDepartamentos']['paginasTotales'];//igualamos el numero de paginas a el total
+        $_SESSION['numPagina'] = $_SESSION['paginasTotales'];//igualamos el numero de paginas a el total
         header('Location: index.php');
         exit;
     }
@@ -111,13 +111,13 @@
     }
 
     //Guardamos en la sesion el numero de paginas totales que luego vamos a usar en la paginacion
-    $_SESSION['paginacionDepartamentos']['paginasTotales']= DepartamentoPDO::contarDepartamentosTotales(
+    $_SESSION['paginasTotales']= DepartamentoPDO::contarDepartamentosTotales(
         $_SESSION['criterioBusquedaDepartamentos']['descripcionBuscada'] ?? '',
         $_SESSION['criterioBusquedaDepartamentos']['estado'] ?? 0);
 
     $aDepartamentosVista = [];//Array para guardar la informacion del departamento
   
-    $aResultadoBuscar= DepartamentoPDO::buscarDepartamentoPorDesYEstadoPaginado($_SESSION['criterioBusquedaDepartamentos']['descripcionBuscada'] ?? '', $_SESSION['criterioBusquedaDepartamentos']['estado'] ?? 1,
+    $aResultadoBuscar= DepartamentoPDO::buscarDepartamentoPorDesYEstadoPaginado($_SESSION['criterioBusquedaDepartamentos']['descripcionBuscada'] ?? '', $_SESSION['criterioBusquedaDepartamentos']['estado'] ?? 0,
         $_SESSION['numPagina']); //Hacemos la consulta de buscar departamento por descripcion y estado
    
     if ($aResultadoBuscar){ //Si el resultado es correcto

@@ -53,7 +53,7 @@
                 <img class="card-img-top" src="webroot/images/diacla.PNG" target="_blank" alt="Card image cap">
                 <div class="card-body">
                   <h5 class="card-title">Diagrama de Clases</h5>
-                  <a href="webroot/doc/220119DiagramaDeClases.pdf" target="_blank" class="btn btn-primary">Ver</a>
+                  <a href="webroot/images/Main.png" target="_blank" class="btn btn-primary">Ver</a>
                 </div>
             </div>
             <div class="card text-center" style="border:2px solid grey;">
