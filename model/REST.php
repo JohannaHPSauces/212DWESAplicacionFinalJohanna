@@ -113,9 +113,7 @@ class REST {
         if($sResultadoRawData){
             $aJson= json_decode($sResultadoRawData, true);//Guardamos en un Array el resultado decofificado
             
-            $oDepartamento= new Departamento{
-                $aJson[]
-        }
+           
             
         }
     }
