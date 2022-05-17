@@ -38,14 +38,10 @@ if(isset($_GET['codDepartamento'])){
     $entradaOk=false;
 }
 
-echo json_encode($aDepartamento);
-
-
-
-
-
-
-
-
+if($entradaOk){
+    echo json_encode($aDepartamento);
+}else{
+    echo json_encode($aErrores, JSON_PRETTY_PRINT);
+}
 
 ?>
