@@ -58,7 +58,6 @@ class REST {
                 }
                 $aRespuesta[$clave]=$oUsuario;
             }*/
-            
             $oUsuario= new UsuarioRandom(
                     $aJson['results']['0']['picture']['large'],
                     $aJson['results']['0']['name']['first'],
