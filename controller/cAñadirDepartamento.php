@@ -15,12 +15,12 @@
                 'volNegocio' =>null
                 ];
     
-    if(isset($_REQUEST['aceptar'])){
+    if(isset($_REQUEST['aceptar'])){//SI EL USUARIO PULSA EL BOTON DE ACEPTAR
         $aErrores['codDep']= validacionFormularios::comprobarAlfabetico($_REQUEST['codigoDepartamento'],3, 3, 1);//Hacemos la validacion del usuario
         $aErrores['desDep']= validacionFormularios::comprobarAlfabetico($_REQUEST['descripcionDepartamento'], 255, 4, 1);//Hacemos la validacion de la descripcion de usuario
         $aErrores['volNegocio']= validacionFormularios::comprobarFloat($_REQUEST['volumenNegocio'], 255, 1, 1); //Hacemos la validacion de la comtraseña
         
-        //Comprobamos si el departamento existe en la base de datos
+       //Comprobamos si el departamento existe en la base de datos
        $oDepartamentoValido= DepartamentoPDO::buscarDepartamentoPorCodigo($_REQUEST['codigoDepartamento']);
        
        //Si existe mostrammos mensaje diciendo que ya existe ese departamento

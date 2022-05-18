@@ -5,7 +5,8 @@
 <div class="container w-50 h-20 bg-light">
 <form name="formulario" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" class="form">
     <p class="text-center h2" style="text-weight:bold; background:lightgrey; padding: 5px;">Tiempo de provincia<p>
-        <p>Permite obtener el tiempo actual de la provincia. El formato del campo es una lista desplegable con las provincias en la cual hay que elegir una. La informacion se trata con códigos de provincia.</p>
+        <p>Permite obtener el tiempo actual de la provincia. El formato del campo es una lista desplegable con las provincias en la cual hay que elegir una. La informacion se trata con códigos de provincia. <a href="https://www.el-tiempo.net/api" target="_blank">info</a></p>
+        
                 <div class="container auto">
                     <?php 
                     $opciones = [
@@ -63,7 +64,7 @@
                     ];
                                 
                     ?>
-                    <label for="buscarInput"><p>Código Provincia*<a href="https://www.el-tiempo.net/api" target="_blank">info</a></p></label>
+                    <label for="buscarInput"><p>Código Provincia*</p></label>
                     <select required name="buscarInput" id="CodProvincia">
                         <option value="">Seleccione...</option>
                         <?php foreach($opciones as $key => $opcion){ ?>
@@ -95,7 +96,7 @@
 <div class="container w-50 h-20 bg-light">
 <form name="formulario" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" class="form">
     <p class="text-center h2" style="text-weight:bold; background:lightgrey; padding: 5px;">Usuario Random<p>
-        <p>Permite obtener usuarios de forma aleatoria. El formato del campo es un input donde poner un número del 1-5.</p>
+        <p>Permite obtener usuarios de forma aleatoria. El formato del campo es un input donde poner un número del 1-5. <a href="https://randomuser.me/" target="_blank">info</a></p>
                 <div class="container auto">
                     <label for="buscarInputU"><p>Número de usuarios:</p></label>
                     <input type="text" class="form-control w-25" placeholder="Introduce del 1 al 5" name="buscarInputU" value="<?php echo(isset($_REQUEST['buscarInputU']) ? $_REQUEST['buscarInputU'] : null); ?>"><br>
@@ -119,8 +120,8 @@
 </div><br>
 <div class="container w-50 h-20 bg-light">
 <form name="formulario" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" class="form">
-    <p class="text-center h2" style="text-weight:bold; background:lightgrey; padding: 5px;">Informacion bebida<p>
-        <p>Permite obtener la información de una bebida. El formato del campo es una lista.</p>
+    <p class="text-center h2" style="text-weight:bold; background:lightgrey; padding: 5px;">Informacion cóctel<p>
+        <p>Permite obtener la información de un cóctel. El formato del campo es una lista. <a href="https://www.thecocktaildb.com/api.php" target="_blank">info</a></p>
                  <div class="container auto">
                     <?php 
                     $opciones = [
@@ -210,6 +211,3 @@
             <?php  } ?>
 </div>
 <br><br><br><br><br><br><br><br>
-
-
-

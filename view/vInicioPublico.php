@@ -32,10 +32,10 @@
                 </div>
             </div>
             <div class="card text-center" style="border:2px solid grey;">
-                <img class="card-img-top" src="webroot/images/mod.PNG" target="_blank" alt="Card image cap">
-                <div class="card-body">
-                  <h5 class="card-title">Modelo Físico de Datos</h5>
-                  <a href="webroot/doc/201127ModeloFisicoDeDatos20-21.pdf" target="_blank"  class="btn btn-primary">Ver</a>
+                <img class="card-img-top" src="webroot/images/api.PNG" alt="Card image cap">
+                <div class="card-body"><br>
+                  <h5 class="card-title">Funcionamiento APIs</h5>
+                  <a href="webroot/doc/infoAPIS.pdf" target="_blank" class="btn btn-primary">Ver</a>
                 </div>
             </div>
         </div>
@@ -50,7 +50,7 @@
                 </div>
             </div>
             <div class="card text-center" style="border:2px solid grey;">
-                <img class="card-img-top" src="webroot/images/diacla.PNG" target="_blank" alt="Card image cap">
+                <img class="card-img-top" src="webroot/images/Main.png" target="_blank" alt="Card image cap">
                 <div class="card-body">
                   <h5 class="card-title">Diagrama de Clases</h5>
                   <a href="webroot/images/Main.png" target="_blank" class="btn btn-primary">Ver</a>
@@ -79,6 +79,13 @@
                 <div class="card-body">
                   <h5 class="card-title">Estructura de Almacenamiento</h5>
                   <a href="webroot/doc/211129EstandarDesarrolloDAWyEstructuraAlmacenamientoDWES.pdf" target="_blank" class="btn btn-primary">Ver</a>
+                </div>
+            </div>
+            <div class="card text-center" style="border:2px solid grey;">
+                <img class="card-img-top" src="webroot/images/mod.PNG" target="_blank" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">Modelo Físico de Datos</h5>
+                  <a href="webroot/doc/201127ModeloFisicoDeDatos20-21.pdf" target="_blank"  class="btn btn-primary">Ver</a>
                 </div>
             </div>
         </div>

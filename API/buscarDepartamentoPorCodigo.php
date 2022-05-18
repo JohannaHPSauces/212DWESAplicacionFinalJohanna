@@ -34,14 +34,14 @@ if(isset($_GET['codDepartamento'])){
     }
 }else{
     $aErrores['respuesta']= 'false';
-    $aErrores['mensajeError']= "Ha habido un problema";
+    $aErrores['mensajeError']= "Ha se ha encontrado ningun parámetro";
     $entradaOk=false;
 }
 
 if($entradaOk){
     echo json_encode($aDepartamento);
 }else{
-    echo json_encode($aErrores, JSON_PRETTY_PRINT);
+    echo json_encode($aErrores);
 }
 
 ?>
