@@ -96,7 +96,6 @@ class REST {
                     $aJson['drinks']['0']['strIngredient3'],
                     $aJson['drinks']['0']['strIngredient4']
                 );
-            
         }
         return $oCoctel; 
     }
