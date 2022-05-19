@@ -37,11 +37,13 @@ if(isset($_GET['codDepartamento'])){
     $aErrores['mensajeError']= "Ha se ha encontrado ningun parámetro";
     $entradaOk=false;
 }
+$json_pretty = json_encode($aDepartamento, JSON_PRETTY_PRINT);
+$json_pretty1 = json_encode($aErrores, JSON_PRETTY_PRINT);
 
 if($entradaOk){
-    echo json_encode($aDepartamento);
+    echo "<pre>".$json_pretty."<pre/>";
 }else{
-    echo json_encode($aErrores);
+    echo "<pre>".$json_pretty1."<pre/>";
 }
 
 ?>

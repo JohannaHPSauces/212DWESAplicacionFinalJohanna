@@ -11,6 +11,8 @@ require_once '../model/UsuarioPDO.php';
 
 $aResultado = [];
 
+//http://daw212.sauces.local/212DWESAplicacionFinalJohanna/API/buscarUsuarioPorDescripcion.php?descUsuario=
+//http://192.168.1.112/212DWESAplicacionFinalJohanna/API/buscarUsuarioPorDescripcion.php?descUsuario=
 
 if(isset($_GET['descUsuario'])){
     
@@ -36,7 +38,4 @@ $json_pretty = json_encode($aResultado, JSON_PRETTY_PRINT);
 echo "<pre>".$json_pretty."<pre/>";
 
 
-
-
-//http://daw212.sauces.local/212DWESAplicacionFinalJohanna/API/buscarUsuarioPorDescripcion.php?descUsuario=
 ?>

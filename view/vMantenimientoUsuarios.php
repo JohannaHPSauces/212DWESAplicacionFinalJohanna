@@ -7,9 +7,9 @@
     </div>
     <div class="container bg-light d-flex justify-content-center">
             <div class="input-group w-50">
-                <input type="text" class="form-control" id="inputDescUsuario" name="descUsuario"> 
+                <input type="text" class="form-control" id="descripcionABuscar" name="descUsuario"> 
                 <span class="input-group-btn">
-                   <input type="submit" class="btn btn-secondary btn-labeled" value="Buscar" name="buscar"/>
+                   <input type="submit" class="btn btn-secondary btn-labeled" id="buscarDesc" value="Buscar" name="buscar"/>
                 </span>
             </div>
     </div>
@@ -26,7 +26,8 @@
             <th class="bg-light text-center" scope="col">Perfil</th>
         </tr>
     </thead>
-    <tbody>
+    <tbody id="usuarios">
     </tbody>
 </table>
 </div>
+ <script src="webroot/js/mtoUsuarios.js"></script>
