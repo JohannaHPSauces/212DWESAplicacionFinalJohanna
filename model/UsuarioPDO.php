@@ -24,6 +24,36 @@ class UsuarioPDO implements UsuarioBD{
             }
         } 
     }
+    public static function buscarUsuarioPorDesc($descUsuario= null){
+        $aRespuesta = [];
+        $consulta = <<<HER
+                        SELECT * FROM T01_Usuario 
+                        WHERE T01_DescUsuario LIKE '%{$descUsuario}%'); 
+                    HER;
+        
+        $resultado= DBPDO::ejecutarConsulta($consulta); //Ejecuto la consulta
+        $aUsuario = $resultado->fetchAll();//Guardo lo que me devuelve la consulta
+        
+        if($aUsuario){ //Si hay algo en array lo recorro y creo el objeto usuario
+            $i = 0;
+            foreach($aUsuario as $oUsuario){
+                $aRespuesta[$i] = new Usuario(
+                    $oUsuario['T01_CodUsuario'], 
+                    $oUsuario['T01_Password'], 
+                    $oUsuario['T01_DescUsuario'], 
+                    $oUsuario['T01_NumConexiones'], 
+                    $oUsuario['T01_FechaHoraUltimaConexion'],
+                    time(),    
+                    $oUsuario['T01_Perfil'], 
+                    $oUsuario['T01_ImagenUsuario']
+                );
+                $i++;
+            }
+            return $aRespuesta; //Devuelvo el nuevo usuario
+        }else{
+            return false; //Devuelvo false
+        }
+    }
     public static function registrarUltimaConexion($oUsuario) {
         //Actualizar objeto usuario
         $oUsuario->setFechaHoraUltimaConexionAnterior($oUsuario->getFechaHoraUltimaConexion());
