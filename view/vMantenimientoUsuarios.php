@@ -58,7 +58,7 @@
         xhttp.send("Your JSON Data Here");
     }
     
-    
+   
     function mostrarUsuarios(usuarios){
         var contenidoTabla= document.getElementById("usuarios");
         contenidoTabla.innerHTML= '';
