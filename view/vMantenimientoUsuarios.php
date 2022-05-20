@@ -15,17 +15,16 @@
             </div>
     </div>
 </form>
-<div class="container ">
-<table class="table table-bordered w-100 align-items-center font-weight-bold">
+<div class="container">
+<table class="table table-hover table-bordered table-striped w-100 font-weight-bold text-center">
     <thead>
         <tr>
-            <th class="bg-light text-center  " scope="col">Código </th>
-            <th class="bg-light text-center w-25" scope="col">Descripción</th>
-            <th class="bg-light text-center" scope="col">Núm conexiones</th>
-            <th class="bg-light text-center" scope="col">Password</th>
-            <th class="bg-light text-center" scope="col">F/H última conexión</th>
-            <th class="bg-light text-center" scope="col">F/H última conexión anterior</th>
-            <th class="bg-light text-center" scope="col">Perfil</th>
+            <th class="bg-warning text-center " scope="col">Código </th>
+            <th class="bg-warning  text-center w-25" scope="col">Descripción</th>
+            <th class="bg-warning  text-center" scope="col">Núm conexiones</th>
+            <th class="bg-warning  text-center" scope="col">Password</th>
+            <th class="bg-warning  text-center" scope="col">F/H última conexión</th>
+            <th class="bg-warning  text-center" scope="col">Perfil</th>
         </tr>
     </thead>
     <tbody id="usuarios">
@@ -79,11 +78,13 @@
                             
                         break;
                     case 'fechaHoraUltimaConexion':
-                        if('fechaHoraUltimaConexion'==null){
+                        if(Usuario['fechaHoraUltimaConexion']===null){
                          nuevaCelda.innerHTML= '';
                         }else{
-                            let oFecha= new Date(parseInt(Usuario['fechaHoraUltimaConexion']) * 1000); // *1000 para que esté en milisegundos.
-                            nuevaCelda.innerHTML= `${oFecha.getDate()}/${oFecha.getMonth()+1}/${oFecha.getFullYear()}, a las ${oFecha.getHours()}:${oFecha.getMinutes()}:${oFecha.getSeconds()}`;
+                            let oFecha = new Date(parseInt(Usuario['fechaHoraUltimaConexion']) * 1000);
+                            ultimaConexionMostrar = `${oFecha.getDate()}/${oFecha.getMonth() + 1}/${oFecha.getFullYear()} a las ${oFecha.getHours()}:${oFecha.getMinutes()}:${oFecha.getSeconds()}`;
+                    
+                            nuevaCelda.innerHTML= ultimaConexionMostrar;
                         }
                         break;
                     default:

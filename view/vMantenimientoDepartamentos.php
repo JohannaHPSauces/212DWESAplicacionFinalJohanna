@@ -23,7 +23,7 @@
             <input type="submit" class="btn btn-secondary btn-warning" value="Exportar" name="exportar"/>
     
         </div><br>
-        <table class="table table-bordered w-100 align-items-center font-weight-bold">
+        <table class=" table-hover table table-bordered w-100 align-items-center font-weight-bold">
             <thead>
                 <tr>
                     <th class="bg-light text-center  " scope="col">Código</th>

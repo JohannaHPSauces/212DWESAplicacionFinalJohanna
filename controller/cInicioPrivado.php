@@ -42,7 +42,9 @@
     }
     
     //SACAMOS EL NOMBRE DEL USUARIO 
-    $nombreUsuario=$_SESSION['usuario212AplicacionFinal']->getDescUsuario();
+    $nombreUsuario=$_SESSION['usuario212AplicacionFinal']->getCodUsuario();
+     //SACAMOS EL NOMBRE DEL USUARIO 
+    $descUsuario=$_SESSION['usuario212AplicacionFinal']->getDescUsuario();
     
     //SACAMOS EL TIPO DE USUARIO
     $tipoUsuario=$_SESSION['usuario212AplicacionFinal']->getPerfil();
@@ -57,6 +59,7 @@
     $fechaUltimaConexionAnterior= $_SESSION['usuario212AplicacionFinal']->getFechaHoraUltimaConexionAnterior();
     $date=$fechaUltimaConexionAnterior;
     $fFechaHoraUltimaConexion = date('d-m-Y H:i:s', $date);
+    
     
     //fichero que contie el array de lo que cambia con la cookie
     include_once 'config/confCookie.php';

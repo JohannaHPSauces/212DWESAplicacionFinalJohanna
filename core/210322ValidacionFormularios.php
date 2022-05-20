@@ -210,6 +210,23 @@ class validacionFormularios {  //ELIMINA EL METODO VALIDATEDATE Y LO INCLUYE EN 
         }
         return $mensajeError;
     }
+    public static function validarNombreArchivo($nombreArchivo, $aExtensiones, $maxTamanio = 150, $minTamanio = 4, $obligatorio = 0) {
+        // Validación del texto del nombre del archivo.
+        $mensajeError = self::comprobarAlfaNumerico($nombreArchivo, $maxTamanio, $minTamanio, $obligatorio);
+
+        /* Si el nombre de archivo no está vacío (es decir, se ha enviado uno),
+         * comprueba si la extensión está entre las admitidas.
+         * En el caso que el campo fuese obligatorio, ya se habría validado en la
+         * función comprobarAlfaNumerico.
+         */
+        if(!empty($nombreArchivo)){
+            $sExtension = substr($nombreArchivo, strpos($nombreArchivo, '.') + 1);
+            if (!in_array($sExtension, $aExtensiones)) {
+                $mensajeError = "El archivo no tiene una extensión válida. Sólo se admite ".implode(', ', $aExtensiones).".";
+            }
+        }
+        return $mensajeError;
+    }
 
 // Función para comprobar si es una url, local o no
 // Devuelve null si es correcto, sino muestra el mensaje de error

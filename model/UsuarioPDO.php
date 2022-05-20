@@ -41,9 +41,9 @@ QUERY;
             foreach ($aUsuarios as $oUsuario) {
                 $aDevolucion[$oUsuario['T01_CodUsuario']] = new Usuario(
                         $oUsuario['T01_CodUsuario'],
+                        $oUsuario['T01_Password'],
                         $oUsuario['T01_DescUsuario'],
                         $oUsuario['T01_NumConexiones'], 
-                        $oUsuario['T01_Password'],
                         $oUsuario['T01_FechaHoraUltimaConexion'],
                         $oUsuario['T01_FechaHoraUltimaConexion'],
                         $oUsuario['T01_Perfil'],

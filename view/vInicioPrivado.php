@@ -4,19 +4,18 @@
     <div class="container text-center w-100 h-20 bg-light ">
         <div class="container text-center">
             <?php
-                if($imagenUsuario){
+                if (!empty($imagenUsuario)){
             ?>
                 <img  src="data:image/gif;base64, <?php echo $imagenUsuario ?>" >
             <?php
-                }
-                else{
+                }else{
             ?>
                 <img src="webroot/images/usuario.png" claswidth='150' height='150'/>
             <?php
                 }
             ?>
         </div>
-        <h1><?php echo $aIdioma[$_COOKIE['idioma']]['bienvenido'] . " " . $nombreUsuario ?></h1>
+        <h1><?php echo $aIdioma[$_COOKIE['idioma']]['bienvenido'] . " " . $descUsuario ?></h1>
         <p>es la <?php echo $numConexiones ?>ª vez que te conectas,  
               <?php if(!is_null($fechaUltimaConexionAnterior)){?>
                 y la ultima conexion fue <?php echo $fFechaHoraUltimaConexion; } ?></p>

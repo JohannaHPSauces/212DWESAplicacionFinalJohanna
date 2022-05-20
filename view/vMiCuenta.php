@@ -32,15 +32,14 @@
                         <input type="file" class="form-control" id="txtFloatingUsername" name="imagenUsuario">
                         <div class="container text-center">
                         <?php
-                            if($imagenUsuario){
+                           //if($imagenUsuario){
                         ?>
-                        <img src="data:images/gif;base64, <?php echo $imagenUsuario ?> " claswidth='150' height='150'/>
+                            
                         <?php
-                             }else{
                         ?>
                         <img  src="webroot/images/usuario.png" claswidth='80' height='80'/>
                         <?php
-                            }
+                           
                         ?>
                         </div>
                     </div>

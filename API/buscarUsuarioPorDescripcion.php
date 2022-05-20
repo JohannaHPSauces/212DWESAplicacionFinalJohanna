@@ -36,7 +36,6 @@ if($bEntradaOK){
             'numConexiones' => $oUsuario->getNumConexiones(),
             'password' => $oUsuario->getPassword(),
             'fechaHoraUltimaConexion' => $oUsuario->getFechaHoraUltimaConexion(),
-            'perfil' => $oUsuario->getPerfil(),
             'imagenUsuario' => $oUsuario->getImagenUsuario()
         ]);
     }
