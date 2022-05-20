@@ -5,7 +5,7 @@
         header('Location: index.php');
         exit;
     }
-
+ header('Access-Control-Allow-Origin: *'); 
 require_once $vistas['layout'];
 
 ?>

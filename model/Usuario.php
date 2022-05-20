@@ -16,11 +16,11 @@ class Usuario{
     private $perfil;
     
     
-    function __construct($codUsuario,$password,$descUsuario,$numConexiones,$fechaHoraUltimaConexion,$fechaHoraUltimaConexionAnterior,$imagenUsuario,$perfil) {
+    function __construct($codUsuario,$descUsuario,$numConexiones,$password,$fechaHoraUltimaConexion,$fechaHoraUltimaConexionAnterior,$imagenUsuario,$perfil) {
         $this->codUsuario = $codUsuario;
-        $this->password = $password;
         $this->descUsuario = $descUsuario;
         $this->numConexiones = $numConexiones;
+        $this->password = $password;
         $this->fechaHoraUltimaConexion = $fechaHoraUltimaConexion;
         $this->fechaHoraUltimaConexionAnterior = $fechaHoraUltimaConexionAnterior;
         $this->imagenUsuario = $imagenUsuario;

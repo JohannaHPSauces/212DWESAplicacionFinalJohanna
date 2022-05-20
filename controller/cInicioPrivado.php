@@ -50,6 +50,9 @@
     //SACAMOS EL NUMERO DE CONEXIONES
     $numConexiones=$_SESSION['usuario212AplicacionFinal']->getNumConexiones();
     
+    //SACAMOS LA IMAGEN DEL USUARIO 
+    $imagenUsuario=$_SESSION['usuario212AplicacionFinal']->getImagenUsuario();
+    
     //SACAMOS LA FECHA Y HORA DE LA ULTIMA CONEXION Y LA CONVERTIMOS A FECHA/HORA 
     $fechaUltimaConexionAnterior= $_SESSION['usuario212AplicacionFinal']->getFechaHoraUltimaConexionAnterior();
     $date=$fechaUltimaConexionAnterior;

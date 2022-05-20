@@ -3,7 +3,18 @@
 <div class="jumbotron ">
     <div class="container text-center w-100 h-20 bg-light ">
         <div class="container text-center">
-            <img src="webroot/images/usuario.png" claswidth='150' height='150'/>
+            <?php
+                if($imagenUsuario){
+            ?>
+                <img  src="data:image/gif;base64, <?php echo $imagenUsuario ?>" >
+            <?php
+                }
+                else{
+            ?>
+                <img src="webroot/images/usuario.png" claswidth='150' height='150'/>
+            <?php
+                }
+            ?>
         </div>
         <h1><?php echo $aIdioma[$_COOKIE['idioma']]['bienvenido'] . " " . $nombreUsuario ?></h1>
         <p>es la <?php echo $numConexiones ?>ª vez que te conectas,  

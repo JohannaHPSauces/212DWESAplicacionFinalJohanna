@@ -1,5 +1,6 @@
 <div id="cajaTitulo" class="text-center p-2 h4 font-weight-bold" style="background-color:gainsboro;">MANTENIMIENTO USUARIOS </div>
 <div id="cajaTitulo" class="text-center p-4 h4 font-weight-bold bg-transparent"> </div>
+<main>
 <form name="login" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
     <input type="submit" class="btn btn-secondary btn-info" value="Volver" name="volver"/><br><br>
     <div class="container text-center">
@@ -14,13 +15,14 @@
             </div>
     </div>
 </form>
-<div class="container">
+<div class="container ">
 <table class="table table-bordered w-100 align-items-center font-weight-bold">
     <thead>
         <tr>
             <th class="bg-light text-center  " scope="col">Código </th>
             <th class="bg-light text-center w-25" scope="col">Descripción</th>
             <th class="bg-light text-center" scope="col">Núm conexiones</th>
+            <th class="bg-light text-center" scope="col">Password</th>
             <th class="bg-light text-center" scope="col">F/H última conexión</th>
             <th class="bg-light text-center" scope="col">F/H última conexión anterior</th>
             <th class="bg-light text-center" scope="col">Perfil</th>
@@ -29,5 +31,70 @@
     <tbody id="usuarios">
     </tbody>
 </table>
+    <br> <br> <br> <br> <br> <br>
 </div>
- <script src="webroot/js/mtoUsuarios.js"></script>
+<script>
+    var xhttp= new XMLHttpRequest();
+    
+    var botonBuscar= document.getElementById("buscarDesc");
+    var descABuscar= document.getElementById("descripcionABuscar");
+    
+    descABuscar.addEventListener("keyup", buscarUsuarios);
+    
+    cargarUsuarios();
+    
+    function buscarUsuarios(){
+        event.preventDefault();
+        cargarUsuarios(descABuscar.value);
+    }
+    
+    function cargarUsuarios(descUsuarios=''){
+        xhttp.onreadystatechange= function (){
+            if(this.readyState ==4 && this.status == 200){
+                mostrarUsuarios(this.responseText);
+            }
+        };
+        xhttp.open("GET", "http://daw212.sauces.local/212DWESAplicacionFinalJohanna/API/buscarUsuarioPorDescripcion.php?descUsuario=" + descUsuarios, true);
+        xhttp.setRequestHeader("Content-type", "application/json");
+        xhttp.send("Your JSON Data Here");
+    }
+    
+    
+    function mostrarUsuarios(usuarios){
+        var contenidoTabla= document.getElementById("usuarios");
+        contenidoTabla.innerHTML= '';
+        let objetoJSON= JSON.parse(usuarios);
+        
+        let nuevaFila;
+        
+        for(Usuario of objetoJSON){
+            nuevaFila= document.createElement("tr");
+            let nuevaCelda;
+            
+            for(key in Usuario){
+                nuevaCelda= document.createElement("td");
+                switch(key){
+                    case 'password':
+                        nuevaCelda.innerHTML="**********";
+                            
+                        break;
+                    case 'fechaHoraUltimaConexion':
+                        if('fechaHoraUltimaConexion'==null){
+                         nuevaCelda.innerHTML= '';
+                        }else{
+                            let oFecha= new Date(parseInt(Usuario['fechaHoraUltimaConexion']) * 1000); // *1000 para que esté en milisegundos.
+                            nuevaCelda.innerHTML= `${oFecha.getDate()}/${oFecha.getMonth()+1}/${oFecha.getFullYear()}, a las ${oFecha.getHours()}:${oFecha.getMinutes()}:${oFecha.getSeconds()}`;
+                        }
+                        break;
+                    default:
+                        nuevaCelda.innerHTML = Usuario[key]??'-';
+                        break;
+                }
+                nuevaFila.appendChild(nuevaCelda);
+            }
+            //nuevaFila.appendChild(nuevaCelda);
+            contenidoTabla.appendChild(nuevaFila);
+        }
+        
+    }
+</script>
