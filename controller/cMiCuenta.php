@@ -28,18 +28,20 @@
             $desUsuario=$_REQUEST['descripcionUsuario']; //guardo en una variable en contenido del formulario
             $aErrores['dUsuario']=validacionFormularios::comprobarAlfaNumerico($desUsuario, 255, 4, 1); //Hago la validacion 
             
-                foreach($aErrores as $campo =>$error){//Recorro el array de errores buscando si hay
-                    if($error !=null){// Si hay algun error 
-                        $entradaOk=false; //Ponemos la entrada a false
-                        $_REQUEST[$campo]="";//Vacia los campos
-                    }
+        
+            foreach($aErrores as $campo =>$error){//Recorro el array de errores buscando si hay
+                if($error !=null){// Si hay algun error 
+                    $entradaOk=false; //Ponemos la entrada a false
+                    $_REQUEST[$campo]="";//Vacia los campos
                 }
+            }
     }else{
         $entradaOk=false;//si no se ha rellenado nada entrada false
     }
     
     //SI TODO HA IDO BIEN
     if($entradaOk){
+       
         $_SESSION['usuario212AplicacionFinal'] = UsuarioPDO::modificarUsuario($_SESSION['usuario212AplicacionFinal'], $desUsuario); //Guardo en la sesion el usuario valido
         $_SESSION['paginaEnCurso'] = 'inicioprivado'; //en la pagina actual estara la venta inicio privado
         $_SESSION['paginaAnterior'] = 'micuenta';// en la pagina anterior estara la ventana del login
@@ -51,9 +53,9 @@
     //SACAMOS EL NOMBRE DEL USUARIO 
     $nombreUsuario=$_SESSION['usuario212AplicacionFinal']->getCodUsuario();
     
+    
     //SACAMOS LA DESCRIPCION DEL USUARIO 
     $desUsuario=$_SESSION['usuario212AplicacionFinal']->getDescUsuario();
-    
     //SACAMOS EL NUMERO DE CONEXIONES
     $numConexiones=$_SESSION['usuario212AplicacionFinal']->getNumConexiones();
 
@@ -64,6 +66,9 @@
 
     //SACAMOS EL TIPO DE USUARIO
     $tipoUsuario=$_SESSION['usuario212AplicacionFinal']->getPerfil();
+    
+    //SACAMOS LA IMAGEN DEL USUARIO 
+    $imagenUsuario=$_SESSION['usuario212AplicacionFinal']->getImagenUsuario();
     
     //SACAMOS EL PASSWORD DE USUARIO
     $passwordUsuario=$_SESSION['usuario212AplicacionFinal']->getPassword();

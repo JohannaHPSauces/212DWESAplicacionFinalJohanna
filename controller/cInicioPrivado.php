@@ -1,6 +1,4 @@
-
 <?php
-
     if(isset($_REQUEST['cerrar'])){ //Si el usuario pulsa el boton de cerrar
         session_destroy();//destruyo la sesion
         header('Location: index.php');
@@ -26,7 +24,7 @@
         exit;
     }
     if(isset($_REQUEST['mantenimientoU'])){ //Si el admin pulsa el boton de mantenimientoUsuarios
-        $_SESSION['paginaEnCurso']= 'wip';
+        $_SESSION['paginaEnCurso']= 'mantenimientoUsuario';
         $_SESSION['paginaAnterior']= 'inicioprivado';
         header('Location: index.php');
         exit;
@@ -37,15 +35,16 @@
         DBPDO::ejecutarConsulta($consulta);
     }
     if(isset($_REQUEST['rest'])){ //Si el usuario pulsa el boton de rest
-        $_SESSION['paginaEnCurso']= 'wip';
+        $_SESSION['paginaEnCurso']= 'rest';
         $_SESSION['paginaAnterior']= 'inicioprivado';
         header('Location: index.php');
         exit;
     }
     
-    
     //SACAMOS EL NOMBRE DEL USUARIO 
-    $nombreUsuario=$_SESSION['usuario212AplicacionFinal']->getDescUsuario();
+    $nombreUsuario=$_SESSION['usuario212AplicacionFinal']->getCodUsuario();
+     //SACAMOS EL NOMBRE DEL USUARIO 
+    $descUsuario=$_SESSION['usuario212AplicacionFinal']->getDescUsuario();
     
     //SACAMOS EL TIPO DE USUARIO
     $tipoUsuario=$_SESSION['usuario212AplicacionFinal']->getPerfil();
@@ -53,10 +52,14 @@
     //SACAMOS EL NUMERO DE CONEXIONES
     $numConexiones=$_SESSION['usuario212AplicacionFinal']->getNumConexiones();
     
+    //SACAMOS LA IMAGEN DEL USUARIO 
+    $imagenUsuario=$_SESSION['usuario212AplicacionFinal']->getImagenUsuario();
+    
     //SACAMOS LA FECHA Y HORA DE LA ULTIMA CONEXION Y LA CONVERTIMOS A FECHA/HORA 
     $fechaUltimaConexionAnterior= $_SESSION['usuario212AplicacionFinal']->getFechaHoraUltimaConexionAnterior();
     $date=$fechaUltimaConexionAnterior;
     $fFechaHoraUltimaConexion = date('d-m-Y H:i:s', $date);
+    
     
     //fichero que contie el array de lo que cambia con la cookie
     include_once 'config/confCookie.php';

@@ -6,6 +6,7 @@
             exit;
     }
     
+    //Definimos la variable que cambiaremos dependiendo si las cosas vayan bien o no
     $entradaOk= true;
     
     //Array que contendra los errores

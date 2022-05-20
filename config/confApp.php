@@ -10,6 +10,10 @@ require_once 'model/DBPDO.php';
 require_once 'model/AppError.php';
 require_once 'model/Departamento.php';
 require_once 'model/DepartamentoPDO.php';
+require_once 'model/REST.php';
+require_once 'model/Provincia.php';
+require_once 'model/UsuarioRandom.php';
+require_once 'model/Coctel.php';
 
 
 $controladores =[
@@ -26,7 +30,9 @@ $controladores =[
     "mantenimiento" => "controller/cMantenimientoDepartamentos.php",
     "borrarDep" => "controller/cEliminarDepartamento.php",
     "editarDep" => "controller/cEditarDepartamento.php",
-    "añadirDep" => "controller/cAñadirDepartamento.php"
+    "añadirDep" => "controller/cAñadirDepartamento.php",
+    "rest" => "controller/cREST.php",
+    "mantenimientoUsuario" => "controller/cMantenimientoUsuarios.php"
     
 ];
 
@@ -45,6 +51,9 @@ $vistas =[
     "mantenimiento" => "view/vMantenimientoDepartamentos.php",
     "borrarDep" => "view/vEliminarDepartamento.php",
     "editarDep" => "view/vEditarDepartamento.php",
-    "añadirDep" => "view/vAñadirDepartamento.php"
-];
+    "añadirDep" => "view/vAñadirDepartamento.php",
+    "rest" => "view/vREST.php",
+    "mantenimientoUsuario" => "view/vMantenimientoUsuarios.php"
+]
+        
 ?>

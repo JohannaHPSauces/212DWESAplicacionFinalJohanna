@@ -27,9 +27,25 @@
                         <label for="txtFloatingUsername" style="color:black;">Tipo de usuario</label>
                         <input type="text" class="form-control" id="txtFloatingUsername" value="<?php echo $tipoUsuario ?>" disabled>
                     </div>
+                    <div class="form-group floating-control-group t">
+                        <label for="txtFloatingUsername" style="color:black;">Imagen usuario</label>
+                        <input type="file" class="form-control" id="txtFloatingUsername" name="imagenUsuario">
+                        <div class="container text-center">
+                        <?php
+                           //if($imagenUsuario){
+                        ?>
+                            
+                        <?php
+                        ?>
+                        <img  src="webroot/images/usuario.png" claswidth='80' height='80'/>
+                        <?php
+                           
+                        ?>
+                        </div>
+                    </div>
                     <div class="form-group floating-control-group">
                         <label for="txtFloatingUsername" style="color:black;">Contraseña</label>
-                        <input type="password" class="form-control" id="txtFloatingUsername" value="<?php echo $passwordUsuario ?>" disabled>
+                        <input type="password" class="form-control" id="txtFloatingUsername" value="<?php echo '********'/*$passwordUsuario*/ ?>" disabled>
                     </div>
                     
                     <div class="form-group mt-4">

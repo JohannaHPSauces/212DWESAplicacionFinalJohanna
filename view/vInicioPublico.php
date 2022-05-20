@@ -2,9 +2,9 @@
     <div id="cajaTitulo" class="text-center p-2 h4 font-weight-bold" style="background-color:gainsboro;">INICIO PÚBLICO </div>
 </header>
     <form class="cajaIdioma">
-        <button class="cajaIdioma" type="submit" name="idiomaSeleccionado" value="es" ><img src="images/es.png" alt="cargando.." height="20px"></button>
-        <button class="cajaIdioma" type="submit" name="idiomaSeleccionado" value="en" ><img src="images/in.png" alt="cargando.." height="20px"></button>
-        <button class="cajaIdioma" type="submit" name="idiomaSeleccionado" value="pt"><img src="images/po.png" alt="cargando.." height="20px"></button>
+        <button class="cajaIdioma" type="submit" name="idiomaSeleccionado" value="es" ><img src="webroot/images/es.png" alt="cargando.." height="20px"></button>
+        <button class="cajaIdioma" type="submit" name="idiomaSeleccionado" value="en" ><img src="webroot/images/in.png" alt="cargando.." height="20px"></button>
+        <button class="cajaIdioma" type="submit" name="idiomaSeleccionado" value="pt"><img src="webroot/images/po.png" alt="cargando.." height="20px"></button>
     </form>
     <br>
     <form class="container-fluid h-25"> 
@@ -32,10 +32,10 @@
                 </div>
             </div>
             <div class="card text-center" style="border:2px solid grey;">
-                <img class="card-img-top" src="webroot/images/mod.PNG" target="_blank" alt="Card image cap">
-                <div class="card-body">
-                  <h5 class="card-title">Modelo Físico de Datos</h5>
-                  <a href="webroot/doc/201127ModeloFisicoDeDatos20-21.pdf" target="_blank"  class="btn btn-primary">Ver</a>
+                <img class="card-img-top" src="webroot/images/api.PNG" alt="Card image cap">
+                <div class="card-body"><br>
+                  <h5 class="card-title">Funcionamiento APIs</h5>
+                  <a href="webroot/doc/infoAPIS.pdf" target="_blank" class="btn btn-primary">Ver</a>
                 </div>
             </div>
         </div>
@@ -50,10 +50,10 @@
                 </div>
             </div>
             <div class="card text-center" style="border:2px solid grey;">
-                <img class="card-img-top" src="webroot/images/diacla.PNG" target="_blank" alt="Card image cap">
+                <img class="card-img-top" src="webroot/images/Main.png" target="_blank" alt="Card image cap">
                 <div class="card-body">
                   <h5 class="card-title">Diagrama de Clases</h5>
-                  <a href="webroot/doc/220119DiagramaDeClases.pdf" target="_blank" class="btn btn-primary">Ver</a>
+                  <a href="webroot/images/Main.png" target="_blank" class="btn btn-primary">Ver</a>
                 </div>
             </div>
             <div class="card text-center" style="border:2px solid grey;">
@@ -79,6 +79,13 @@
                 <div class="card-body">
                   <h5 class="card-title">Estructura de Almacenamiento</h5>
                   <a href="webroot/doc/211129EstandarDesarrolloDAWyEstructuraAlmacenamientoDWES.pdf" target="_blank" class="btn btn-primary">Ver</a>
+                </div>
+            </div>
+            <div class="card text-center" style="border:2px solid grey;">
+                <img class="card-img-top" src="webroot/images/mod.PNG" target="_blank" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">Modelo Físico de Datos</h5>
+                  <a href="webroot/doc/201127ModeloFisicoDeDatos20-21.pdf" target="_blank"  class="btn btn-primary">Ver</a>
                 </div>
             </div>
         </div>

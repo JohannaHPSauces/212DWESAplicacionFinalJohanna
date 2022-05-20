@@ -27,6 +27,12 @@
         header('Location: index.php');
         exit;
     }
+    if(isset($_REQUEST['exportar'])){ //Si el usuario ha pulsado el boton de añadir
+        $_SESSION['paginaEnCurso']= 'wip';
+        $_SESSION['paginaAnterior']= 'mantenimiento';
+        header('Location: index.php');
+        exit;
+    }
     
     if(isset($_REQUEST['baja'])){ //Si el usuario pulsa el boton de bajalogica
         DepartamentoPDO::bajaLogicaDepartamento($_REQUEST['baja']);
@@ -35,6 +41,29 @@
     }
     if(isset($_REQUEST['rehabilitar'])){ //Si el usuario pulsa el boton de rehabilitar deparatmento
         DepartamentoPDO::rehabilitarDepartamento($_REQUEST['rehabilitar']);
+        header('Location: index.php');
+        exit;
+    }
+    
+    
+    if (isset($_REQUEST['paginaPrimera'])) { //definimos la primera actual a 1
+        $_SESSION['numPagina'] = 1;
+        header('Location: index.php');
+        exit;
+    }
+    if (isset($_REQUEST['paginaAnterior']) && $_SESSION['numPagina']>=2) { //si el usuario pulsa el boton de pagina anterior
+        $_SESSION['numPagina']--; //le restamos 1 a la pagina en la que estamos
+        header('Location: index.php');
+        exit;
+    }
+   
+    if(isset($_REQUEST['paginaSiguiente']) && $_SESSION['numPagina'] < $_SESSION['paginasTotales']){ //Si el usuario pulsa el boton de paginaSiguiente
+        $_SESSION['numPagina']++; //Le sumo 1 a la pagina en la que estamos
+        header('Location: index.php');
+        exit;
+    }
+    if(isset($_REQUEST['paginaUltima'])){ //Si el usuario pulsa el boton de ultima pagina
+        $_SESSION['numPagina'] = $_SESSION['paginasTotales'];//igualamos el numero de paginas a el total
         header('Location: index.php');
         exit;
     }
@@ -73,11 +102,23 @@
             break;
     }
     $_SESSION['criterioBusquedaDepartamentos']['estado'] = $iEstado;// Guardo en la sesion el case que ha elegido el usuario, para luego filtrar por ese boton
+    $_SESSION['numPagina'] = 1;//Inicializo la variable a 1
     }
     
+    
+    if (!isset($_SESSION['numPagina'])) {
+        $_SESSION['numPagina'] = 1;
+    }
+
+    //Guardamos en la sesion el numero de paginas totales que luego vamos a usar en la paginacion
+    $_SESSION['paginasTotales']= DepartamentoPDO::contarDepartamentosTotales(
+        $_SESSION['criterioBusquedaDepartamentos']['descripcionBuscada'] ?? '',
+        $_SESSION['criterioBusquedaDepartamentos']['estado'] ?? 0);
+
     $aDepartamentosVista = [];//Array para guardar la informacion del departamento
   
-    $aResultadoBuscar = DepartamentoPDO::buscarDepartamentoPorDesYEstado($_SESSION['criterioBusquedaDepartamentos']['descripcionBuscada'] ?? '', $_SESSION['criterioBusquedaDepartamentos']['estado'] ?? 0); //Hacemos la consulta de buscar departamento por descripcion y estado
+    $aResultadoBuscar= DepartamentoPDO::buscarDepartamentoPorDesYEstadoPaginado($_SESSION['criterioBusquedaDepartamentos']['descripcionBuscada'] ?? '', $_SESSION['criterioBusquedaDepartamentos']['estado'] ?? 0,
+        $_SESSION['numPagina']); //Hacemos la consulta de buscar departamento por descripcion y estado
    
     if ($aResultadoBuscar){ //Si el resultado es correcto
         foreach($aResultadoBuscar as $oDepartamento){//Recorro el objeto del resultado que contiene un array

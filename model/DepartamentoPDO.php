@@ -59,7 +59,27 @@ class DepartamentoPDO{
             return false;
         }
     }
+    public static function exportarDepartamentos(){
+       $consulta = <<<HER
+                       SELECT * FROM T02_Departamento;
+                    HER;
+        
+        $resultado= DBPDO::ejecutarConsulta($consulta); //Ejecuto la consulta
+        
+        $userData = array();
+
+        while($row=$resultado->fetch(PDO::FETCH_ASSOC)){
+
+              $userData= $row;
+              
+            $archivoJSON= json_encode($userData, JSON_PRETTY_PRINT);
+            //Guarda lo del segundo parametro en el primero
+            file_put_contents('tmp/Departamentos.json', $archivoJSON );
+
+        }
+    }
     
+   
     public static function buscarDepartamentoPorCodigo($codDepartamento){
         $consulta = <<<HER
                         SELECT * FROM T02_Departamento
@@ -77,8 +97,10 @@ class DepartamentoPDO{
         } 
     }
     
-    public static function buscarDepartamentoPorDesYEstado($sBusqueda='', $iEstado =0 ) {
-       switch ($iEstado){ 
+    public static function buscarDepartamentoPorDesYEstadoPaginado($sBusqueda='', $iEstado =0, $numPagBuscada=1 ) {
+        //$iPagina = $iPagina*3;
+        $numPagBuscada = ($numPagBuscada-1)*3;
+        switch ($iEstado){ 
             case 0:
                 $estado = '';
                 break;
@@ -92,7 +114,7 @@ class DepartamentoPDO{
 
         $consulta = <<<HER
                         SELECT * FROM T02_Departamento
-                        WHERE T02_DescDepartamento LIKE '%{$sBusqueda}%'{$estado};
+                        WHERE T02_DescDepartamento LIKE '%{$sBusqueda}%'{$estado}  LIMIT 3 OFFSET {$numPagBuscada};
                     HER;
         $oResultado= DBPDO::ejecutarConsulta($consulta);
         $aDepartamentos = $oResultado->fetchAll();
@@ -111,6 +133,28 @@ class DepartamentoPDO{
         } else {
             return false;
         }
+    }
+    
+    public static function contarDepartamentosTotales($sBusqueda='', $iEstado =0) {
+       switch ($iEstado){ 
+            case 0:
+                $estado = '';
+                break;
+            case 1:
+                $estado = 'AND T02_FechaBajaDepartamento IS NULL';
+                break;
+            case 2:
+                $estado = 'AND T02_FechaBajaDepartamento IS NOT NULL';
+                break;
+        }
+
+        $consulta = <<<HER
+                        SELECT COUNT(*) FROM T02_Departamento
+                        WHERE T02_DescDepartamento LIKE '%{$sBusqueda}%'{$estado};
+                    HER;
+        $oResultado= DBPDO::ejecutarConsulta($consulta);
+        $aDepartamentos = $oResultado->fetch();
+        return ceil(intval($aDepartamentos[0])/3);
     }
     
     public static function bajaLogicaDepartamento($codDepartamento){
@@ -156,11 +200,13 @@ class DepartamentoPDO{
                     VALUES ("{$codDepartamento}", "{$desDepartamento}","{$volumenNegocio}", UNIX_TIMESTAMP());
                     HER;
         if(DBPDO::ejecutarConsulta($consulta)){
-            return new Departamento($codDepartamento, $password, $desDepartamento, $volumenNegocio, time(), null);
+            return new Departamento($codDepartamento, $desDepartamento, $volumenNegocio, time(), null);
         }else{
             return false;
         }
     }
+    
+    
     
 }
 ?>

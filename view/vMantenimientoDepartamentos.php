@@ -1,27 +1,29 @@
 <div id="cajaTitulo" class="text-center p-2 h4 font-weight-bold" style="background-color:gainsboro;">MANTENIMIENTO DEPARTAMENTOS </div>
 <div id="cajaTitulo" class="text-center p-4 h4 font-weight-bold bg-transparent"> </div>
-<div class="container h-100"> 
+<div class="container-fluid h-100 "> 
     <form name="login" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
         <div class="form-group floating-control-group w-100 bg-light">
-            <label for="txtFloatingUsername">Buscar Departamento:</label><br>
+            <label for="txtFloatingUsername">Buscar departamento por descripción</label><br>
             <div class="input-group w-50">
                 <input type="text" class="form-control" id="txtFloatingUsername" name="desDepartamento" value="<?php echo isset($_SESSION['criterioBusquedaDepartamentos']['descripcionBuscada']) ? $_SESSION['criterioBusquedaDepartamentos']['descripcionBuscada'] : ''; ?>"/> 
                 <span class="input-group-btn">
                    <input type="submit" class="btn btn-secondary btn-labeled" value="Buscar" name="buscar"/>
                 </span>
             </div>
-             <input type="radio" name="estado" value="todos" id="departamentoTodos" <?php echo isset($_SESSION['criterioBusquedaDepartamentos']['estado'])?($_SESSION['criterioBusquedaDepartamentos']['estado']==0?'checked':''):'checked'; ?>/>
+                <input type="radio" name="estado" value="todos" id="departamentoTodos" <?php echo isset($_SESSION['criterioBusquedaDepartamentos']['estado'])?($_SESSION['criterioBusquedaDepartamentos']['estado']==0?'checked':''):'checked'; ?>/>
                 <label for="departamentoTodos">Todos</label>
                 <input type="radio" name="estado" value="alta" id="departamentoAlta" <?php echo isset($_SESSION['criterioBusquedaDepartamentos']['estado'])?($_SESSION['criterioBusquedaDepartamentos']['estado']==1?'checked':''):''; ?>/>
                 <label for="departamentoAlta">Alta</label>
                 <input type="radio" name="estado" value="baja" id="departamentoBaja" <?php echo isset($_SESSION['criterioBusquedaDepartamentos']['estado'])?($_SESSION['criterioBusquedaDepartamentos']['estado']==2?'checked':''):'';  ?> />
                 <label for="departamentoBaja">Baja</label><br><br>
+                
             <!--<input type="submit" class="btn btn-secondary btn-info" value="Buscar" name="buscar"/>-->
             <input type="submit" class="btn btn-secondary btn-info" value="Volver" name="volver"/>
             <input type="submit" class="btn btn-secondary btn-success" value="Añadir" name="añadir"/>
+            <input type="submit" class="btn btn-secondary btn-warning" value="Exportar" name="exportar"/>
     
         </div><br>
-        <table class="table table-bordered w-100 align-items-center font-weight-bold">
+        <table class=" table-hover table table-bordered w-100 align-items-center font-weight-bold">
             <thead>
                 <tr>
                     <th class="bg-light text-center  " scope="col">Código</th>
@@ -98,19 +100,21 @@
                 <nav aria-label="Page navigation example">
                 <ul class="pagination text-center float-end">
                   <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Previous">
+                    <button type="submit" class="btn btn-labeled btn-danger page-link" name="paginaPrimera" aria-label="Previous">
                       <span aria-hidden="true">&laquo;</span>
-                      <span class="sr-only">Previous</span>
-                    </a>
+                    </button>
                   </li>
-                  <li class="page-item"><a class="page-link" href="#">1</a></li>
-                  <li class="page-item"><a class="page-link" href="#">2</a></li>
-                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <button type="submit" class="btn btn-labeled btn-danger page-link" name="paginaAnterior" aria-label="Previous">
+                      <span aria-hidden="true"><</span>
+                  </button>
+                  <li class="page-item"><a class="page-link" disabled ><?php echo $_SESSION['numPagina']."/".$_SESSION['paginasTotales']; ?></a></li>
+                  <button type="submit" class="btn btn-labeled btn-danger page-link" name="paginaSiguiente" aria-label="Previous">
+                      <span aria-hidden="true">></span>
+                  </button>
                   <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Next">
+                    <button type="submit"class="btn btn-labeled btn-danger page-link" name="paginaUltima" aria-label="Next">
                       <span aria-hidden="true">&raquo;</span>
-                      <span class="sr-only">Next</span>
-                    </a>
+                    </button>
                   </li>
                 </ul>
               </nav>
