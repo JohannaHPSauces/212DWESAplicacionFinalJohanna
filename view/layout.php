@@ -51,15 +51,17 @@
             }
         </script>
         <?php require_once $vistas[$_SESSION['paginaEnCurso']]; ?>
-        
+        <form>
         <footer class="text-center p-2 fixed-bottom" style="background-color:grey;">
+            <form>
             2021-22 I.E.S. Los sauces. ©Todos los derechos reservados. <strong> <a class="text-reset fw-bold" href="http://daw212.sauces.local/">Johanna Herrero Pozuelo</a></strong>
             <br>
             <a target="_blank" ><img src="webroot/images/curri.png" width="30px" alt="" class="git"></a>
-            <a target="_blank" href="../212ProyectoDWES/index2.php"><img src="webroot/images/tecno.png" width="30px" alt="" class="git"></a>
+            <input type="submit" name="tecnologias"><img src="webroot/images/tecno.png" width="30px" alt="" class="git"></a>
             <a target="_blank" ><img src="webroot/images/rss.png" width="30px" alt="" class="git"></a>
             <a target="_blank" href="https://github.com/JohannaHPSauces/212DWESAplicacionFinalJohanna"><img src="../images/git.png" width="30px" alt="" class="git"></a>
-            
+            </form>
         </footer>
+        
 </body>
 </html>

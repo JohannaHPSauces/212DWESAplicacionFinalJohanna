@@ -53,7 +53,7 @@
                 mostrarUsuarios(this.responseText);
             }
         };
-        xhttp.open("GET", "http://daw212.sauces.local/212DWESAplicacionFinalJohanna/API/buscarUsuarioPorDescripcion.php?descUsuario=" + descUsuarios, true);
+        xhttp.open("GET", "http://192.168.1.112/212DWESAplicacionFinalJohanna/API/buscarUsuarioPorDescripcion.php?descUsuario=" + descUsuarios, true);
         xhttp.setRequestHeader("Content-type", "application/json");
         xhttp.send("Your JSON Data Here");
     }

@@ -32,6 +32,8 @@ $controladores =[
     "editarDep" => "controller/cEditarDepartamento.php",
     "añadirDep" => "controller/cAñadirDepartamento.php",
     "rest" => "controller/cREST.php",
+    "layout" => "controller/cLayout.php",
+    "tecnologias" => "controller/cTecnologias.php",
     "mantenimientoUsuario" => "controller/cMantenimientoUsuarios.php"
     
 ];
@@ -53,6 +55,7 @@ $vistas =[
     "editarDep" => "view/vEditarDepartamento.php",
     "añadirDep" => "view/vAñadirDepartamento.php",
     "rest" => "view/vREST.php",
+    "tecnologias" => "view/vTecnologias.php",
     "mantenimientoUsuario" => "view/vMantenimientoUsuarios.php"
 ]
         
