@@ -45,7 +45,6 @@
         exit;
     }
     
-    
     if (isset($_REQUEST['paginaPrimera'])) { //definimos la primera actual a 1
         $_SESSION['numPagina'] = 1;
         header('Location: index.php');
@@ -62,6 +61,7 @@
         header('Location: index.php');
         exit;
     }
+    
     if(isset($_REQUEST['paginaUltima'])){ //Si el usuario pulsa el boton de ultima pagina
         $_SESSION['numPagina'] = $_SESSION['paginasTotales'];//igualamos el numero de paginas a el total
         header('Location: index.php');
