@@ -45,17 +45,18 @@
         exit;
     }
     
-    if (isset($_REQUEST['paginaPrimera'])) { //definimos la primera actual a 1
+    if (isset($_REQUEST['paginaPrimera'])) { //definimos la pagina actual a 1
         $_SESSION['numPagina'] = 1;
         header('Location: index.php');
         exit;
     }
+    
     if (isset($_REQUEST['paginaAnterior']) && $_SESSION['numPagina']>=2) { //si el usuario pulsa el boton de pagina anterior
         $_SESSION['numPagina']--; //le restamos 1 a la pagina en la que estamos
         header('Location: index.php');
         exit;
     }
-   
+    
     if(isset($_REQUEST['paginaSiguiente']) && $_SESSION['numPagina'] < $_SESSION['paginasTotales']){ //Si el usuario pulsa el boton de paginaSiguiente
         $_SESSION['numPagina']++; //Le sumo 1 a la pagina en la que estamos
         header('Location: index.php');
