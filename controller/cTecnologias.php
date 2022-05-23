@@ -1,10 +1,11 @@
 <?php
 
-    if(isset($_REQUEST['salir'])){ //Si el usuario pulsa el boton de salir, sale de la aplicacion
-        header('Location: ../../212ProyectoDWES/indexProyectoDWES.php'); //Redireciono a el index correspondiente
-        exit;
+    if(isset($_REQUEST['volver'])){ //Si el usuario pulsa el boton de volver
+        $_SESSION['paginaEnCurso']= $_SESSION['paginaAnterior'];
+        $_SESSION['paginaAnterior']= 'tecnologias';
+        header('Location: index.php');
     }
    
-    include_once 'config/confCookie.php';
+    
     require_once $vistas['layout'];
 ?>

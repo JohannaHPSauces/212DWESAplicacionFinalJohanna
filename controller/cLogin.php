@@ -12,6 +12,7 @@
         exit;
     }
     
+    
     //VARIABLE QUE CAMBIAREMOS SI LA ENTRADA ESTA MAL O BIEN
     $entradaOk= true;
     

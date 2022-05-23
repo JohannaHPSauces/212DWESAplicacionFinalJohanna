@@ -57,11 +57,10 @@
             2021-22 I.E.S. Los sauces. ©Todos los derechos reservados. <strong> <a class="text-reset fw-bold" href="http://daw212.sauces.local/">Johanna Herrero Pozuelo</a></strong>
             <br>
             <a target="_blank" ><img src="webroot/images/curri.png" width="30px" alt="" class="git"></a>
-            <input type="submit" name="tecnologias"><img src="webroot/images/tecno.png" width="30px" alt="" class="git"></a>
+            <button type="submit" class="bg-transparent" name="tecnologias" value="tecnologias"><img src="webroot/images/tecno.png" width="30px" alt="" class="git"></button>
             <a target="_blank" ><img src="webroot/images/rss.png" width="30px" alt="" class="git"></a>
             <a target="_blank" href="https://github.com/JohannaHPSauces/212DWESAplicacionFinalJohanna"><img src="../images/git.png" width="30px" alt="" class="git"></a>
             </form>
         </footer>
-        
 </body>
 </html>
