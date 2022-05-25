@@ -69,6 +69,7 @@
         exit;
     }
     
+    
     $entradaOk=true;//Defino la entrada como true
     
     //ARRAY QUE TIENE LOS ERRORES DE LOS CAMPOS DEL FORMULARIO

@@ -2,12 +2,21 @@
     /*
     * @author: Johanna Herrero Pozuelo
     * Created on: 24/04/2022
-    * Aplicacion final
+    * Clase DBPDO
+     * 
     */
 
 
 class DBPDO implements DB{
-    
+    /**
+     * 
+     * Funcion ejecutarConsulta() que sirve para la conexion con la base de datos
+     * 
+     * @param string $sentenciaSQL-> sentencia de tipo SQL que vamos a ejecutar
+     * @param  $parametros
+     * @return string
+     * 
+     */
      public static function ejecutarConsulta($sentenciaSQL, $parametros = null){
         try {
             $miDB = new PDO(HOST, USER, PASSWORD);//Hago la conexion con la base de datos

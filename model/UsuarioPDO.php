@@ -2,11 +2,23 @@
     /*
     * @author: Johanna Herrero Pozuelo
     * Created on: 24/04/2022
-    * Aplicacion final
+    * Clase UsuarioPDO
+    * 
+    * Contiene funciones que usaremos para hacer las consultas
     */
 
 class UsuarioPDO implements UsuarioBD{
-    
+    /**
+     * 
+     * function validarUsuario()
+     * 
+     * Funcion que valida si existe un usuario o no
+     * 
+     * @param string $codUsuario
+     * @param string $password
+     * @return \Usuario devuelve el usuario si existe
+     * 
+     */
     public static function validarUsuario($codUsuario, $password){
         $consulta = <<<HER
                         SELECT * FROM T01_Usuario 
@@ -24,6 +36,16 @@ class UsuarioPDO implements UsuarioBD{
             }
         } 
     }
+    /**
+     * 
+     * function buscaUsuariosporDesc()
+     * 
+     * Funcion que busca un usuario por descripcion
+     * 
+     * @param string $sDescUsuarios
+     * @return boolean|\Usuario devuelve el usuario si lo ha encontrado y si no, devuelve false
+     * 
+     */
     public static function buscaUsuariosporDesc($sDescUsuarios){
          $sSelect = <<<QUERY
             SELECT * FROM T01_Usuario
@@ -54,7 +76,16 @@ QUERY;
             return false;
         }
     }
-    
+    /**
+     * 
+     * function registrarUltimaConexion()
+     * 
+     * Funcion que crea una fecha de ultima conexion al usuario
+     * 
+     * @param $oUsuario
+     * @return el usuario actualizado
+     * 
+     */
     public static function registrarUltimaConexion($oUsuario) {
         //Actualizar objeto usuario
         $oUsuario->setFechaHoraUltimaConexionAnterior($oUsuario->getFechaHoraUltimaConexion());
@@ -71,8 +102,18 @@ QUERY;
         
         return $oUsuario; //DEVUELVO usuario actualizado
     }
-    
-     public static function modificarUsuario($oUsuario, $descUsuario){
+    /**
+     * 
+     * function modificarUsuario()
+     * 
+     * Funcion que modifica la descripcion de un usuario()
+     * 
+     * @param  $oUsuario
+     * @param string $descUsuario
+     * @return boolean si no se ha podido modificar devuelve false
+     * 
+     */
+    public static function modificarUsuario($oUsuario, $descUsuario){
         $consulta = <<<HER
                         UPDATE T01_Usuario SET T01_DescUsuario="{$descUsuario}" WHERE T01_CodUsuario="{$oUsuario->getCodUsuario()}";
                     HER;
@@ -86,7 +127,18 @@ QUERY;
             return false;
         }
     }
-    
+    /**
+     * 
+     * function altaUsuario()
+     * 
+     * Funcion que crea un nuevo usuario
+     * 
+     * @param string $codUsuario
+     * @param string $password
+     * @param strign $descUsuario
+     * @return boolean|\Usuario si no se ha apodido crear devuelve false
+     * 
+     */
     public static function altaUsuario($codUsuario,$password, $descUsuario ){
         $consulta= <<<HER
                     INSERT INTO T01_Usuario(T01_CodUsuario, T01_Password, T01_DescUsuario, T01_FechaHoraUltimaConexion)
@@ -98,22 +150,49 @@ QUERY;
             return false;
         }
     }
+    /**
+     * 
+     * function validarCodNoExiste()
+     * 
+     * Funcion que busca un usuario por codigo
+     * 
+     * @param string $codUsuario
+     * 
+     */
     public static function validarCodNoExiste($codUsuario){
         $consulta= <<<HER
                         SELECT T01_CodUsuario FROM T01_Usuario WHERE T01_CodUsuario='{$codUsuario}';
                     HER;
                         
         return DBPDO::ejecutarConsulta($consulta)->fetchObject();
-        
     }
-    
+    /**
+     * 
+     * function borrarCuenta()
+     * 
+     * Funcion que borra un usuario
+     * 
+     * @param $oUsuario
+     * 
+     */
     public static function borrarCuenta($oUsuario){
         $consulta = <<<HER
                        DELETE FROM T01_Usuario WHERE T01_CodUsuario="{$oUsuario->getCodUsuario()}";
                     HER;
         DBPDO::ejecutarConsulta($consulta);
     }
-        
+    /**
+     * 
+     * function modificarPassword()
+     * 
+     * Funcion que nos permite modificar la contraseña de un usuario
+     * 
+     * @param $oUsuario
+     * @param string $password
+     * @return boolean si no se ha podido modificar devuelve false
+     * 
+     * 
+     */
     public static function modificarPassword($oUsuario, $password){
         //Consulta SQL para modificar la descripcion de un usuario
         $consulta = <<<HER

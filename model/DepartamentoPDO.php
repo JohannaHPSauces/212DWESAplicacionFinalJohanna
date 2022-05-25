@@ -2,14 +2,26 @@
     /*
     * @author: Johanna Herrero Pozuelo
     * Created on: 24/04/2022
-    * Aplicacion final
+    * Clase DepartamentoPDO
+    * 
+    * Contiene funciones que usaremos para hacer las consultas
+    * 
     */
 
 class DepartamentoPDO{
     public const DEPARTAMENTOS_BAJA = 2;
     public const DEPARTAMENTOS_ALTA = 1;
     public const DEPARTAMENTOS_TODOS = 0;
-    
+    /**
+     * 
+     * function buscarDepartamentoPorDescripcion()
+     * 
+     * Esta funcion nos premite buscar departamentos por descripcion
+     * 
+     * @param string $desDepartamento
+     * @return boolean|\Departamento si lo existe devuelve los datos del departamento si no existe devuelve false
+     * 
+     */
     public static function buscarDepartamentoPorDescripcion($desDepartamento= ''){
         $aRespuesta = [];
         $consulta = <<<HER
@@ -35,6 +47,15 @@ class DepartamentoPDO{
             return false;
         }
     }
+    /**
+     * 
+     * function buscarDepartamento()
+     * 
+     * Esta funcion nos permite buscar departamentos
+     * 
+     * @return boolean|\Departamento si lo existe devuelve los datos del departamento si no existe devuelve false
+     * 
+     */
     public static function buscarDepartamento(){
         $consulta = <<<HER
                        SELECT * FROM T02_Departamento;
@@ -59,27 +80,16 @@ class DepartamentoPDO{
             return false;
         }
     }
-    public static function exportarDepartamentos(){
-       $consulta = <<<HER
-                       SELECT * FROM T02_Departamento;
-                    HER;
-        
-        $resultado= DBPDO::ejecutarConsulta($consulta); //Ejecuto la consulta
-        
-        $userData = array();
-
-        while($row=$resultado->fetch(PDO::FETCH_ASSOC)){
-
-              $userData= $row;
-              
-            $archivoJSON= json_encode($userData, JSON_PRETTY_PRINT);
-            //Guarda lo del segundo parametro en el primero
-            file_put_contents('tmp/Departamentos.json', $archivoJSON );
-
-        }
-    }
-    
-   
+    /**
+     * 
+     * function buscarDepartamentoPorCodigo()
+     * 
+     * Funcion que busca departamentos por codigo
+     * 
+     * @param string $codDepartamento
+     * @return \Departamento si lo existe devuelve los datos del departamento si no existe devuelve false
+     * 
+     */
     public static function buscarDepartamentoPorCodigo($codDepartamento){
         $consulta = <<<HER
                         SELECT * FROM T02_Departamento
@@ -96,7 +106,18 @@ class DepartamentoPDO{
             }
         } 
     }
-    
+    /**
+     * 
+     * function buscarDepartamentoPorDesYEstadoPaginado()
+     * 
+     * Funcion que busca un departamento por descripcion y estado y muestra el resultado paginado
+     * 
+     * @param string $sBusqueda
+     * @param int $iEstado
+     * @param int $numPagBuscada
+     * @return boolean|\Departamento si lo existe devuelve los datos del departamento si no existe devuelve false
+     * 
+     */
     public static function buscarDepartamentoPorDesYEstadoPaginado($sBusqueda='', $iEstado =0, $numPagBuscada=1 ) {
         //$iPagina = $iPagina*3;
         $numPagBuscada = ($numPagBuscada-1)*3;
@@ -134,7 +155,17 @@ class DepartamentoPDO{
             return false;
         }
     }
-    
+    /**
+     * 
+     * function contarDepartamentosTotales()
+     * 
+     * Funcion que cuenta el numero de departamentos y los divide por el numero de departamentos que qeremos que salga por pagina
+     * 
+     * @param string $sBusqueda
+     * @param int $iEstado
+     * @return int 
+     * 
+     */
     public static function contarDepartamentosTotales($sBusqueda='', $iEstado =0) {
        switch ($iEstado){ 
             case 0:
@@ -156,7 +187,16 @@ class DepartamentoPDO{
         $aDepartamentos = $oResultado->fetch();
         return ceil(intval($aDepartamentos[0])/3);
     }
-    
+    /**
+     * 
+     * function bajaLogicaDepartamento()
+     * 
+     * Funcion que sirve para dar de baja un departamento
+     * 
+     * @param string $codDepartamento
+     * @return resultado de la consulta
+     * 
+     */
     public static function bajaLogicaDepartamento($codDepartamento){
         $consulta= <<<HER
                      UPDATE T02_Departamento SET T02_FechaBajaDepartamento =UNIX_TIMESTAMP()
@@ -165,7 +205,16 @@ class DepartamentoPDO{
                      
         return DBPDO::ejecutarConsulta($consulta);
     }
-    
+    /**
+     * 
+     * function rehabilitarDepartamento()
+     * 
+     * Funcion que sirve para dar de alta un departamento
+     * 
+     * @param string $codDepartamento
+     * @return resultado de la consulta
+     * 
+     */
     public static function rehabilitarDepartamento($codDepartamento){
         $consulta= <<<HER
                      UPDATE T02_Departamento SET T02_FechaBajaDepartamento = null 
@@ -174,15 +223,33 @@ class DepartamentoPDO{
                      
         return DBPDO::ejecutarConsulta($consulta);
     }
-    
-    
+    /**
+     * 
+     * function borrarDepartamento()
+     * 
+     * Funcion que sirve para borrar un departamento
+     * 
+     * @param string $codDepartamento
+     * 
+     */
     public static function borrarDepartamento($codDepartamento){
         $consulta = <<<HER
                        DELETE FROM T02_Departamento WHERE T02_CodDepartamento="{$codDepartamento}";
                     HER;
         DBPDO::ejecutarConsulta($consulta);
     }  
-    
+    /**
+     * 
+     * function modificarDepartamento()
+     * 
+     * Funcion que sirve para modificar los datos de un departamento
+     * 
+     * @param string $codDepartamento
+     * @param string $descDepartamento
+     * @param int $volumenNegocio
+     * @return devuelve el resultado del update
+     * 
+     */
     public static function modificarDepartamento($codDepartamento, $descDepartamento, $volumenNegocio){
         $consulta = <<<HER
                         UPDATE T02_Departamento SET T02_DescDepartamento = '{$descDepartamento}', 
@@ -193,7 +260,18 @@ class DepartamentoPDO{
         return DBPDO::ejecutarConsulta($consulta);
            
     }
-    
+    /**
+     * 
+     * function altaDepartamento()
+     * 
+     * Funcion que sirve para crear un nuevo departamento
+     * 
+     * @param string $codDepartamento
+     * @param string $desDepartamento
+     * @param int $volumenNegocio
+     * @return boolean|\Departamento si no se ha podido crear el departamento devuelve false
+     * 
+     */
     public static function altaDepartamento($codDepartamento,$desDepartamento, $volumenNegocio ){
         $consulta= <<<HER
                     INSERT INTO T02_Departamento(T02_CodDepartamento, T02_DescDepartamento, T02_VolumenNegocio, T02_FechaCreacionDepartamento)
@@ -205,8 +283,5 @@ class DepartamentoPDO{
             return false;
         }
     }
-    
-    
-    
 }
 ?>
